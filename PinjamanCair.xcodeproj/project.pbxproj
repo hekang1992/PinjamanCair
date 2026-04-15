@@ -28,6 +28,7 @@
 		73C576372F8FD54800ACFCA5 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C576362F8FD54100ACFCA5 /* HomeViewModel.swift */; };
 		73C576392F8FD55300ACFCA5 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C576382F8FD55000ACFCA5 /* AccountViewModel.swift */; };
 		73C5763B2F8FD5F300ACFCA5 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5763A2F8FD5F300ACFCA5 /* LoadingIndicator.swift */; };
+		73C5763D2F8FD7F400ACFCA5 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5763C2F8FD7EE00ACFCA5 /* HomeService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		73C576362F8FD54100ACFCA5 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		73C576382F8FD55000ACFCA5 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		73C5763A2F8FD5F300ACFCA5 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
+		73C5763C2F8FD7EE00ACFCA5 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 		73B771B42F8F89B500F947DE /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				73C5763C2F8FD7EE00ACFCA5 /* HomeService.swift */,
 				73C576362F8FD54100ACFCA5 /* HomeViewModel.swift */,
 				73B771C22F8F97AC00F947DE /* HomeViewController.swift */,
 			);
@@ -335,6 +338,7 @@
 				73B771C52F8F97BB00F947DE /* AccountViewController.swift in Sources */,
 				73B771BB2F8F89FC00F947DE /* BaseNavigationController.swift in Sources */,
 				73C5763B2F8FD5F300ACFCA5 /* LoadingIndicator.swift in Sources */,
+				73C5763D2F8FD7F400ACFCA5 /* HomeService.swift in Sources */,
 				73B771D22F8F9A3400F947DE /* NetworkManager.swift in Sources */,
 				73C576392F8FD55300ACFCA5 /* AccountViewModel.swift in Sources */,
 				73C576302F8FD29E00ACFCA5 /* DeviceParamService.swift in Sources */,

@@ -82,19 +82,19 @@ class AppTabBarController: UITabBarController {
         viewControllers = [
             createNavigationController(
                 for: HomeViewController(),
-                title: "Home",
+                title: "Loan".localized,
                 image: "loan_nor_image",
                 selectedImage: "loan_sel_image"
             ),
             createNavigationController(
                 for: OrderViewController(),
-                title: "Order",
+                title: "Order".localized,
                 image: "order_nor_image",
                 selectedImage: "order_sel_image"
             ),
             createNavigationController(
                 for: AccountViewController(),
-                title: "Center",
+                title: "Account".localized,
                 image: "mine_nor_image",
                 selectedImage: "mine_sel_image"
             )
@@ -121,11 +121,11 @@ class AppTabBarController: UITabBarController {
         
         let normalAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor.init(hex: "#C5C5C5"),
-            .font: UIFont.systemFont(ofSize: 12)
+            .font: UIFont.systemFont(ofSize: 11)
         ]
         let selectedAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor.init(hex: "#247255"),
-            .font: UIFont.systemFont(ofSize: 12, weight: .medium)
+            .font: UIFont.systemFont(ofSize: 11, weight: .medium)
         ]
         tabBarItem.setTitleTextAttributes(normalAttributes, for: .normal)
         tabBarItem.setTitleTextAttributes(selectedAttributes, for: .selected)

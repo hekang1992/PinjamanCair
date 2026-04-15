@@ -6,24 +6,34 @@
 //
 
 import UIKit
+import Combine
 
 class HomeViewController: CommonViewController {
-
+    
+    private var homeViewModel = HomeViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        homeViewModel.getHomeDataInfo()
+        
+        homeViewModel
+            .$homeModel
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .sink { model in
+                
+            }
+            .store(in: &cancellables)
+        
+        homeViewModel
+            .$errorMsg
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .sink { errorMsg in
+                
+            }
+            .store(in: &cancellables)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

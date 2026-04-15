@@ -5,3 +5,24 @@
 //  Created by hekang on 2026/4/15.
 //
 
+import Foundation
+import Combine
+
+class HomeViewModel: ObservableObject {
+    
+    @Published var homeModel: BaseModel?
+    
+    @Published var errorMsg: String?
+    
+    func getHomeDataInfo() {
+        
+        Task {
+            do {
+                homeModel = try await HomeService.getHomeDataInfo()
+            } catch {
+                errorMsg = error.localizedDescription
+            }
+        }
+        
+    }
+}

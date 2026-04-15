@@ -8,10 +8,13 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Combine
 
 class CommonViewController: UIViewController {
     
     let disposeBag = DisposeBag()
+    
+    var cancellables = Set<AnyCancellable>()
 
     override func viewDidLoad() {
         super.viewDidLoad()

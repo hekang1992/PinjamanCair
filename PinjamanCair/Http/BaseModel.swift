@@ -6,7 +6,7 @@
 //
 
 class BaseModel: Codable {
-    var remains: String?
+    var remains: Int?
     var judgment: String?
     var meantime: meantimeModel?
 }

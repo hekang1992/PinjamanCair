@@ -30,6 +30,8 @@ class LoadingIndicator {
         whiteView.layer.masksToBounds = true
         
         activityIndicator.hidesWhenStopped = true
+        
+        whiteView.addSubview(activityIndicator)
     }
     
     func show() {
@@ -55,7 +57,7 @@ class LoadingIndicator {
         }
         
         window.addSubview(containerView)
-        window.addSubview(whiteView)
+        containerView.addSubview(whiteView)
         
         containerView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -69,8 +71,6 @@ class LoadingIndicator {
         activityIndicator.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
-        
-        whiteView.addSubview(activityIndicator)
         
         activityIndicator.startAnimating()
     }
@@ -87,8 +87,9 @@ class LoadingIndicator {
     
     private func performHide() {
         activityIndicator.stopAnimating()
-        activityIndicator.removeFromSuperview()
-        whiteView.removeFromSuperview()
+        containerView.snp.removeConstraints()
+        whiteView.snp.removeConstraints()
+        activityIndicator.snp.removeConstraints()
         containerView.removeFromSuperview()
     }
 }
