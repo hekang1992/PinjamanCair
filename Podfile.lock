@@ -1,3 +1,67 @@
-PODFILE CHECKSUM: 400dd07887fec0c123d3b16086ce684d378f3788
+PODS:
+  - Alamofire (5.11.1)
+  - FBAEMKit (18.0.3):
+    - FBSDKCoreKit_Basics (= 18.0.3)
+  - FBSDKCoreKit (18.0.3):
+    - FBAEMKit (= 18.0.3)
+    - FBSDKCoreKit_Basics (= 18.0.3)
+  - FBSDKCoreKit_Basics (18.0.3)
+  - IQKeyboardManagerSwift (6.5.16)
+  - Kingfisher (8.8.0)
+  - MJRefresh (3.7.9)
+  - RxCocoa (6.9.0):
+    - RxRelay (= 6.9.0)
+    - RxSwift (= 6.9.0)
+  - RxRelay (6.9.0):
+    - RxSwift (= 6.9.0)
+  - RxSwift (6.9.0)
+  - SnapKit (5.7.1)
+  - Toast-Swift (5.1.1)
+  - TYAlertController (1.2.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - FBSDKCoreKit
+  - IQKeyboardManagerSwift (~> 6.5.16)
+  - Kingfisher
+  - MJRefresh
+  - RxCocoa
+  - RxSwift
+  - SnapKit
+  - Toast-Swift
+  - TYAlertController
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - FBAEMKit
+    - FBSDKCoreKit
+    - FBSDKCoreKit_Basics
+    - IQKeyboardManagerSwift
+    - Kingfisher
+    - MJRefresh
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - SnapKit
+    - Toast-Swift
+    - TYAlertController
+
+SPEC CHECKSUMS:
+  Alamofire: eec6cd8f73b242b59e34153a606a909eb9864b14
+  FBAEMKit: 2a6b529993713c185b02bc36f8c91129bf78dfb0
+  FBSDKCoreKit: 65d7f7a7d6fcc3aa6eb6e093ec737a4184fc6049
+  FBSDKCoreKit_Basics: 7bc9d8fde8f70985fba2ed7c1d07e319f969a991
+  IQKeyboardManagerSwift: 12d89768845bb77b55cc092ecc2b1f9370f06b76
+  Kingfisher: beeaf65ed57dfa710d416aea4093277e8a9b1968
+  MJRefresh: ff9e531227924c84ce459338414550a05d2aea78
+  RxCocoa: ac16414696ae706516be3e1ab00fcce5bdc9be8a
+  RxRelay: 6b0c930e5cef57d5fe2032571e5e65b78e3cbdb1
+  RxSwift: 31649ace6aceeb422e16ff71c60804f9c3281ed9
+  SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
+  Toast-Swift: 7a03a532afe3a560d4044bc7c237e2864d295173
+  TYAlertController: c121090edb0bea7426f987da94cdddd81eef4231
+
+PODFILE CHECKSUM: 285131fdd06bec33a9964806192f59b7d9e3a857
 
 COCOAPODS: 1.16.2
