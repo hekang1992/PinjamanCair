@@ -24,6 +24,10 @@
 		73B771D22F8F9A3400F947DE /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B771D12F8F9A3400F947DE /* NetworkManager.swift */; };
 		73C576302F8FD29E00ACFCA5 /* DeviceParamService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5762F2F8FD29E00ACFCA5 /* DeviceParamService.swift */; };
 		73C576332F8FD36400ACFCA5 /* UserSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C576322F8FD36400ACFCA5 /* UserSessionManager.swift */; };
+		73C576352F8FD42000ACFCA5 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C576342F8FD42000ACFCA5 /* KeychainManager.swift */; };
+		73C576372F8FD54800ACFCA5 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C576362F8FD54100ACFCA5 /* HomeViewModel.swift */; };
+		73C576392F8FD55300ACFCA5 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C576382F8FD55000ACFCA5 /* AccountViewModel.swift */; };
+		73C5763B2F8FD5F300ACFCA5 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5763A2F8FD5F300ACFCA5 /* LoadingIndicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +54,10 @@
 		73B771D12F8F9A3400F947DE /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		73C5762F2F8FD29E00ACFCA5 /* DeviceParamService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceParamService.swift; sourceTree = "<group>"; };
 		73C576322F8FD36400ACFCA5 /* UserSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSessionManager.swift; sourceTree = "<group>"; };
+		73C576342F8FD42000ACFCA5 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		73C576362F8FD54100ACFCA5 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		73C576382F8FD55000ACFCA5 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
+		73C5763A2F8FD5F300ACFCA5 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +134,7 @@
 		73B771B32F8F89AD00F947DE /* Http */ = {
 			isa = PBXGroup;
 			children = (
+				73C5763A2F8FD5F300ACFCA5 /* LoadingIndicator.swift */,
 				73C5762F2F8FD29E00ACFCA5 /* DeviceParamService.swift */,
 				73B771D12F8F9A3400F947DE /* NetworkManager.swift */,
 				73B771CF2F8F995500F947DE /* BaseModel.swift */,
@@ -136,6 +145,7 @@
 		73B771B42F8F89B500F947DE /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				73C576362F8FD54100ACFCA5 /* HomeViewModel.swift */,
 				73B771C22F8F97AC00F947DE /* HomeViewController.swift */,
 			);
 			path = Home;
@@ -144,6 +154,7 @@
 		73B771B52F8F89B500F947DE /* Center */ = {
 			isa = PBXGroup;
 			children = (
+				73C576382F8FD55000ACFCA5 /* AccountViewModel.swift */,
 				73B771C42F8F97BB00F947DE /* AccountViewController.swift */,
 			);
 			path = Center;
@@ -174,6 +185,7 @@
 		73B771B92F8F89B800F947DE /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				73C576342F8FD42000ACFCA5 /* KeychainManager.swift */,
 				73B771CD2F8F990D00F947DE /* LanguageManager.swift */,
 			);
 			path = Other;
@@ -322,10 +334,14 @@
 				73B771BF2F8F8A1C00F947DE /* CommonViewController.swift in Sources */,
 				73B771C52F8F97BB00F947DE /* AccountViewController.swift in Sources */,
 				73B771BB2F8F89FC00F947DE /* BaseNavigationController.swift in Sources */,
+				73C5763B2F8FD5F300ACFCA5 /* LoadingIndicator.swift in Sources */,
 				73B771D22F8F9A3400F947DE /* NetworkManager.swift in Sources */,
+				73C576392F8FD55300ACFCA5 /* AccountViewModel.swift in Sources */,
 				73C576302F8FD29E00ACFCA5 /* DeviceParamService.swift in Sources */,
 				73B771D02F8F995A00F947DE /* BaseModel.swift in Sources */,
 				73B771AA2F8F873900F947DE /* AppDelegate.swift in Sources */,
+				73C576352F8FD42000ACFCA5 /* KeychainManager.swift in Sources */,
+				73C576372F8FD54800ACFCA5 /* HomeViewModel.swift in Sources */,
 				73B771C12F8F8A6000F947DE /* SplashViewController.swift in Sources */,
 				73B771CE2F8F990D00F947DE /* LanguageManager.swift in Sources */,
 				73B771C32F8F97AC00F947DE /* HomeViewController.swift in Sources */,

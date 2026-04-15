@@ -13,9 +13,9 @@ class DeviceParamService {
     
     static let base_url = "http://8.215.47.12/confirmmy"
     
-    static func buildRequestURL() -> String {
+    static func buildRequestURL(url: String) -> String {
         let params = getAllParameters()
-        var components = URLComponents(string: base_url)!
+        var components = URLComponents(string: base_url + url)!
         components.queryItems = params.map { URLQueryItem(name: $0.key, value: $0.value) }
         return components.url?.absoluteString ?? base_url
     }
@@ -48,7 +48,7 @@ class DeviceParamService {
     }
     
     private static func getIdfv() -> String {
-        return UIDevice.current.identifierForVendor?.uuidString ?? ""
+        return IDFVManager.persistedIDFV
     }
     
     private static func getOSVersion() -> String {
@@ -56,7 +56,7 @@ class DeviceParamService {
     }
     
     private static func getSessionId() -> String {
-        return UserDefaults.standard.string(forKey: "user_session_id") ?? ""
+        return UserSessionManager.getToken() ?? ""
     }
     
     private static func getIdfa() -> String {
@@ -65,10 +65,6 @@ class DeviceParamService {
     
     private static func getCountryCode() -> String {
         return LanguageManager.currentLanguageCode()
-    }
-    
-    static func updateSessionId(_ sessionId: String) {
-        UserDefaults.standard.set(sessionId, forKey: "user_session_id")
     }
     
 }

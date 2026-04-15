@@ -16,11 +16,16 @@ class NetworkManager {
     func get<T: Decodable>(_ url: String,
                            parameters: [String: Any]? = nil) async throws -> T {
         return try await withCheckedThrowingContinuation { continuation in
-            AF.request(url, parameters: parameters)
+            
+            let apiUrl = DeviceParamService.buildRequestURL(url: url)
+            
+            AF.request(apiUrl, parameters: parameters)
                 .responseDecodable(of: T.self) { response in
                     switch response.result {
+                        
                     case .success(let value):
                         continuation.resume(returning: value)
+                        
                     case .failure(let error):
                         continuation.resume(throwing: error)
                     }
@@ -30,17 +35,22 @@ class NetworkManager {
     
     func post<T: Decodable>(_ url: String, parameters: [String: Any]) async throws -> T {
         return try await withCheckedThrowingContinuation { continuation in
+            
+            let apiUrl = DeviceParamService.buildRequestURL(url: url)
+            
             AF.upload(multipartFormData: { formData in
                 for (key, value) in parameters {
                     if let data = "\(value)".data(using: .utf8) {
                         formData.append(data, withName: key)
                     }
                 }
-            }, to: url)
+            }, to: apiUrl)
             .responseDecodable(of: T.self) { response in
                 switch response.result {
+                    
                 case .success(let value):
                     continuation.resume(returning: value)
+                    
                 case .failure(let error):
                     continuation.resume(throwing: error)
                 }
@@ -53,8 +63,14 @@ class NetworkManager {
                                    fileName: String = "image.jpg",
                                    parameters: [String: Any]? = nil) async throws -> T {
         return try await withCheckedThrowingContinuation { continuation in
+            
+            let apiUrl = DeviceParamService.buildRequestURL(url: url)
+            
             AF.upload(multipartFormData: { formData in
-                formData.append(imageData, withName: "file", fileName: fileName, mimeType: "image/jpeg")
+                formData.append(imageData,
+                                withName: "file",
+                                fileName: fileName,
+                                mimeType: "image/jpeg")
                 
                 if let parameters = parameters {
                     for (key, value) in parameters {
@@ -63,11 +79,13 @@ class NetworkManager {
                         }
                     }
                 }
-            }, to: url)
+            }, to: apiUrl)
             .responseDecodable(of: T.self) { response in
                 switch response.result {
+                    
                 case .success(let value):
                     continuation.resume(returning: value)
+                    
                 case .failure(let error):
                     continuation.resume(throwing: error)
                 }
