@@ -20,6 +20,10 @@
 		73B771C72F8F97C300F947DE /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B771C62F8F97C300F947DE /* OrderViewController.swift */; };
 		73B771CA2F8F989100F947DE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 73B771C82F8F989100F947DE /* Localizable.strings */; };
 		73B771CE2F8F990D00F947DE /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B771CD2F8F990D00F947DE /* LanguageManager.swift */; };
+		73B771D02F8F995A00F947DE /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B771CF2F8F995500F947DE /* BaseModel.swift */; };
+		73B771D22F8F9A3400F947DE /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B771D12F8F9A3400F947DE /* NetworkManager.swift */; };
+		73C576302F8FD29E00ACFCA5 /* DeviceParamService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5762F2F8FD29E00ACFCA5 /* DeviceParamService.swift */; };
+		73C576332F8FD36400ACFCA5 /* UserSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C576322F8FD36400ACFCA5 /* UserSessionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +46,10 @@
 		73B771C92F8F989100F947DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		73B771CC2F8F98B300F947DE /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
 		73B771CD2F8F990D00F947DE /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
+		73B771CF2F8F995500F947DE /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
+		73B771D12F8F9A3400F947DE /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		73C5762F2F8FD29E00ACFCA5 /* DeviceParamService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceParamService.swift; sourceTree = "<group>"; };
+		73C576322F8FD36400ACFCA5 /* UserSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSessionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +101,7 @@
 				73B771A42F8F873900F947DE /* LaunchScreen.storyboard */,
 				73B771B92F8F89B800F947DE /* Other */,
 				73B771B82F8F89B700F947DE /* Auth */,
+				73C576312F8FD35800ACFCA5 /* Login */,
 				73B771B72F8F89B700F947DE /* Product */,
 				73B771B62F8F89B600F947DE /* Order */,
 				73B771B52F8F89B500F947DE /* Center */,
@@ -117,6 +126,9 @@
 		73B771B32F8F89AD00F947DE /* Http */ = {
 			isa = PBXGroup;
 			children = (
+				73C5762F2F8FD29E00ACFCA5 /* DeviceParamService.swift */,
+				73B771D12F8F9A3400F947DE /* NetworkManager.swift */,
+				73B771CF2F8F995500F947DE /* BaseModel.swift */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -165,6 +177,14 @@
 				73B771CD2F8F990D00F947DE /* LanguageManager.swift */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		73C576312F8FD35800ACFCA5 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				73C576322F8FD36400ACFCA5 /* UserSessionManager.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		ECA75F3382BD054892EBC134 /* Pods */ = {
@@ -297,10 +317,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73C576332F8FD36400ACFCA5 /* UserSessionManager.swift in Sources */,
 				73B771BD2F8F8A0D00F947DE /* AppTabBarController.swift in Sources */,
 				73B771BF2F8F8A1C00F947DE /* CommonViewController.swift in Sources */,
 				73B771C52F8F97BB00F947DE /* AccountViewController.swift in Sources */,
 				73B771BB2F8F89FC00F947DE /* BaseNavigationController.swift in Sources */,
+				73B771D22F8F9A3400F947DE /* NetworkManager.swift in Sources */,
+				73C576302F8FD29E00ACFCA5 /* DeviceParamService.swift in Sources */,
+				73B771D02F8F995A00F947DE /* BaseModel.swift in Sources */,
 				73B771AA2F8F873900F947DE /* AppDelegate.swift in Sources */,
 				73B771C12F8F8A6000F947DE /* SplashViewController.swift in Sources */,
 				73B771CE2F8F990D00F947DE /* LanguageManager.swift in Sources */,
