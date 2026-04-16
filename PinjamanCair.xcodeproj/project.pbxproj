@@ -14,6 +14,10 @@
 		737C3D852F9075FC003A5E32 /* SystemParamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D842F9075FC003A5E32 /* SystemParamManager.swift */; };
 		737C3D872F908E26003A5E32 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D862F908E26003A5E32 /* LoginViewController.swift */; };
 		737C3D892F908F77003A5E32 /* AppHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D882F908F77003A5E32 /* AppHeadView.swift */; };
+		737C3D8E2F909492003A5E32 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D8D2F909492003A5E32 /* HomeView.swift */; };
+		737C3D902F90949D003A5E32 /* LoanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D8F2F90949D003A5E32 /* LoanView.swift */; };
+		737C3D922F909549003A5E32 /* HomeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D912F909549003A5E32 /* HomeCardView.swift */; };
+		737C3D942F90A531003A5E32 /* HomeLIstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D932F90A531003A5E32 /* HomeLIstView.swift */; };
 		73B771AA2F8F873900F947DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B771A02F8F873900F947DE /* AppDelegate.swift */; };
 		73B771AD2F8F873900F947DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73B771A12F8F873900F947DE /* Assets.xcassets */; };
 		73B771AF2F8F873900F947DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73B771A42F8F873900F947DE /* LaunchScreen.storyboard */; };
@@ -47,6 +51,10 @@
 		737C3D842F9075FC003A5E32 /* SystemParamManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemParamManager.swift; sourceTree = "<group>"; };
 		737C3D862F908E26003A5E32 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		737C3D882F908F77003A5E32 /* AppHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHeadView.swift; sourceTree = "<group>"; };
+		737C3D8D2F909492003A5E32 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		737C3D8F2F90949D003A5E32 /* LoanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanView.swift; sourceTree = "<group>"; };
+		737C3D912F909549003A5E32 /* HomeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCardView.swift; sourceTree = "<group>"; };
+		737C3D932F90A531003A5E32 /* HomeLIstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLIstView.swift; sourceTree = "<group>"; };
 		73B771882F8F872E00F947DE /* PinjamanCair.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinjamanCair.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73B771A02F8F873900F947DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73B771A12F8F873900F947DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -103,6 +111,34 @@
 				73B771C02F8F8A6000F947DE /* SplashViewController.swift */,
 			);
 			path = Splash;
+			sourceTree = "<group>";
+		};
+		737C3D8A2F909465003A5E32 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				737C3D8D2F909492003A5E32 /* HomeView.swift */,
+				737C3D8F2F90949D003A5E32 /* LoanView.swift */,
+				737C3D912F909549003A5E32 /* HomeCardView.swift */,
+				737C3D932F90A531003A5E32 /* HomeLIstView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		737C3D8B2F90946A003A5E32 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				73C5763C2F8FD7EE00ACFCA5 /* HomeService.swift */,
+				73C576362F8FD54100ACFCA5 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		737C3D8C2F909470003A5E32 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				73B771C22F8F97AC00F947DE /* HomeViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		73B7717F2F8F872E00F947DE = {
@@ -171,9 +207,9 @@
 		73B771B42F8F89B500F947DE /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				73C5763C2F8FD7EE00ACFCA5 /* HomeService.swift */,
-				73C576362F8FD54100ACFCA5 /* HomeViewModel.swift */,
-				73B771C22F8F97AC00F947DE /* HomeViewController.swift */,
+				737C3D8A2F909465003A5E32 /* View */,
+				737C3D8C2F909470003A5E32 /* Controller */,
+				737C3D8B2F90946A003A5E32 /* ViewModel */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -361,6 +397,7 @@
 				73C576332F8FD36400ACFCA5 /* UserSessionManager.swift in Sources */,
 				737C3D832F907455003A5E32 /* SplashService.swift in Sources */,
 				737C3D852F9075FC003A5E32 /* SystemParamManager.swift in Sources */,
+				737C3D8E2F909492003A5E32 /* HomeView.swift in Sources */,
 				737C3D872F908E26003A5E32 /* LoginViewController.swift in Sources */,
 				73B771BD2F8F8A0D00F947DE /* AppTabBarController.swift in Sources */,
 				73B771BF2F8F8A1C00F947DE /* CommonViewController.swift in Sources */,
@@ -370,6 +407,7 @@
 				737C3D812F90744D003A5E32 /* SplashViewModel.swift in Sources */,
 				737C3D892F908F77003A5E32 /* AppHeadView.swift in Sources */,
 				73C5763D2F8FD7F400ACFCA5 /* HomeService.swift in Sources */,
+				737C3D942F90A531003A5E32 /* HomeLIstView.swift in Sources */,
 				73B771D22F8F9A3400F947DE /* NetworkManager.swift in Sources */,
 				73C576392F8FD55300ACFCA5 /* AccountViewModel.swift in Sources */,
 				73C576302F8FD29E00ACFCA5 /* DeviceParamService.swift in Sources */,
@@ -379,6 +417,8 @@
 				73C576372F8FD54800ACFCA5 /* HomeViewModel.swift in Sources */,
 				73B771C12F8F8A6000F947DE /* SplashViewController.swift in Sources */,
 				73B771CE2F8F990D00F947DE /* LanguageManager.swift in Sources */,
+				737C3D902F90949D003A5E32 /* LoanView.swift in Sources */,
+				737C3D922F909549003A5E32 /* HomeCardView.swift in Sources */,
 				737C3D7E2F906E85003A5E32 /* NetworkMonitor.swift in Sources */,
 				73B771C32F8F97AC00F947DE /* HomeViewController.swift in Sources */,
 				73B771C72F8F97C300F947DE /* OrderViewController.swift in Sources */,
