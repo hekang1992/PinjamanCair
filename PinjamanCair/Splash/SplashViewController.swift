@@ -33,6 +33,7 @@ class SplashViewController: CommonViewController {
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         setupBackgroundImage()
         monitorNetwork()
+        setBindViewModel()
     }
     
     private func setupBackgroundImage() {
@@ -70,7 +71,7 @@ extension SplashViewController {
     private func monitorNetwork() {
         networkMonitor.startListening { [weak self] status in
             guard let self = self else { return }
-            
+            print("status======\(status.description)")
             switch status {
             case .unknown:
                 UserDefaults.standard.set("UNKNOWN", forKey: "app_network_key")
@@ -83,15 +84,16 @@ extension SplashViewController {
                 case .ethernetOrWiFi:
                     UserDefaults.standard.set("WIFI", forKey: "app_network_key")
                     self.appInitInfo()
+                    networkMonitor.stopListening()
                     
                 case .cellular:
                     UserDefaults.standard.set("5G", forKey: "app_network_key")
                     self.appInitInfo()
+                    networkMonitor.stopListening()
                 }
             }
         }
         
-        networkMonitor.stopListening()
     }
 }
 
@@ -104,7 +106,9 @@ extension SplashViewController {
         let parameters = SystemParamManager.allParameters
         
         viewModel.appInitInfo(parameters: parameters)
-        
+    }
+    
+    private func setBindViewModel() {
         viewModel
             .$splashModel
             .receive(on: DispatchQueue.main)
