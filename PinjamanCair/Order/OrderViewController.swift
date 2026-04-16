@@ -6,24 +6,28 @@
 //
 
 import UIKit
+import SnapKit
+import RxSwift
+import RxCocoa
+import Combine
 
 class OrderViewController: CommonViewController {
+
+    lazy var headImageView: UIImageView = {
+        let headImageView = UIImageView()
+        headImageView.image = UIImage(named: "cen_bg_image")
+        headImageView.contentMode = .scaleAspectFill
+        return headImageView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        view.addSubview(headImageView)
+        headImageView.snp.makeConstraints { make in
+            make.top.left.right.equalToSuperview()
+            make.height.equalTo(482)
+        }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
