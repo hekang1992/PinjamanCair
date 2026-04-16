@@ -131,8 +131,8 @@ extension SplashViewController {
             }
             
             let languaceCode = model.meantime?.future ?? ""
-//            LanguageManager.setAppLanguage(futureValue: "1")
-            LanguageManager.setAppLanguage(futureValue: languaceCode)
+            LanguageManager.setAppLanguage(futureValue: "1")
+//            LanguageManager.setAppLanguage(futureValue: languaceCode)
             
             Task {
                 try? await Task.sleep(nanoseconds: 250_000_000)

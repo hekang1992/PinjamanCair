@@ -47,19 +47,39 @@ class HomeViewController: CommonViewController {
             self.getHomeDataInfo()
         })
         
+        self.homeView.loanMentBlock = { [weak self] in
+            guard let self = self else { return }
+            guard UserSessionManager.isLoggedIn() else { popLogin(); return }
+            ToastConfig.showMessage("贷款协议")
+        }
+        
+        self.homeView.applyBlock = { [weak self] productID in
+            guard let self = self else { return }
+            guard UserSessionManager.isLoggedIn() else { popLogin(); return }
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getHomeDataInfo()
+        setupBindings()
     }
 }
 
 extension HomeViewController {
     
+    private func popLogin() {
+        let popVc = BaseNavigationController(rootViewController: LoginViewController())
+        popVc.modalPresentationStyle = .overFullScreen
+        self.present(popVc, animated: true)
+    }
+    
     private func getHomeDataInfo() {
         homeViewModel.getHomeDataInfo()
-        
+    }
+    
+    private func setupBindings() {
         homeViewModel
             .$homeModel
             .receive(on: DispatchQueue.main)
@@ -67,6 +87,14 @@ extension HomeViewController {
             .sink { [weak self] model in
                 guard let self = self else { return }
                 self.homeView.scrollView.mj_header?.endRefreshing()
+                let remains = model.remains ?? ""
+                if remains == "0" {
+                    if let modelArray = findJournalB(meantime: model.meantime ?? meantimeModel()) {
+                        self.setupHomeUI(with: modelArray[0])
+                    }else {
+                        
+                    }
+                }
             }
             .store(in: &cancellables)
         
@@ -79,6 +107,17 @@ extension HomeViewController {
                 self.homeView.scrollView.mj_header?.endRefreshing()
             }
             .store(in: &cancellables)
+        
+    }
+    
+    func findJournalB(meantime: meantimeModel) -> [interveningModel]? {
+        return meantime.visual?
+            .first(where: { $0.cut == "journalb" })?
+            .intervening
+    }
+    
+    private func setupHomeUI(with model: interveningModel) {
+        self.homeView.interveningModel = model
     }
     
 }

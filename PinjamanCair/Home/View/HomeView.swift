@@ -12,6 +12,19 @@ import RxCocoa
 
 class HomeView: UIView {
     
+    private let disposeBag = DisposeBag()
+    
+    var applyBlock: ((String) -> Void)?
+    
+    var loanMentBlock: (() -> Void)?
+    
+    var interveningModel: interveningModel? {
+        didSet {
+            guard let interveningModel = interveningModel else { return }
+            cardView.interveningModel = interveningModel
+        }
+    }
+    
     var tabBarHeight: CGFloat {
         let bottomSafeArea = UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0
         return 49 + bottomSafeArea
@@ -74,6 +87,11 @@ class HomeView: UIView {
         return fourBtn
     }()
     
+    lazy var applyBtn: UIButton = {
+        let applyBtn = UIButton(type: .close)
+        return applyBtn
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(scrollView)
@@ -88,8 +106,16 @@ class HomeView: UIView {
         
         contentView.addSubview(cardView)
         contentView.addSubview(whiteView)
+        contentView.addSubview(applyBtn)
         
         cardView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(12)
+            make.centerX.equalToSuperview()
+            make.left.equalToSuperview()
+            make.height.equalTo(370)
+        }
+        
+        applyBtn.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
             make.centerX.equalToSuperview()
             make.left.equalToSuperview()
@@ -125,6 +151,17 @@ class HomeView: UIView {
                 make.size.equalTo(CGSize(width: 343, height: 283))
                 make.bottom.equalToSuperview().offset(-(tabBarHeight + 10))
             }
+            
+            oneBtn
+                .rx
+                .tap
+                .throttle(.milliseconds(250), scheduler: MainScheduler.instance)
+                .bind(onNext: { [weak self] in
+                    guard let self = self else { return }
+                    self.loanMentBlock?()
+                })
+                .disposed(by: disposeBag)
+            
         }else {
             contentView.addSubview(fourBtn)
             fourBtn.snp.makeConstraints { make in
@@ -134,6 +171,17 @@ class HomeView: UIView {
                 make.bottom.equalToSuperview().offset(-(tabBarHeight + 10))
             }
         }
+        
+        applyBtn
+            .rx
+            .tap
+            .throttle(.milliseconds(250), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] in
+                guard let self = self else { return }
+                let productID = self.interveningModel?.grove ?? ""
+                self.applyBlock?(productID)
+            })
+            .disposed(by: disposeBag)
     }
     
     required init?(coder: NSCoder) {
