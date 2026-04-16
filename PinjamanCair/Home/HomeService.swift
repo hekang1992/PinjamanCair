@@ -5,8 +5,6 @@
 //  Created by hekang on 2026/4/15.
 //
 
-import Foundation
-
 class HomeService {
     
     static func getHomeDataInfo() async throws -> BaseModel? {

@@ -19,10 +19,10 @@ final class LanguageManager {
         case english = "en"
         case indonesian = "id"
         
-        init?(futureValue: Int) {
+        init?(futureValue: String) {
             switch futureValue {
-            case 1: self = .english
-            case 2: self = .indonesian
+            case "1": self = .english
+            case "2": self = .indonesian
             default: return nil
             }
         }
@@ -32,7 +32,7 @@ final class LanguageManager {
     private var languageBundle: Bundle?
     private var savedLanguageCode: String
     
-    class func setAppLanguage(futureValue: Int) {
+    class func setAppLanguage(futureValue: String) {
         guard let language = LanguageType(futureValue: futureValue) else {
             return
         }

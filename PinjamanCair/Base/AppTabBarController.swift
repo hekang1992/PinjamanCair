@@ -11,6 +11,7 @@ class AppTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.delegate = self
         setupTabBar()
         setupViewControllers()
     }
@@ -52,6 +53,7 @@ class AppTabBarController: UITabBarController {
         }
         
         if #available(iOS 15.0, *) {
+            
         } else {
             UITabBarItem.appearance().setTitleTextAttributes(normalAttributes, for: .normal)
             UITabBarItem.appearance().setTitleTextAttributes(selectedAttributes, for: .selected)
@@ -135,8 +137,23 @@ class AppTabBarController: UITabBarController {
     }
 }
 
-extension UIColor {
+extension AppTabBarController: UITabBarControllerDelegate {
+    
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        guard UserSessionManager.isLoggedIn() else { popLogin(); return false }
+        return true
+    }
+    
+    private func popLogin() {
+        let popVc = BaseNavigationController(rootViewController: LoginViewController())
+        popVc.modalPresentationStyle = .overFullScreen
+        self.present(popVc, animated: true)
+    }
+    
+}
 
+extension UIColor {
+    
     convenience init(hex: String) {
         var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
         hexSanitized = hexSanitized.replacingOccurrences(of: "#", with: "")

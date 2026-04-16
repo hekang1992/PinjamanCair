@@ -15,6 +15,11 @@ class CommonViewController: UIViewController {
     let disposeBag = DisposeBag()
     
     var cancellables = Set<AnyCancellable>()
+    
+    lazy var headView: AppHeadView = {
+        let headView = AppHeadView(frame: .zero)
+        return headView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()

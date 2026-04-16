@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		5103BEBE432C4F44835B1ED9 /* Pods_PinjamanCair.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3287B38925CE64ACE3F00D85 /* Pods_PinjamanCair.framework */; };
+		737C3D7E2F906E85003A5E32 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D7D2F906E85003A5E32 /* NetworkMonitor.swift */; };
+		737C3D812F90744D003A5E32 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D802F90744C003A5E32 /* SplashViewModel.swift */; };
+		737C3D832F907455003A5E32 /* SplashService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D822F90744F003A5E32 /* SplashService.swift */; };
+		737C3D852F9075FC003A5E32 /* SystemParamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D842F9075FC003A5E32 /* SystemParamManager.swift */; };
+		737C3D872F908E26003A5E32 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D862F908E26003A5E32 /* LoginViewController.swift */; };
+		737C3D892F908F77003A5E32 /* AppHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D882F908F77003A5E32 /* AppHeadView.swift */; };
 		73B771AA2F8F873900F947DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B771A02F8F873900F947DE /* AppDelegate.swift */; };
 		73B771AD2F8F873900F947DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73B771A12F8F873900F947DE /* Assets.xcassets */; };
 		73B771AF2F8F873900F947DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73B771A42F8F873900F947DE /* LaunchScreen.storyboard */; };
@@ -35,6 +41,12 @@
 		0C101DB686FB11543A7B2429 /* Pods-PinjamanCair.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinjamanCair.debug.xcconfig"; path = "Target Support Files/Pods-PinjamanCair/Pods-PinjamanCair.debug.xcconfig"; sourceTree = "<group>"; };
 		3287B38925CE64ACE3F00D85 /* Pods_PinjamanCair.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinjamanCair.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		41A35B40C89F9BB22A2FF883 /* Pods-PinjamanCair.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinjamanCair.release.xcconfig"; path = "Target Support Files/Pods-PinjamanCair/Pods-PinjamanCair.release.xcconfig"; sourceTree = "<group>"; };
+		737C3D7D2F906E85003A5E32 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		737C3D802F90744C003A5E32 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
+		737C3D822F90744F003A5E32 /* SplashService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashService.swift; sourceTree = "<group>"; };
+		737C3D842F9075FC003A5E32 /* SystemParamManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemParamManager.swift; sourceTree = "<group>"; };
+		737C3D862F908E26003A5E32 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		737C3D882F908F77003A5E32 /* AppHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHeadView.swift; sourceTree = "<group>"; };
 		73B771882F8F872E00F947DE /* PinjamanCair.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinjamanCair.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73B771A02F8F873900F947DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73B771A12F8F873900F947DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -82,6 +94,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		737C3D7F2F907433003A5E32 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				737C3D842F9075FC003A5E32 /* SystemParamManager.swift */,
+				737C3D822F90744F003A5E32 /* SplashService.swift */,
+				737C3D802F90744C003A5E32 /* SplashViewModel.swift */,
+				73B771C02F8F8A6000F947DE /* SplashViewController.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
 		73B7717F2F8F872E00F947DE = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +140,7 @@
 				73B771B52F8F89B500F947DE /* Center */,
 				73B771B42F8F89B500F947DE /* Home */,
 				73B771B32F8F89AD00F947DE /* Http */,
+				737C3D7F2F907433003A5E32 /* Splash */,
 				73B771B22F8F899F00F947DE /* Base */,
 			);
 			path = PinjamanCair;
@@ -128,7 +152,6 @@
 				73B771BC2F8F8A0D00F947DE /* AppTabBarController.swift */,
 				73B771BA2F8F89FC00F947DE /* BaseNavigationController.swift */,
 				73B771BE2F8F8A1C00F947DE /* CommonViewController.swift */,
-				73B771C02F8F8A6000F947DE /* SplashViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -136,6 +159,7 @@
 		73B771B32F8F89AD00F947DE /* Http */ = {
 			isa = PBXGroup;
 			children = (
+				737C3D7D2F906E85003A5E32 /* NetworkMonitor.swift */,
 				73C5763A2F8FD5F300ACFCA5 /* LoadingIndicator.swift */,
 				73C5762F2F8FD29E00ACFCA5 /* DeviceParamService.swift */,
 				73B771D12F8F9A3400F947DE /* NetworkManager.swift */,
@@ -198,6 +222,8 @@
 			isa = PBXGroup;
 			children = (
 				73C576322F8FD36400ACFCA5 /* UserSessionManager.swift */,
+				737C3D862F908E26003A5E32 /* LoginViewController.swift */,
+				737C3D882F908F77003A5E32 /* AppHeadView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -333,11 +359,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				73C576332F8FD36400ACFCA5 /* UserSessionManager.swift in Sources */,
+				737C3D832F907455003A5E32 /* SplashService.swift in Sources */,
+				737C3D852F9075FC003A5E32 /* SystemParamManager.swift in Sources */,
+				737C3D872F908E26003A5E32 /* LoginViewController.swift in Sources */,
 				73B771BD2F8F8A0D00F947DE /* AppTabBarController.swift in Sources */,
 				73B771BF2F8F8A1C00F947DE /* CommonViewController.swift in Sources */,
 				73B771C52F8F97BB00F947DE /* AccountViewController.swift in Sources */,
 				73B771BB2F8F89FC00F947DE /* BaseNavigationController.swift in Sources */,
 				73C5763B2F8FD5F300ACFCA5 /* LoadingIndicator.swift in Sources */,
+				737C3D812F90744D003A5E32 /* SplashViewModel.swift in Sources */,
+				737C3D892F908F77003A5E32 /* AppHeadView.swift in Sources */,
 				73C5763D2F8FD7F400ACFCA5 /* HomeService.swift in Sources */,
 				73B771D22F8F9A3400F947DE /* NetworkManager.swift in Sources */,
 				73C576392F8FD55300ACFCA5 /* AccountViewModel.swift in Sources */,
@@ -348,6 +379,7 @@
 				73C576372F8FD54800ACFCA5 /* HomeViewModel.swift in Sources */,
 				73B771C12F8F8A6000F947DE /* SplashViewController.swift in Sources */,
 				73B771CE2F8F990D00F947DE /* LanguageManager.swift in Sources */,
+				737C3D7E2F906E85003A5E32 /* NetworkMonitor.swift in Sources */,
 				73B771C32F8F97AC00F947DE /* HomeViewController.swift in Sources */,
 				73B771C72F8F97C300F947DE /* OrderViewController.swift in Sources */,
 			);
@@ -389,6 +421,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PinjamanCair/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Pinjaman Cair";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_NSContactsUsageDescription = "";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "";
@@ -401,7 +434,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zoom.loan.peso;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -431,6 +464,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PinjamanCair/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Pinjaman Cair";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_NSContactsUsageDescription = "";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "";
@@ -443,7 +477,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zoom.loan.peso;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;

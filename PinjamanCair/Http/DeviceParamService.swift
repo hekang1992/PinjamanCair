@@ -64,7 +64,7 @@ class DeviceParamService {
     }
     
     private static func getCountryCode() -> String {
-        return LanguageManager.currentLanguageCode()
+        return LanguageManager.currentLanguageCode() == "en" ? "1" : "2"
     }
     
 }
