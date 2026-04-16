@@ -97,7 +97,9 @@ class NetworkManager {
 
 class ToastConfig {
     static func showMessage(_ message: String) {
-        guard let window = UIApplication.shared.windows.first else { return }
-        window.makeToast(message, duration: 3.0, position: .center)
+        DispatchQueue.main.async {
+            guard let window = UIApplication.shared.windows.first else { return }
+            window.makeToast(message, duration: 3.0, position: .center)
+        }
     }
 }

@@ -18,6 +18,9 @@
 		737C3D902F90949D003A5E32 /* LoanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D8F2F90949D003A5E32 /* LoanView.swift */; };
 		737C3D922F909549003A5E32 /* HomeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D912F909549003A5E32 /* HomeCardView.swift */; };
 		737C3D942F90A531003A5E32 /* HomeLIstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D932F90A531003A5E32 /* HomeLIstView.swift */; };
+		737C3D992F90BBF9003A5E32 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D982F90BBF9003A5E32 /* LoginView.swift */; };
+		737C3D9B2F90C86A003A5E32 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D9A2F90C869003A5E32 /* LoginService.swift */; };
+		737C3D9D2F90C874003A5E32 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D9C2F90C86B003A5E32 /* LoginViewModel.swift */; };
 		73B771AA2F8F873900F947DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B771A02F8F873900F947DE /* AppDelegate.swift */; };
 		73B771AD2F8F873900F947DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73B771A12F8F873900F947DE /* Assets.xcassets */; };
 		73B771AF2F8F873900F947DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73B771A42F8F873900F947DE /* LaunchScreen.storyboard */; };
@@ -55,6 +58,9 @@
 		737C3D8F2F90949D003A5E32 /* LoanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanView.swift; sourceTree = "<group>"; };
 		737C3D912F909549003A5E32 /* HomeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCardView.swift; sourceTree = "<group>"; };
 		737C3D932F90A531003A5E32 /* HomeLIstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLIstView.swift; sourceTree = "<group>"; };
+		737C3D982F90BBF9003A5E32 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		737C3D9A2F90C869003A5E32 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		737C3D9C2F90C86B003A5E32 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		73B771882F8F872E00F947DE /* PinjamanCair.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinjamanCair.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73B771A02F8F873900F947DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73B771A12F8F873900F947DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -141,6 +147,34 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		737C3D952F90BB59003A5E32 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				737C3D862F908E26003A5E32 /* LoginViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		737C3D962F90BB5B003A5E32 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				737C3D972F90BB78003A5E32 /* View */,
+				73C576312F8FD35800ACFCA5 /* ViewModel */,
+				737C3D952F90BB59003A5E32 /* Controller */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		737C3D972F90BB78003A5E32 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				73C576322F8FD36400ACFCA5 /* UserSessionManager.swift */,
+				737C3D882F908F77003A5E32 /* AppHeadView.swift */,
+				737C3D982F90BBF9003A5E32 /* LoginView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		73B7717F2F8F872E00F947DE = {
 			isa = PBXGroup;
 			children = (
@@ -170,7 +204,7 @@
 				73B771A42F8F873900F947DE /* LaunchScreen.storyboard */,
 				73B771B92F8F89B800F947DE /* Other */,
 				73B771B82F8F89B700F947DE /* Auth */,
-				73C576312F8FD35800ACFCA5 /* Login */,
+				737C3D962F90BB5B003A5E32 /* Login */,
 				73B771B72F8F89B700F947DE /* Product */,
 				73B771B62F8F89B600F947DE /* Order */,
 				73B771B52F8F89B500F947DE /* Center */,
@@ -254,14 +288,13 @@
 			path = Other;
 			sourceTree = "<group>";
 		};
-		73C576312F8FD35800ACFCA5 /* Login */ = {
+		73C576312F8FD35800ACFCA5 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				73C576322F8FD36400ACFCA5 /* UserSessionManager.swift */,
-				737C3D862F908E26003A5E32 /* LoginViewController.swift */,
-				737C3D882F908F77003A5E32 /* AppHeadView.swift */,
+				737C3D9A2F90C869003A5E32 /* LoginService.swift */,
+				737C3D9C2F90C86B003A5E32 /* LoginViewModel.swift */,
 			);
-			path = Login;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		ECA75F3382BD054892EBC134 /* Pods */ = {
@@ -395,10 +428,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				73C576332F8FD36400ACFCA5 /* UserSessionManager.swift in Sources */,
+				737C3D992F90BBF9003A5E32 /* LoginView.swift in Sources */,
 				737C3D832F907455003A5E32 /* SplashService.swift in Sources */,
 				737C3D852F9075FC003A5E32 /* SystemParamManager.swift in Sources */,
 				737C3D8E2F909492003A5E32 /* HomeView.swift in Sources */,
 				737C3D872F908E26003A5E32 /* LoginViewController.swift in Sources */,
+				737C3D9B2F90C86A003A5E32 /* LoginService.swift in Sources */,
 				73B771BD2F8F8A0D00F947DE /* AppTabBarController.swift in Sources */,
 				73B771BF2F8F8A1C00F947DE /* CommonViewController.swift in Sources */,
 				73B771C52F8F97BB00F947DE /* AccountViewController.swift in Sources */,
@@ -409,6 +444,7 @@
 				73C5763D2F8FD7F400ACFCA5 /* HomeService.swift in Sources */,
 				737C3D942F90A531003A5E32 /* HomeLIstView.swift in Sources */,
 				73B771D22F8F9A3400F947DE /* NetworkManager.swift in Sources */,
+				737C3D9D2F90C874003A5E32 /* LoginViewModel.swift in Sources */,
 				73C576392F8FD55300ACFCA5 /* AccountViewModel.swift in Sources */,
 				73C576302F8FD29E00ACFCA5 /* DeviceParamService.swift in Sources */,
 				73B771D02F8F995A00F947DE /* BaseModel.swift in Sources */,

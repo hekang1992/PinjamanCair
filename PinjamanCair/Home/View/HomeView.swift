@@ -88,7 +88,7 @@ class HomeView: UIView {
     }()
     
     lazy var applyBtn: UIButton = {
-        let applyBtn = UIButton(type: .close)
+        let applyBtn = UIButton(type: .custom)
         return applyBtn
     }()
     

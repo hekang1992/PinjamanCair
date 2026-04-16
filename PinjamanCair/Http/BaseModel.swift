@@ -41,6 +41,8 @@ class meantimeModel: Codable {
     var future: String?
     var postpone: postponeModel?
     var visual: [visualModel]?
+    var heroic: String?
+    var safe: String?
 }
 
 class postponeModel: Codable {

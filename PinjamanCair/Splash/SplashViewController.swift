@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import Combine
 import FBSDKCoreKit
+import IQKeyboardManagerSwift
 
 class SplashViewController: CommonViewController {
     
@@ -28,6 +29,8 @@ class SplashViewController: CommonViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         setupBackgroundImage()
         monitorNetwork()
     }

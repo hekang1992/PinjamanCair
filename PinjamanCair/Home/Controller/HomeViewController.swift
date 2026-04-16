@@ -58,12 +58,12 @@ class HomeViewController: CommonViewController {
             guard UserSessionManager.isLoggedIn() else { popLogin(); return }
         }
         
+        setupBindings()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getHomeDataInfo()
-        setupBindings()
     }
 }
 
