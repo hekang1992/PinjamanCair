@@ -10,6 +10,7 @@ import Combine
 import SnapKit
 import RxSwift
 import RxCocoa
+import MJRefresh
 
 class HomeViewController: CommonViewController {
     
@@ -41,11 +42,15 @@ class HomeViewController: CommonViewController {
             make.left.right.bottom.equalToSuperview()
         }
         
+        self.homeView.scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
+            guard let self = self else { return }
+            self.getHomeDataInfo()
+        })
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         getHomeDataInfo()
     }
 }
@@ -59,8 +64,9 @@ extension HomeViewController {
             .$homeModel
             .receive(on: DispatchQueue.main)
             .compactMap { $0 }
-            .sink { model in
-                
+            .sink { [weak self] model in
+                guard let self = self else { return }
+                self.homeView.scrollView.mj_header?.endRefreshing()
             }
             .store(in: &cancellables)
         
@@ -68,8 +74,9 @@ extension HomeViewController {
             .$errorMsg
             .receive(on: DispatchQueue.main)
             .compactMap { $0 }
-            .sink { errorMsg in
-                
+            .sink { [weak self] errorMsg in
+                guard let self = self else { return }
+                self.homeView.scrollView.mj_header?.endRefreshing()
             }
             .store(in: &cancellables)
     }

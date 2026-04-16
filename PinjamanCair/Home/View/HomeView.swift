@@ -40,7 +40,7 @@ class HomeView: UIView {
     lazy var whiteView: UIView = {
         let whiteView = UIView()
         whiteView.backgroundColor = .white
-        whiteView.layer.cornerRadius = 8
+        whiteView.layer.cornerRadius = 12
         whiteView.layer.masksToBounds = true
         whiteView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         return whiteView
@@ -67,6 +67,13 @@ class HomeView: UIView {
         return threeBtn
     }()
     
+    lazy var fourBtn: UIButton = {
+        let fourBtn = UIButton(type: .custom)
+        fourBtn.setImage(UIImage(named: "pc_adt_image"), for: .normal)
+        fourBtn.adjustsImageWhenHighlighted = false
+        return fourBtn
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(scrollView)
@@ -81,9 +88,6 @@ class HomeView: UIView {
         
         contentView.addSubview(cardView)
         contentView.addSubview(whiteView)
-        contentView.addSubview(oneBtn)
-        contentView.addSubview(twoBtn)
-        contentView.addSubview(threeBtn)
         
         cardView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
@@ -98,23 +102,37 @@ class HomeView: UIView {
             make.height.greaterThanOrEqualTo(1000)
         }
         
-        oneBtn.snp.makeConstraints { make in
-            make.top.equalTo(whiteView).offset(16)
-            make.centerX.equalToSuperview()
-            make.size.equalTo(CGSize(width: 343, height: 39))
-        }
-        
-        twoBtn.snp.makeConstraints { make in
-            make.top.equalTo(oneBtn.snp.bottom).offset(16)
-            make.centerX.equalToSuperview()
-            make.size.equalTo(CGSize(width: 343, height: 201))
-        }
-        
-        threeBtn.snp.makeConstraints { make in
-            make.top.equalTo(twoBtn.snp.bottom).offset(16)
-            make.centerX.equalToSuperview()
-            make.size.equalTo(CGSize(width: 343, height: 283))
-            make.bottom.equalToSuperview().offset(-(tabBarHeight + 10))
+        if LanguageManager.currentLanguage() == .english {
+            contentView.addSubview(oneBtn)
+            contentView.addSubview(twoBtn)
+            contentView.addSubview(threeBtn)
+            
+            oneBtn.snp.makeConstraints { make in
+                make.top.equalTo(whiteView).offset(16)
+                make.centerX.equalToSuperview()
+                make.size.equalTo(CGSize(width: 343, height: 39))
+            }
+            
+            twoBtn.snp.makeConstraints { make in
+                make.top.equalTo(oneBtn.snp.bottom).offset(16)
+                make.centerX.equalToSuperview()
+                make.size.equalTo(CGSize(width: 343, height: 201))
+            }
+            
+            threeBtn.snp.makeConstraints { make in
+                make.top.equalTo(twoBtn.snp.bottom).offset(16)
+                make.centerX.equalToSuperview()
+                make.size.equalTo(CGSize(width: 343, height: 283))
+                make.bottom.equalToSuperview().offset(-(tabBarHeight + 10))
+            }
+        }else {
+            contentView.addSubview(fourBtn)
+            fourBtn.snp.makeConstraints { make in
+                make.top.equalTo(whiteView).offset(16)
+                make.centerX.equalToSuperview()
+                make.size.equalTo(CGSize(width: 343, height: 201))
+                make.bottom.equalToSuperview().offset(-(tabBarHeight + 10))
+            }
         }
     }
     
