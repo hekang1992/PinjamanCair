@@ -21,6 +21,7 @@
 		737C3D992F90BBF9003A5E32 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D982F90BBF9003A5E32 /* LoginView.swift */; };
 		737C3D9B2F90C86A003A5E32 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D9A2F90C869003A5E32 /* LoginService.swift */; };
 		737C3D9D2F90C874003A5E32 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D9C2F90C86B003A5E32 /* LoginViewModel.swift */; };
+		738041882F9350FF00AC71B3 /* URLSchemeRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738041872F9350FF00AC71B3 /* URLSchemeRecognizer.swift */; };
 		73B771AA2F8F873900F947DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B771A02F8F873900F947DE /* AppDelegate.swift */; };
 		73B771AD2F8F873900F947DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73B771A12F8F873900F947DE /* Assets.xcassets */; };
 		73B771AF2F8F873900F947DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73B771A42F8F873900F947DE /* LaunchScreen.storyboard */; };
@@ -42,6 +43,8 @@
 		73C576392F8FD55300ACFCA5 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C576382F8FD55000ACFCA5 /* AccountViewModel.swift */; };
 		73C5763B2F8FD5F300ACFCA5 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5763A2F8FD5F300ACFCA5 /* LoadingIndicator.swift */; };
 		73C5763D2F8FD7F400ACFCA5 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5763C2F8FD7EE00ACFCA5 /* HomeService.swift */; };
+		73EE24772F9126B3008B2ECB /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EE24762F9126AB008B2ECB /* AccountService.swift */; };
+		73EE247A2F9129BD008B2ECB /* AccountListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EE24792F9129BD008B2ECB /* AccountListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +64,7 @@
 		737C3D982F90BBF9003A5E32 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		737C3D9A2F90C869003A5E32 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		737C3D9C2F90C86B003A5E32 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		738041872F9350FF00AC71B3 /* URLSchemeRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSchemeRecognizer.swift; sourceTree = "<group>"; };
 		73B771882F8F872E00F947DE /* PinjamanCair.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinjamanCair.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73B771A02F8F873900F947DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73B771A12F8F873900F947DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -86,6 +90,8 @@
 		73C576382F8FD55000ACFCA5 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		73C5763A2F8FD5F300ACFCA5 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		73C5763C2F8FD7EE00ACFCA5 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
+		73EE24762F9126AB008B2ECB /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
+		73EE24792F9129BD008B2ECB /* AccountListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +235,7 @@
 		73B771B32F8F89AD00F947DE /* Http */ = {
 			isa = PBXGroup;
 			children = (
+				738041872F9350FF00AC71B3 /* URLSchemeRecognizer.swift */,
 				737C3D7D2F906E85003A5E32 /* NetworkMonitor.swift */,
 				73C5763A2F8FD5F300ACFCA5 /* LoadingIndicator.swift */,
 				73C5762F2F8FD29E00ACFCA5 /* DeviceParamService.swift */,
@@ -251,8 +258,9 @@
 		73B771B52F8F89B500F947DE /* Center */ = {
 			isa = PBXGroup;
 			children = (
-				73C576382F8FD55000ACFCA5 /* AccountViewModel.swift */,
-				73B771C42F8F97BB00F947DE /* AccountViewController.swift */,
+				73EE24782F9129A8008B2ECB /* View */,
+				73EE24752F9126A4008B2ECB /* Controller */,
+				73EE24742F91269B008B2ECB /* ViewModel */,
 			);
 			path = Center;
 			sourceTree = "<group>";
@@ -295,6 +303,31 @@
 				737C3D9C2F90C86B003A5E32 /* LoginViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		73EE24742F91269B008B2ECB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				73EE24762F9126AB008B2ECB /* AccountService.swift */,
+				73C576382F8FD55000ACFCA5 /* AccountViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		73EE24752F9126A4008B2ECB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				73B771C42F8F97BB00F947DE /* AccountViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		73EE24782F9129A8008B2ECB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				73EE24792F9129BD008B2ECB /* AccountListView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		ECA75F3382BD054892EBC134 /* Pods */ = {
@@ -427,6 +460,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73EE247A2F9129BD008B2ECB /* AccountListView.swift in Sources */,
 				73C576332F8FD36400ACFCA5 /* UserSessionManager.swift in Sources */,
 				737C3D992F90BBF9003A5E32 /* LoginView.swift in Sources */,
 				737C3D832F907455003A5E32 /* SplashService.swift in Sources */,
@@ -434,12 +468,14 @@
 				737C3D8E2F909492003A5E32 /* HomeView.swift in Sources */,
 				737C3D872F908E26003A5E32 /* LoginViewController.swift in Sources */,
 				737C3D9B2F90C86A003A5E32 /* LoginService.swift in Sources */,
+				738041882F9350FF00AC71B3 /* URLSchemeRecognizer.swift in Sources */,
 				73B771BD2F8F8A0D00F947DE /* AppTabBarController.swift in Sources */,
 				73B771BF2F8F8A1C00F947DE /* CommonViewController.swift in Sources */,
 				73B771C52F8F97BB00F947DE /* AccountViewController.swift in Sources */,
 				73B771BB2F8F89FC00F947DE /* BaseNavigationController.swift in Sources */,
 				73C5763B2F8FD5F300ACFCA5 /* LoadingIndicator.swift in Sources */,
 				737C3D812F90744D003A5E32 /* SplashViewModel.swift in Sources */,
+				73EE24772F9126B3008B2ECB /* AccountService.swift in Sources */,
 				737C3D892F908F77003A5E32 /* AppHeadView.swift in Sources */,
 				73C5763D2F8FD7F400ACFCA5 /* HomeService.swift in Sources */,
 				737C3D942F90A531003A5E32 /* HomeLIstView.swift in Sources */,

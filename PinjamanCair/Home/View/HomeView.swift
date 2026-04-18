@@ -53,7 +53,7 @@ class HomeView: UIView {
     lazy var whiteView: UIView = {
         let whiteView = UIView()
         whiteView.backgroundColor = .white
-        whiteView.layer.cornerRadius = 12
+        whiteView.layer.cornerRadius = 20
         whiteView.layer.masksToBounds = true
         whiteView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         return whiteView

@@ -43,6 +43,7 @@ class meantimeModel: Codable {
     var visual: [visualModel]?
     var heroic: String?
     var safe: String?
+    var userInfo: userInfoModel?
 }
 
 class postponeModel: Codable {
@@ -54,6 +55,9 @@ class postponeModel: Codable {
 
 class visualModel: Codable {
     var cut: String?
+    var likely: String?
+    var mere: String?
+    var mind: String?
     var intervening: [interveningModel]?
 }
 
@@ -115,5 +119,12 @@ class interveningModel: Codable {
         try container.encode(picket, forKey: .picket)
         try container.encode(between, forKey: .between)
         try container.encode(ifo, forKey: .ifo)
+    }
+}
+
+class userInfoModel: Codable {
+    var phone: String?
+    enum CodingKeys: String, CodingKey {
+        case phone = "self"
     }
 }
