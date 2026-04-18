@@ -18,7 +18,7 @@ class NetworkManager {
                            parameters: [String: Any]? = nil) async throws -> T {
         return try await withCheckedThrowingContinuation { continuation in
             
-            let apiUrl = DeviceParamService.buildRequestURL(url: url)
+            let apiUrl = DeviceParamService.buildRequestURL(url: url, base: base_url)
             
             AF.request(apiUrl, parameters: parameters)
                 .responseDecodable(of: T.self) { response in
@@ -37,7 +37,7 @@ class NetworkManager {
     func post<T: Decodable>(_ url: String, parameters: [String: Any]) async throws -> T {
         return try await withCheckedThrowingContinuation { continuation in
             
-            let apiUrl = DeviceParamService.buildRequestURL(url: url)
+            let apiUrl = DeviceParamService.buildRequestURL(url: url, base: base_url)
             
             AF.upload(multipartFormData: { formData in
                 for (key, value) in parameters {
@@ -65,7 +65,7 @@ class NetworkManager {
                                    parameters: [String: Any]? = nil) async throws -> T {
         return try await withCheckedThrowingContinuation { continuation in
             
-            let apiUrl = DeviceParamService.buildRequestURL(url: url)
+            let apiUrl = DeviceParamService.buildRequestURL(url: url, base: base_url)
             
             AF.upload(multipartFormData: { formData in
                 formData.append(imageData,

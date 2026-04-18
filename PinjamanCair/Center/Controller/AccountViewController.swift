@@ -194,7 +194,12 @@ class AccountViewController: CommonViewController {
         containerView.visualModel = model
         containerView.tapBlock = { [weak self] model in
             guard let self = self else { return }
-            ToastConfig.showMessage(model.likely ?? "")
+            let pageUrl = model.mere ?? ""
+            if pageUrl.contains(URLSchemeRecognizer.scheme_url) {
+                URLSchemeRecognizer.recognizeScheme(from: pageUrl, with: self)
+            }else {
+                self.toH5Page(with: pageUrl)
+            }
         }
         return containerView
     }

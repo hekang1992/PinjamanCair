@@ -9,13 +9,13 @@ import UIKit
 import AdSupport
 import AppTrackingTransparency
 
+let h5_url = "http://8.215.47.12"
+let base_url = "http://8.215.47.12/confirmmy"
 class DeviceParamService {
     
-    static let base_url = "http://8.215.47.12/confirmmy"
-    
-    static func buildRequestURL(url: String) -> String {
+    static func buildRequestURL(url: String, base: String) -> String {
         let params = getAllParameters()
-        var components = URLComponents(string: base_url + url)!
+        var components = URLComponents(string: base + url)!
         components.queryItems = params.map { URLQueryItem(name: $0.key, value: $0.value) }
         return components.url?.absoluteString ?? base_url
     }

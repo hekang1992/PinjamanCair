@@ -22,6 +22,8 @@
 		737C3D9B2F90C86A003A5E32 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D9A2F90C869003A5E32 /* LoginService.swift */; };
 		737C3D9D2F90C874003A5E32 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D9C2F90C86B003A5E32 /* LoginViewModel.swift */; };
 		738041882F9350FF00AC71B3 /* URLSchemeRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738041872F9350FF00AC71B3 /* URLSchemeRecognizer.swift */; };
+		7380418A2F93553E00AC71B3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738041892F93553E00AC71B3 /* SettingsViewController.swift */; };
+		7380418C2F93568000AC71B3 /* H5WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7380418B2F93567F00AC71B3 /* H5WebViewController.swift */; };
 		73B771AA2F8F873900F947DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B771A02F8F873900F947DE /* AppDelegate.swift */; };
 		73B771AD2F8F873900F947DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73B771A12F8F873900F947DE /* Assets.xcassets */; };
 		73B771AF2F8F873900F947DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73B771A42F8F873900F947DE /* LaunchScreen.storyboard */; };
@@ -65,6 +67,8 @@
 		737C3D9A2F90C869003A5E32 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		737C3D9C2F90C86B003A5E32 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		738041872F9350FF00AC71B3 /* URLSchemeRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSchemeRecognizer.swift; sourceTree = "<group>"; };
+		738041892F93553E00AC71B3 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		7380418B2F93567F00AC71B3 /* H5WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H5WebViewController.swift; sourceTree = "<group>"; };
 		73B771882F8F872E00F947DE /* PinjamanCair.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinjamanCair.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73B771A02F8F873900F947DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73B771A12F8F873900F947DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -318,6 +322,8 @@
 			isa = PBXGroup;
 			children = (
 				73B771C42F8F97BB00F947DE /* AccountViewController.swift */,
+				738041892F93553E00AC71B3 /* SettingsViewController.swift */,
+				7380418B2F93567F00AC71B3 /* H5WebViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -478,11 +484,13 @@
 				73EE24772F9126B3008B2ECB /* AccountService.swift in Sources */,
 				737C3D892F908F77003A5E32 /* AppHeadView.swift in Sources */,
 				73C5763D2F8FD7F400ACFCA5 /* HomeService.swift in Sources */,
+				7380418C2F93568000AC71B3 /* H5WebViewController.swift in Sources */,
 				737C3D942F90A531003A5E32 /* HomeLIstView.swift in Sources */,
 				73B771D22F8F9A3400F947DE /* NetworkManager.swift in Sources */,
 				737C3D9D2F90C874003A5E32 /* LoginViewModel.swift in Sources */,
 				73C576392F8FD55300ACFCA5 /* AccountViewModel.swift in Sources */,
 				73C576302F8FD29E00ACFCA5 /* DeviceParamService.swift in Sources */,
+				7380418A2F93553E00AC71B3 /* SettingsViewController.swift in Sources */,
 				73B771D02F8F995A00F947DE /* BaseModel.swift in Sources */,
 				73B771AA2F8F873900F947DE /* AppDelegate.swift in Sources */,
 				73C576352F8FD42000ACFCA5 /* KeychainManager.swift in Sources */,

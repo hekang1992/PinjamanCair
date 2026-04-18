@@ -27,3 +27,13 @@ class CommonViewController: UIViewController {
     }
 
 }
+
+extension CommonViewController {
+    
+    func toH5Page(with pageUrl: String) {
+        let webVc = H5WebViewController()
+        webVc.pageUrl = pageUrl
+        self.navigationController?.pushViewController(webVc, animated: true)
+    }
+    
+}
