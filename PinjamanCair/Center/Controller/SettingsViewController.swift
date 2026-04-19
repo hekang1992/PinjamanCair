@@ -249,6 +249,12 @@ extension SettingsViewController {
         
         popView.twoBlock = { [weak self] in
             guard let self = self else { return }
+            let status = popView.siuBtn.isSelected
+            
+            if status == false {
+                ToastConfig.showMessage("Please read and agree to the above content")
+                return
+            }
             viewModel.deleteInfo()
         }
     }

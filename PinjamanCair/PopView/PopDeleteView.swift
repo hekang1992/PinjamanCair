@@ -117,6 +117,11 @@ class PopDeleteView: UIView {
             guard let self = self else { return }
             self.twoBlock?()
         }).disposed(by: disposeBag)
+        
+        siuBtn.rx.tap.bind(onNext: { [weak self] in
+            guard let self = self else { return }
+            self.siuBtn.isSelected.toggle()
+        }).disposed(by: disposeBag)
     }
     
     required init?(coder: NSCoder) {
