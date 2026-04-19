@@ -9,8 +9,12 @@ import UIKit
 import SnapKit
 import RxSwift
 import RxCocoa
+import TYAlertController
+import Combine
 
 class SettingsViewController: CommonViewController {
+    
+    private let viewModel = AccountViewModel()
     
     lazy var headImageView: UIImageView = {
         let headImageView = UIImageView()
@@ -148,6 +152,16 @@ class SettingsViewController: CommonViewController {
             make.edges.equalToSuperview()
         }
         
+        tapBtn
+            .rx
+            .tap
+            .throttle(.milliseconds(250), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.logoutInfo()
+            })
+            .disposed(by: disposeBag)
+        
         if LanguageManager.currentLanguage() == .english {
             let deleteBtn = UIButton(type: .custom)
             deleteBtn.setTitle("Account cancellation", for: .normal)
@@ -165,11 +179,13 @@ class SettingsViewController: CommonViewController {
                 .rx
                 .tap
                 .bind(onNext: { [weak self] in
-                    
+                    self?.deleteInfo()
                 })
                 .disposed(by: disposeBag)
             
         }
+        
+        setBindViewModel()
         
     }
     
@@ -177,12 +193,64 @@ class SettingsViewController: CommonViewController {
 
 extension SettingsViewController {
     
-    private func logoutInfo() {
+    private func setBindViewModel() {
+        viewModel
+            .$accountModel
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .sink { [weak self] model in
+                guard let self = self else { return }
+                let remains = model.remains ?? ""
+                ToastConfig.showMessage(model.judgment ?? "")
+                if remains == "0" {
+                    self.dismiss(animated: true)
+                    UserSessionManager.clearAll()
+                    NotificationCenter.default.post(name: .changeRootViewController, object: nil)
+                    
+                }
+            }
+            .store(in: &cancellables)
         
+        viewModel
+            .$errorMsg
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .sink { errorMsg in
+                ToastConfig.showMessage("Network error".localized)
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func logoutInfo() {
+        let popView = PopLogView(frame: self.view.bounds)
+        let alertVc = TYAlertController(alert: popView, preferredStyle: .alert)
+        self.present(alertVc!, animated: true)
+        
+        popView.oneBlock = { [weak self] in
+            guard let self = self else { return }
+            self.dismiss(animated: true)
+        }
+        
+        popView.twoBlock = { [weak self] in
+            guard let self = self else { return }
+            viewModel.outInfo()
+        }
     }
     
     private func deleteInfo() {
+        let popView = PopDeleteView(frame: self.view.bounds)
+        let alertVc = TYAlertController(alert: popView, preferredStyle: .alert)
+        self.present(alertVc!, animated: true)
         
+        popView.oneBlock = { [weak self] in
+            guard let self = self else { return }
+            self.dismiss(animated: true)
+        }
+        
+        popView.twoBlock = { [weak self] in
+            guard let self = self else { return }
+            viewModel.deleteInfo()
+        }
     }
     
 }

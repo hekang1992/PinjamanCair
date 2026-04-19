@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5103BEBE432C4F44835B1ED9 /* Pods_PinjamanCair.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3287B38925CE64ACE3F00D85 /* Pods_PinjamanCair.framework */; };
+		7377A45D2F9480D900041B43 /* PopLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7377A45C2F9480D900041B43 /* PopLogView.swift */; };
+		7377A45F2F9480E400041B43 /* PopDeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7377A45E2F9480E400041B43 /* PopDeleteView.swift */; };
 		737C3D7E2F906E85003A5E32 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D7D2F906E85003A5E32 /* NetworkMonitor.swift */; };
 		737C3D812F90744D003A5E32 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D802F90744C003A5E32 /* SplashViewModel.swift */; };
 		737C3D832F907455003A5E32 /* SplashService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D822F90744F003A5E32 /* SplashService.swift */; };
@@ -53,6 +55,8 @@
 		0C101DB686FB11543A7B2429 /* Pods-PinjamanCair.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinjamanCair.debug.xcconfig"; path = "Target Support Files/Pods-PinjamanCair/Pods-PinjamanCair.debug.xcconfig"; sourceTree = "<group>"; };
 		3287B38925CE64ACE3F00D85 /* Pods_PinjamanCair.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinjamanCair.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		41A35B40C89F9BB22A2FF883 /* Pods-PinjamanCair.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinjamanCair.release.xcconfig"; path = "Target Support Files/Pods-PinjamanCair/Pods-PinjamanCair.release.xcconfig"; sourceTree = "<group>"; };
+		7377A45C2F9480D900041B43 /* PopLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopLogView.swift; sourceTree = "<group>"; };
+		7377A45E2F9480E400041B43 /* PopDeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopDeleteView.swift; sourceTree = "<group>"; };
 		737C3D7D2F906E85003A5E32 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		737C3D802F90744C003A5E32 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		737C3D822F90744F003A5E32 /* SplashService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashService.swift; sourceTree = "<group>"; };
@@ -116,6 +120,15 @@
 				3287B38925CE64ACE3F00D85 /* Pods_PinjamanCair.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7377A45B2F9480B100041B43 /* PopView */ = {
+			isa = PBXGroup;
+			children = (
+				7377A45C2F9480D900041B43 /* PopLogView.swift */,
+				7377A45E2F9480E400041B43 /* PopDeleteView.swift */,
+			);
+			path = PopView;
 			sourceTree = "<group>";
 		};
 		737C3D7F2F907433003A5E32 /* Splash */ = {
@@ -213,6 +226,7 @@
 				73B771C82F8F989100F947DE /* Localizable.strings */,
 				73B771A42F8F873900F947DE /* LaunchScreen.storyboard */,
 				73B771B92F8F89B800F947DE /* Other */,
+				7377A45B2F9480B100041B43 /* PopView */,
 				73B771B82F8F89B700F947DE /* Auth */,
 				737C3D962F90BB5B003A5E32 /* Login */,
 				73B771B72F8F89B700F947DE /* Product */,
@@ -472,6 +486,7 @@
 				737C3D832F907455003A5E32 /* SplashService.swift in Sources */,
 				737C3D852F9075FC003A5E32 /* SystemParamManager.swift in Sources */,
 				737C3D8E2F909492003A5E32 /* HomeView.swift in Sources */,
+				7377A45D2F9480D900041B43 /* PopLogView.swift in Sources */,
 				737C3D872F908E26003A5E32 /* LoginViewController.swift in Sources */,
 				737C3D9B2F90C86A003A5E32 /* LoginService.swift in Sources */,
 				738041882F9350FF00AC71B3 /* URLSchemeRecognizer.swift in Sources */,
@@ -486,6 +501,7 @@
 				73C5763D2F8FD7F400ACFCA5 /* HomeService.swift in Sources */,
 				7380418C2F93568000AC71B3 /* H5WebViewController.swift in Sources */,
 				737C3D942F90A531003A5E32 /* HomeLIstView.swift in Sources */,
+				7377A45F2F9480E400041B43 /* PopDeleteView.swift in Sources */,
 				73B771D22F8F9A3400F947DE /* NetworkManager.swift in Sources */,
 				737C3D9D2F90C874003A5E32 /* LoginViewModel.swift in Sources */,
 				73C576392F8FD55300ACFCA5 /* AccountViewModel.swift in Sources */,

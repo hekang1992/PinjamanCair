@@ -25,4 +25,28 @@ class AccountViewModel: ObservableObject {
         }
         
     }
+    
+    func outInfo() {
+        
+        Task {
+            do {
+                accountModel = try await AccountService.outInfo()
+            } catch {
+                errorMsg = error.localizedDescription
+            }
+        }
+        
+    }
+    
+    func deleteInfo() {
+        
+        Task {
+            do {
+                accountModel = try await AccountService.deleteInfo()
+            } catch {
+                errorMsg = error.localizedDescription
+            }
+        }
+        
+    }
 }
