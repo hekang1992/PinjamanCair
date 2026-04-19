@@ -44,7 +44,6 @@ class PopDeleteView: UIView {
         let siuBtn = UIButton(type: .custom)
         siuBtn.setImage(UIImage(named: "mc_nor_image"), for: .normal)
         siuBtn.setImage(UIImage(named: "mc_sel_image"), for: .selected)
-        siuBtn.isSelected = true
         return siuBtn
     }()
     
@@ -93,14 +92,14 @@ class PopDeleteView: UIView {
         oneImageView.addSubview(nameLabel)
         
         siuBtn.snp.makeConstraints { make in
-            make.bottom.equalTo(threeBtn.snp.top).offset(-28)
-            make.height.width.equalTo(8)
+            make.bottom.equalTo(threeBtn.snp.top).offset(-25)
+            make.height.width.equalTo(12)
             make.left.equalToSuperview().offset(40)
         }
         
         nameLabel.snp.makeConstraints { make in
             make.centerY.equalTo(siuBtn)
-            make.left.equalTo(siuBtn.snp.right).offset(5)
+            make.left.equalTo(siuBtn.snp.right).offset(8)
             make.height.equalTo(20)
         }
         
