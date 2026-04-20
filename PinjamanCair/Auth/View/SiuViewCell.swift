@@ -67,7 +67,7 @@ class SiuViewCell: UITableViewCell {
         
         nameLabel.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.left.equalToSuperview().offset(12)
+            make.left.equalToSuperview().offset(24)
             make.height.equalTo(14)
         }
         
