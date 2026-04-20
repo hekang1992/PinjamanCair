@@ -165,7 +165,7 @@ extension OneViewController {
     
     private func setupBindings() {
         viewModel
-            .$imageModel
+            .$uploadModel
             .receive(on: DispatchQueue.main)
             .compactMap { $0 }
             .sink { [weak self] model in
@@ -179,6 +179,28 @@ extension OneViewController {
                         // alert
                         self.popNameView(with: model)
                     }
+                }else {
+                    ToastConfig.showMessage(model.remains ?? "")
+                }
+            }
+            .store(in: &cancellables)
+        
+        viewModel
+            .$saveModel
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .sink { [weak self] model in
+                guard let self = self else { return }
+                let remains = model.remains ?? ""
+                if remains == "0" {
+                    self.dismiss(animated: true) {
+                        let twoVc = TwoViewController()
+                        twoVc.productID = self.productID
+                        twoVc.nextPageModel = self.nextPageModel
+                        self.navigationController?.pushViewController(twoVc, animated: true)
+                    }
+                }else {
+                    ToastConfig.showMessage(model.remains ?? "")
                 }
             }
             .store(in: &cancellables)
@@ -222,6 +244,19 @@ extension OneViewController {
         popView.modelArray = model.meantime?.warbler ?? []
         let alertVc = TYAlertController(alert: popView, preferredStyle: .actionSheet)
         self.present(alertVc!, animated: true)
+        
+        popView.saveBlock = { [weak self] in
+            guard let self = self else { return }
+            let modelArray = model.meantime?.warbler ?? []
+            var parameters: [String: Any] = ["undoubtedly": productID]
+            for model in modelArray {
+                let key = model.remains ?? ""
+                let value = model.provokingly ?? ""
+                parameters[key] = value
+            }
+            
+            viewModel.saveImageInfo(parameters: parameters)
+        }
     }
     
 }

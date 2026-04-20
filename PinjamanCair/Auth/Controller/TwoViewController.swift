@@ -11,10 +11,15 @@ import RxSwift
 import RxCocoa
 import Combine
 import MJRefresh
+import TYAlertController
 
 class TwoViewController: CommonViewController {
     
     var productID: String = ""
+    
+    var cameraController: CameraController?
+    
+    private let viewModel = ImageViewModel()
     
     var nextPageModel: proceedingModel? {
         didSet {
@@ -22,8 +27,6 @@ class TwoViewController: CommonViewController {
             self.headView.configTitle(nextPageModel.likely ?? "")
         }
     }
-    
-    private let viewModel = ProductViewModel()
     
     lazy var headImageView: UIImageView = {
         let headImageView = UIImageView()
@@ -54,6 +57,22 @@ class TwoViewController: CommonViewController {
         let oneImageView = UIImageView()
         oneImageView.image = UIImage(named: "au_01_image".localized)
         return oneImageView
+    }()
+    
+    lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView(frame: .zero)
+        scrollView.contentInsetAdjustmentBehavior = .never
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.backgroundColor = .clear
+        return scrollView
+    }()
+    
+    lazy var tapBtn: UIButton = {
+        let tapBtn = UIButton(type: .custom)
+        tapBtn.setBackgroundImage(UIImage(named: "fa_ca_bg_image".localized), for: .normal)
+        tapBtn.adjustsImageWhenHighlighted = false
+        return tapBtn
     }()
     
     override func viewDidLoad() {
@@ -97,11 +116,24 @@ class TwoViewController: CommonViewController {
             make.size.equalTo(CGSize(width: 348, height: 42))
         }
         
+        whiteView.addSubview(scrollView)
+        scrollView.snp.makeConstraints { make in
+            make.top.equalTo(oneImageView.snp.bottom).offset(5)
+            make.left.right.bottom.equalToSuperview()
+        }
+        
+        scrollView.addSubview(tapBtn)
+        tapBtn.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(25)
+            make.centerX.equalToSuperview()
+            make.size.equalTo(CGSize(width: 343, height: 365))
+            make.bottom.equalToSuperview().offset(-20)
+        }
+        
         headView.backBlock = { [weak self] in
             guard let self = self else { return }
             self.navigationController?.popViewController(animated: true)
         }
-        
         
         nextBtn
             .rx
@@ -109,19 +141,22 @@ class TwoViewController: CommonViewController {
             .throttle(.microseconds(250), scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] in
                 guard let self = self else { return }
-                let productModel = viewModel.productModel
-                
+                self.tapCamera()
+            })
+            .disposed(by: disposeBag)
+        
+        tapBtn
+            .rx
+            .tap
+            .throttle(.microseconds(250), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.tapCamera()
             })
             .disposed(by: disposeBag)
         
         setupBindings()
         
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        let parameters = ["undoubtedly": productID]
-        viewModel.productDetailInfo(parameters: parameters)
     }
     
 }
@@ -130,14 +165,17 @@ extension TwoViewController {
     
     private func setupBindings() {
         viewModel
-            .$productModel
+            .$uploadModel
             .receive(on: DispatchQueue.main)
             .compactMap { $0 }
             .sink { [weak self] model in
                 guard let self = self else { return }
                 let remains = model.remains ?? ""
                 if remains == "0" {
+                    let ventured = model.meantime?.ventured ?? 1
                     
+                }else {
+                    ToastConfig.showMessage(model.remains ?? "")
                 }
             }
             .store(in: &cancellables)
@@ -151,7 +189,25 @@ extension TwoViewController {
             }
             .store(in: &cancellables)
         
-        
     }
     
 }
+
+extension TwoViewController {
+    
+    private func tapCamera() {
+        
+        cameraController = CameraController(
+            presenter: self,
+            initialCameraPosition: .front,
+            completion: { [weak self] imageData, error in
+                guard let self = self, let imageData else { return }
+                let parameters = ["cut": "10", "sitting": "1"]
+                self.viewModel.uploadImageInfo(parameters: parameters, imageData: imageData)
+            }
+        )
+        cameraController?.startCamera()
+        
+    }
+}
+

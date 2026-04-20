@@ -12,6 +12,10 @@ class ImageViewModel: ObservableObject {
     
     @Published var imageModel: BaseModel?
     
+    @Published var uploadModel: BaseModel?
+    
+    @Published var saveModel: BaseModel?
+    
     @Published var errorMsg: String?
     
     func imageInfo(parameters: [String: Any]) {
@@ -30,8 +34,20 @@ class ImageViewModel: ObservableObject {
         
         Task {
             do {
-                imageModel = try await ImageService.uploadImageInfo(parameters: parameters,
+                uploadModel = try await ImageService.uploadImageInfo(parameters: parameters,
                                                                     imageData: imageData)
+            } catch {
+                errorMsg = error.localizedDescription
+            }
+        }
+        
+    }
+    
+    func saveImageInfo(parameters: [String: Any]) {
+        
+        Task {
+            do {
+                saveModel = try await ImageService.saveImageInfo(parameters: parameters)
             } catch {
                 errorMsg = error.localizedDescription
             }

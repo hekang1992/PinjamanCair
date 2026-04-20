@@ -7,6 +7,8 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 class PopNameView: UIView {
     
@@ -15,6 +17,10 @@ class PopNameView: UIView {
             tableView.reloadData()
         }
     }
+    
+    var saveBlock: (() -> Void)?
+    
+    private let disposeBag = DisposeBag()
     
     lazy var oneImageView: UIImageView = {
         let oneImageView = UIImageView()
@@ -61,6 +67,7 @@ class PopNameView: UIView {
         addSubview(oneImageView)
         oneImageView.addSubview(confirmBtn)
         oneImageView.addSubview(nameLabel)
+        oneImageView.addSubview(tableView)
         
         oneImageView.snp.makeConstraints { make in
             make.center.equalToSuperview()
@@ -84,6 +91,15 @@ class PopNameView: UIView {
             make.bottom.equalToSuperview().offset(-15)
             make.size.equalTo(CGSize(width: 330, height: 71))
         }
+        
+        confirmBtn
+            .rx
+            .tap
+            .throttle(.microseconds(250), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] in
+                self?.saveBlock?()
+            })
+            .disposed(by: disposeBag)
     }
     
     required init?(coder: NSCoder) {
@@ -105,12 +121,17 @@ extension PopNameView: UITableViewDelegate, UITableViewDataSource {
             cell.nameLabel.text = model?.whence ?? ""
             cell.phoneTx.placeholder = model?.whence ?? ""
             cell.phoneTx.text = model?.provokingly ?? ""
+            self.endEditing(true)
             return cell
         }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SiuViewCell", for: indexPath) as! SiuViewCell
             cell.nameLabel.text = model?.whence ?? ""
             cell.phoneTx.placeholder = model?.whence ?? ""
             cell.phoneTx.text = model?.provokingly ?? ""
+            cell.enterText = { [weak self] text in
+                guard let self = self else { return }
+                model?.provokingly = text
+            }
             return cell
         }
         

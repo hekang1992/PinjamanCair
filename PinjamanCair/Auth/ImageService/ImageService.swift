@@ -41,4 +41,20 @@ class ImageService {
         
         return result
     }
+    
+    static func saveImageInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        LoadingIndicator.shared.show()
+        
+        defer {
+            LoadingIndicator.shared.hide()
+        }
+        
+        let result: BaseModel = try await NetworkManager.shared.post(
+            "/aboutwas/questions",
+            parameters: parameters
+        )
+        
+        return result
+    }
 }

@@ -7,36 +7,51 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 class SiuViewCell: UITableViewCell {
     
+    private let disposeBag = DisposeBag()
+    
+    var enterText: ((String) -> Void)?
+    
     lazy var nameLabel: UILabel = {
-        let nameLabel = UILabel()
-        nameLabel.textColor = UIColor.init(hex: "#000000")
-        nameLabel.textAlignment = .left
-        nameLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
-        return nameLabel
+        let label = UILabel()
+        label.textColor = UIColor(hex: "#000000")
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        return label
     }()
     
     lazy var bgView: UIView = {
-        let bgView = UIView()
-        bgView.backgroundColor = UIColor.init(hex: "#F6F7F9")
-        bgView.layer.cornerRadius = 24
-        bgView.layer.masksToBounds = true
-        return bgView
+        let view = UIView()
+        view.backgroundColor = UIColor(hex: "#F6F7F9")
+        view.layer.cornerRadius = 24
+        view.layer.masksToBounds = true
+        return view
     }()
     
     lazy var phoneTx: UITextField = {
-        let phoneTx = UITextField()
-        phoneTx.font = UIFont.systemFont(ofSize: 14, weight: .bold)
-        phoneTx.textColor = UIColor.init(hex: "#000000")
-        return phoneTx
+        let textField = UITextField()
+        textField.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        textField.textColor = UIColor(hex: "#000000")
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 1))
+        textField.leftView = view
+        textField.leftViewMode = .always
+        return textField
     }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupUI()
+        setupRx()
+    }
+    
+    private func setupUI() {
         backgroundColor = .clear
         selectionStyle = .none
+        
         contentView.addSubview(nameLabel)
         contentView.addSubview(bgView)
         bgView.addSubview(phoneTx)
@@ -46,6 +61,7 @@ class SiuViewCell: UITableViewCell {
             make.left.equalToSuperview().offset(12)
             make.height.equalTo(14)
         }
+        
         bgView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.left.equalTo(nameLabel)
@@ -55,12 +71,19 @@ class SiuViewCell: UITableViewCell {
         }
         
         phoneTx.snp.makeConstraints { make in
-            make.size.equalToSuperview().inset(5)
+            make.edges.equalToSuperview()
         }
+    }
+    
+    private func setupRx() {
+        phoneTx.rx.text.orEmpty
+            .subscribe(onNext: { [weak self] text in
+                self?.enterText?(text)
+            })
+            .disposed(by: disposeBag)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }

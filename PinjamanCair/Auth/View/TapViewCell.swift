@@ -42,6 +42,9 @@ class TapViewCell: UITableViewCell {
         let phoneTx = UITextField()
         phoneTx.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         phoneTx.textColor = UIColor.init(hex: "#000000")
+        let view = UIView(frame: CGRectMake(0, 0, 20, 1))
+        phoneTx.leftView = view
+        phoneTx.leftViewMode = .always
         return phoneTx
     }()
     
