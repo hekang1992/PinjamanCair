@@ -116,13 +116,8 @@ class PersonalViewController: CommonViewController {
             make.size.equalTo(CGSize(width: 348, height: 42))
         }
         
-        whiteView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(10)
-            make.left.right.bottom.equalToSuperview()
-        }
-        
         tableView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(10)
+            make.top.equalTo(oneImageView.snp.bottom).offset(20)
             make.left.right.bottom.equalToSuperview()
         }
         
@@ -179,6 +174,7 @@ extension PersonalViewController: UITableViewDelegate, UITableViewDataSource {
         let type = model?.pausing ?? ""
         if type == "heb" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SiuViewCell", for: indexPath) as! SiuViewCell
+            cell.model = model
             cell.enterText = { [weak self] text in
                 guard let self = self else { return }
                 model?.trunk = text
@@ -187,6 +183,7 @@ extension PersonalViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TapViewCell", for: indexPath) as! TapViewCell
+            cell.model = model
             cell.tapBlock = { [weak self] text in
                 guard let self = self else { return }
             }

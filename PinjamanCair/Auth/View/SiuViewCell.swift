@@ -12,6 +12,15 @@ import RxCocoa
 
 class SiuViewCell: UITableViewCell {
     
+    var model: scatteredModel? {
+        didSet {
+            guard let model = model else { return }
+            nameLabel.text = model.likely ?? ""
+            phoneTx.placeholder = model.birch ?? ""
+            phoneTx.text = model.trunk ?? ""
+        }
+    }
+    
     private let disposeBag = DisposeBag()
     
     var enterText: ((String) -> Void)?
