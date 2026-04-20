@@ -41,3 +41,12 @@
 "No orders yet" = "Belum ada pesanan";
 "Apply" = "Ajukan";
 "Next" = "Berikutnya";
+
+"au_01_image" = "aud_01_image";
+"au_02_image" = "aud_02_image";
+"au_03_image" = "aud_03_image";
+"au_04_image" = "aud_05_image";
+
+"qn_en_image" = "qnd_en_image";
+"Confirm" = "Mengonfirmasi";
+"Information Confirmation" = "Konfirmasi Informasi";

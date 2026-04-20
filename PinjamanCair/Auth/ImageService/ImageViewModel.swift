@@ -26,4 +26,17 @@ class ImageViewModel: ObservableObject {
         
     }
     
+    func uploadImageInfo(parameters: [String: Any], imageData: Data) {
+        
+        Task {
+            do {
+                imageModel = try await ImageService.uploadImageInfo(parameters: parameters,
+                                                                    imageData: imageData)
+            } catch {
+                errorMsg = error.localizedDescription
+            }
+        }
+        
+    }
+    
 }

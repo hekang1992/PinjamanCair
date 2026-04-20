@@ -1,8 +1,8 @@
 //
-//  TwoViewController.swift
+//  ThreeViewController.swift
 //  PinjamanCair
 //
-//  Created by hekang on 2026/4/20.
+//  Created by hekang on 2026/4/15.
 //
 
 import UIKit
@@ -12,7 +12,7 @@ import RxCocoa
 import Combine
 import MJRefresh
 
-class TwoViewController: CommonViewController {
+class ThreeViewController: CommonViewController {
     
     var productID: String = ""
     
@@ -45,9 +45,15 @@ class TwoViewController: CommonViewController {
         let nextBtn = UIButton(type: .custom)
         nextBtn.setBackgroundImage(UIImage(named: "log_in_bg_image"), for: .normal)
         nextBtn.setTitleColor(.white, for: .normal)
-        nextBtn.setTitle("Get code".localized, for: .normal)
+        nextBtn.setTitle("Next".localized, for: .normal)
         nextBtn.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         return nextBtn
+    }()
+    
+    lazy var oneImageView: UIImageView = {
+        let oneImageView = UIImageView()
+        oneImageView.image = UIImage(named: "au_01_image".localized)
+        return oneImageView
     }()
     
     override func viewDidLoad() {
@@ -60,6 +66,7 @@ class TwoViewController: CommonViewController {
         view.addSubview(headView)
         view.addSubview(nextBtn)
         view.addSubview(whiteView)
+        whiteView.addSubview(oneImageView)
         
         headImageView.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
@@ -84,10 +91,17 @@ class TwoViewController: CommonViewController {
             make.bottom.equalTo(nextBtn.snp.top).offset(-5)
         }
         
+        oneImageView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(24)
+            make.centerX.equalToSuperview()
+            make.size.equalTo(CGSize(width: 348, height: 42))
+        }
+        
         headView.backBlock = { [weak self] in
             guard let self = self else { return }
             self.navigationController?.popViewController(animated: true)
         }
+        
         
         nextBtn
             .rx
@@ -112,7 +126,7 @@ class TwoViewController: CommonViewController {
     
 }
 
-extension TwoViewController {
+extension ThreeViewController {
     
     private func setupBindings() {
         viewModel

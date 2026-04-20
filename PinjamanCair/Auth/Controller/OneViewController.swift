@@ -1,5 +1,5 @@
 //
-//  ThreeViewController.swift
+//  OneViewController.swift
 //  PinjamanCair
 //
 //  Created by hekang on 2026/4/15.
@@ -11,10 +11,15 @@ import RxSwift
 import RxCocoa
 import Combine
 import MJRefresh
+import TYAlertController
 
-class ThreeViewController: CommonViewController {
+class OneViewController: CommonViewController {
     
     var productID: String = ""
+    
+    var cameraController: CameraController?
+    
+    private let viewModel = ImageViewModel()
     
     var nextPageModel: proceedingModel? {
         didSet {
@@ -22,8 +27,6 @@ class ThreeViewController: CommonViewController {
             self.headView.configTitle(nextPageModel.likely ?? "")
         }
     }
-    
-    private let viewModel = ProductViewModel()
     
     lazy var headImageView: UIImageView = {
         let headImageView = UIImageView()
@@ -45,9 +48,31 @@ class ThreeViewController: CommonViewController {
         let nextBtn = UIButton(type: .custom)
         nextBtn.setBackgroundImage(UIImage(named: "log_in_bg_image"), for: .normal)
         nextBtn.setTitleColor(.white, for: .normal)
-        nextBtn.setTitle("Get code".localized, for: .normal)
+        nextBtn.setTitle("Next".localized, for: .normal)
         nextBtn.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         return nextBtn
+    }()
+    
+    lazy var oneImageView: UIImageView = {
+        let oneImageView = UIImageView()
+        oneImageView.image = UIImage(named: "au_01_image".localized)
+        return oneImageView
+    }()
+    
+    lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView(frame: .zero)
+        scrollView.contentInsetAdjustmentBehavior = .never
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.backgroundColor = .clear
+        return scrollView
+    }()
+    
+    lazy var tapBtn: UIButton = {
+        let tapBtn = UIButton(type: .custom)
+        tapBtn.setBackgroundImage(UIImage(named: "qn_en_image".localized), for: .normal)
+        tapBtn.adjustsImageWhenHighlighted = false
+        return tapBtn
     }()
     
     override func viewDidLoad() {
@@ -60,6 +85,7 @@ class ThreeViewController: CommonViewController {
         view.addSubview(headView)
         view.addSubview(nextBtn)
         view.addSubview(whiteView)
+        whiteView.addSubview(oneImageView)
         
         headImageView.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
@@ -84,6 +110,26 @@ class ThreeViewController: CommonViewController {
             make.bottom.equalTo(nextBtn.snp.top).offset(-5)
         }
         
+        oneImageView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(24)
+            make.centerX.equalToSuperview()
+            make.size.equalTo(CGSize(width: 348, height: 42))
+        }
+        
+        whiteView.addSubview(scrollView)
+        scrollView.snp.makeConstraints { make in
+            make.top.equalTo(oneImageView.snp.bottom).offset(5)
+            make.left.right.bottom.equalToSuperview()
+        }
+        
+        scrollView.addSubview(tapBtn)
+        tapBtn.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(25)
+            make.centerX.equalToSuperview()
+            make.size.equalTo(CGSize(width: 343, height: 365))
+            make.bottom.equalToSuperview().offset(-20)
+        }
+        
         headView.backBlock = { [weak self] in
             guard let self = self else { return }
             self.navigationController?.popViewController(animated: true)
@@ -95,8 +141,17 @@ class ThreeViewController: CommonViewController {
             .throttle(.microseconds(250), scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] in
                 guard let self = self else { return }
-                let productModel = viewModel.productModel
-                
+                self.tapCamera()
+            })
+            .disposed(by: disposeBag)
+        
+        tapBtn
+            .rx
+            .tap
+            .throttle(.microseconds(250), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.tapCamera()
             })
             .disposed(by: disposeBag)
         
@@ -104,26 +159,26 @@ class ThreeViewController: CommonViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        let parameters = ["undoubtedly": productID]
-        viewModel.productDetailInfo(parameters: parameters)
-    }
-    
 }
 
-extension ThreeViewController {
+extension OneViewController {
     
     private func setupBindings() {
         viewModel
-            .$productModel
+            .$imageModel
             .receive(on: DispatchQueue.main)
             .compactMap { $0 }
             .sink { [weak self] model in
                 guard let self = self else { return }
                 let remains = model.remains ?? ""
                 if remains == "0" {
-                    
+                    let ventured = model.meantime?.ventured ?? 1
+                    if ventured == 0 {
+                        // no alert
+                    }else {
+                        // alert
+                        self.popNameView(with: model)
+                    }
                 }
             }
             .store(in: &cancellables)
@@ -137,6 +192,36 @@ extension ThreeViewController {
             }
             .store(in: &cancellables)
         
+        
+    }
+    
+}
+
+extension OneViewController {
+    
+    private func tapCamera() {
+        
+        cameraController = CameraController(
+            presenter: self,
+            initialCameraPosition: .rear,
+            completion: { [weak self] imageData, error in
+                guard let self = self, let imageData else { return }
+                let parameters = ["cut": "11", "sitting": "1"]
+                self.viewModel.uploadImageInfo(parameters: parameters, imageData: imageData)
+            }
+        )
+        cameraController?.startCamera()
+        
+    }
+}
+
+extension OneViewController {
+    
+    private func popNameView(with model: BaseModel) {
+        let popView = PopNameView(frame: self.view.bounds)
+        popView.modelArray = model.meantime?.warbler ?? []
+        let alertVc = TYAlertController(alert: popView, preferredStyle: .actionSheet)
+        self.present(alertVc!, animated: true)
     }
     
 }

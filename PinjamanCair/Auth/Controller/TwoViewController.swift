@@ -1,5 +1,5 @@
 //
-//  OneViewController.swift
+//  TwoViewController.swift
 //  PinjamanCair
 //
 //  Created by hekang on 2026/4/15.
@@ -12,7 +12,7 @@ import RxCocoa
 import Combine
 import MJRefresh
 
-class OneViewController: CommonViewController {
+class TwoViewController: CommonViewController {
     
     var productID: String = ""
     
@@ -50,6 +50,12 @@ class OneViewController: CommonViewController {
         return nextBtn
     }()
     
+    lazy var oneImageView: UIImageView = {
+        let oneImageView = UIImageView()
+        oneImageView.image = UIImage(named: "au_01_image".localized)
+        return oneImageView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -60,6 +66,7 @@ class OneViewController: CommonViewController {
         view.addSubview(headView)
         view.addSubview(nextBtn)
         view.addSubview(whiteView)
+        whiteView.addSubview(oneImageView)
         
         headImageView.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
@@ -84,10 +91,17 @@ class OneViewController: CommonViewController {
             make.bottom.equalTo(nextBtn.snp.top).offset(-5)
         }
         
+        oneImageView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(24)
+            make.centerX.equalToSuperview()
+            make.size.equalTo(CGSize(width: 348, height: 42))
+        }
+        
         headView.backBlock = { [weak self] in
             guard let self = self else { return }
             self.navigationController?.popViewController(animated: true)
         }
+        
         
         nextBtn
             .rx
@@ -112,7 +126,7 @@ class OneViewController: CommonViewController {
     
 }
 
-extension OneViewController {
+extension TwoViewController {
     
     private func setupBindings() {
         viewModel

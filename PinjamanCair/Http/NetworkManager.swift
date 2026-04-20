@@ -69,7 +69,7 @@ class NetworkManager {
             
             AF.upload(multipartFormData: { formData in
                 formData.append(imageData,
-                                withName: "file",
+                                withName: "nextNests",
                                 fileName: fileName,
                                 mimeType: "image/jpeg")
                 

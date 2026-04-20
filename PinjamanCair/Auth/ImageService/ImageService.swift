@@ -5,6 +5,8 @@
 //  Created by hekang on 2026/4/20.
 //
 
+import Foundation
+
 class ImageService {
     
     static func imageInfo(parameters: [String: Any]) async throws -> BaseModel? {
@@ -23,4 +25,20 @@ class ImageService {
         return result
     }
     
+    static func uploadImageInfo(parameters: [String: Any], imageData: Data) async throws -> BaseModel? {
+        
+        LoadingIndicator.shared.show()
+        
+        defer {
+            LoadingIndicator.shared.hide()
+        }
+        
+        let result: BaseModel = try await NetworkManager.shared.uploadImage(
+            "/aboutwas/fortunate",
+            imageData: imageData,
+            parameters: parameters
+        )
+        
+        return result
+    }
 }

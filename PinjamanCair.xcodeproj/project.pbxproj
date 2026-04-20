@@ -21,6 +21,10 @@
 		7377A4742F95EE7E00041B43 /* ImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7377A4732F95EE7800041B43 /* ImageViewModel.swift */; };
 		7377A4762F95F1BC00041B43 /* TwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7377A4752F95F1BC00041B43 /* TwoViewController.swift */; };
 		7377A4782F95F1F000041B43 /* ThreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7377A4772F95F1EB00041B43 /* ThreeViewController.swift */; };
+		7377A47A2F95F65E00041B43 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7377A4792F95F65E00041B43 /* CameraController.swift */; };
+		7377A47E2F96158700041B43 /* PopNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7377A47D2F96158700041B43 /* PopNameView.swift */; };
+		7377A4812F9617AB00041B43 /* SiuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7377A4802F9617AB00041B43 /* SiuViewCell.swift */; };
+		7377A4832F9617B800041B43 /* TapViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7377A4822F9617B800041B43 /* TapViewCell.swift */; };
 		737C3D7E2F906E85003A5E32 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D7D2F906E85003A5E32 /* NetworkMonitor.swift */; };
 		737C3D812F90744D003A5E32 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D802F90744C003A5E32 /* SplashViewModel.swift */; };
 		737C3D832F907455003A5E32 /* SplashService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D822F90744F003A5E32 /* SplashService.swift */; };
@@ -79,6 +83,10 @@
 		7377A4732F95EE7800041B43 /* ImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModel.swift; sourceTree = "<group>"; };
 		7377A4752F95F1BC00041B43 /* TwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoViewController.swift; sourceTree = "<group>"; };
 		7377A4772F95F1EB00041B43 /* ThreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeViewController.swift; sourceTree = "<group>"; };
+		7377A4792F95F65E00041B43 /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
+		7377A47D2F96158700041B43 /* PopNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopNameView.swift; sourceTree = "<group>"; };
+		7377A4802F9617AB00041B43 /* SiuViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiuViewCell.swift; sourceTree = "<group>"; };
+		7377A4822F9617B800041B43 /* TapViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapViewCell.swift; sourceTree = "<group>"; };
 		737C3D7D2F906E85003A5E32 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		737C3D802F90744C003A5E32 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		737C3D822F90744F003A5E32 /* SplashService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashService.swift; sourceTree = "<group>"; };
@@ -149,6 +157,7 @@
 			children = (
 				7377A45C2F9480D900041B43 /* PopLogView.swift */,
 				7377A45E2F9480E400041B43 /* PopDeleteView.swift */,
+				7377A47D2F96158700041B43 /* PopNameView.swift */,
 			);
 			path = PopView;
 			sourceTree = "<group>";
@@ -175,6 +184,35 @@
 			children = (
 				7377A46B2F95B2B600041B43 /* ProductView.swift */,
 				7377A46D2F95BB1000041B43 /* ProductListView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7377A47B2F95F7BC00041B43 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7377A46F2F95C81600041B43 /* OneViewController.swift */,
+				7377A4752F95F1BC00041B43 /* TwoViewController.swift */,
+				7377A4772F95F1EB00041B43 /* ThreeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7377A47C2F95F7C600041B43 /* ImageService */ = {
+			isa = PBXGroup;
+			children = (
+				7377A4792F95F65E00041B43 /* CameraController.swift */,
+				7377A4712F95EE7600041B43 /* ImageService.swift */,
+				7377A4732F95EE7800041B43 /* ImageViewModel.swift */,
+			);
+			path = ImageService;
+			sourceTree = "<group>";
+		};
+		7377A47F2F96179300041B43 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7377A4802F9617AB00041B43 /* SiuViewCell.swift */,
+				7377A4822F9617B800041B43 /* TapViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -353,11 +391,9 @@
 		73B771B82F8F89B700F947DE /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				7377A4712F95EE7600041B43 /* ImageService.swift */,
-				7377A4732F95EE7800041B43 /* ImageViewModel.swift */,
-				7377A46F2F95C81600041B43 /* OneViewController.swift */,
-				7377A4752F95F1BC00041B43 /* TwoViewController.swift */,
-				7377A4772F95F1EB00041B43 /* ThreeViewController.swift */,
+				7377A47F2F96179300041B43 /* View */,
+				7377A47C2F95F7C600041B43 /* ImageService */,
+				7377A47B2F95F7BC00041B43 /* Controller */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -541,6 +577,8 @@
 				73EE247A2F9129BD008B2ECB /* AccountListView.swift in Sources */,
 				73C576332F8FD36400ACFCA5 /* UserSessionManager.swift in Sources */,
 				737C3D992F90BBF9003A5E32 /* LoginView.swift in Sources */,
+				7377A4812F9617AB00041B43 /* SiuViewCell.swift in Sources */,
+				7377A47A2F95F65E00041B43 /* CameraController.swift in Sources */,
 				737C3D832F907455003A5E32 /* SplashService.swift in Sources */,
 				737C3D852F9075FC003A5E32 /* SystemParamManager.swift in Sources */,
 				7377A46A2F95B0E100041B43 /* ProductService.swift in Sources */,
@@ -560,6 +598,7 @@
 				737C3D812F90744D003A5E32 /* SplashViewModel.swift in Sources */,
 				73EE24772F9126B3008B2ECB /* AccountService.swift in Sources */,
 				737C3D892F908F77003A5E32 /* AppHeadView.swift in Sources */,
+				7377A4832F9617B800041B43 /* TapViewCell.swift in Sources */,
 				73C5763D2F8FD7F400ACFCA5 /* HomeService.swift in Sources */,
 				7380418C2F93568000AC71B3 /* H5WebViewController.swift in Sources */,
 				737C3D942F90A531003A5E32 /* HomeLIstView.swift in Sources */,
@@ -581,6 +620,7 @@
 				73B771CE2F8F990D00F947DE /* LanguageManager.swift in Sources */,
 				737C3D902F90949D003A5E32 /* LoanView.swift in Sources */,
 				737C3D922F909549003A5E32 /* HomeCardView.swift in Sources */,
+				7377A47E2F96158700041B43 /* PopNameView.swift in Sources */,
 				737C3D7E2F906E85003A5E32 /* NetworkMonitor.swift in Sources */,
 				73B771C32F8F97AC00F947DE /* HomeViewController.swift in Sources */,
 				73B771C72F8F97C300F947DE /* OrderViewController.swift in Sources */,

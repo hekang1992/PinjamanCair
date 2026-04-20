@@ -153,7 +153,7 @@ class ProductView: UIView {
             make.top.equalTo(descImageView.snp.bottom).offset(24)
             make.centerX.equalToSuperview()
             make.width.equalTo(343)
-            make.bottom.equalToSuperview().offset(-200)
+            make.bottom.equalToSuperview().offset(-20)
         }
     }
     
