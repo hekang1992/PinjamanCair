@@ -33,3 +33,10 @@
 
 "saf_en_image" = "saf_en_image";
 "can_en_image" = "can_en_image";
+"Order" = "Order";
+"All" = "All";
+"In progress" = "In progress";
+"Repayment" = "Repayment";
+"Finished" = "Finished";
+"No orders yet" = "No orders yet";
+"Apply" = "Apply";

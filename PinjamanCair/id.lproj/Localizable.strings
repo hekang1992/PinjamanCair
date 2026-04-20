@@ -33,3 +33,10 @@
 
 "saf_en_image" = "sac_edn_image";
 "can_en_image" = "can_en_image";
+"Order" = "Pesanan";
+"All" = "Semua";
+"In progress" = "Dalam proses";
+"Repayment" = "Belum lunas";
+"Finished" = "Lunas";
+"No orders yet" = "Belum ada pesanan";
+"Apply" = "Ajukan";

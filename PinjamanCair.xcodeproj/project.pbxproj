@@ -10,6 +10,7 @@
 		5103BEBE432C4F44835B1ED9 /* Pods_PinjamanCair.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3287B38925CE64ACE3F00D85 /* Pods_PinjamanCair.framework */; };
 		7377A45D2F9480D900041B43 /* PopLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7377A45C2F9480D900041B43 /* PopLogView.swift */; };
 		7377A45F2F9480E400041B43 /* PopDeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7377A45E2F9480E400041B43 /* PopDeleteView.swift */; };
+		7377A4612F95AA8E00041B43 /* OrderEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7377A4602F95AA8E00041B43 /* OrderEmptyView.swift */; };
 		737C3D7E2F906E85003A5E32 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D7D2F906E85003A5E32 /* NetworkMonitor.swift */; };
 		737C3D812F90744D003A5E32 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D802F90744C003A5E32 /* SplashViewModel.swift */; };
 		737C3D832F907455003A5E32 /* SplashService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D822F90744F003A5E32 /* SplashService.swift */; };
@@ -57,6 +58,7 @@
 		41A35B40C89F9BB22A2FF883 /* Pods-PinjamanCair.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinjamanCair.release.xcconfig"; path = "Target Support Files/Pods-PinjamanCair/Pods-PinjamanCair.release.xcconfig"; sourceTree = "<group>"; };
 		7377A45C2F9480D900041B43 /* PopLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopLogView.swift; sourceTree = "<group>"; };
 		7377A45E2F9480E400041B43 /* PopDeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopDeleteView.swift; sourceTree = "<group>"; };
+		7377A4602F95AA8E00041B43 /* OrderEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderEmptyView.swift; sourceTree = "<group>"; };
 		737C3D7D2F906E85003A5E32 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		737C3D802F90744C003A5E32 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		737C3D822F90744F003A5E32 /* SplashService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashService.swift; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				73B771C62F8F97C300F947DE /* OrderViewController.swift */,
+				7377A4602F95AA8E00041B43 /* OrderEmptyView.swift */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -518,6 +521,7 @@
 				737C3D7E2F906E85003A5E32 /* NetworkMonitor.swift in Sources */,
 				73B771C32F8F97AC00F947DE /* HomeViewController.swift in Sources */,
 				73B771C72F8F97C300F947DE /* OrderViewController.swift in Sources */,
+				7377A4612F95AA8E00041B43 /* OrderEmptyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
