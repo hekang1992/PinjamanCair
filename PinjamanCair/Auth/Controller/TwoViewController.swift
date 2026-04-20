@@ -132,7 +132,7 @@ class TwoViewController: CommonViewController {
         
         headView.backBlock = { [weak self] in
             guard let self = self else { return }
-            self.navigationController?.popViewController(animated: true)
+            self.toProductVc()
         }
         
         nextBtn
@@ -172,8 +172,7 @@ extension TwoViewController {
                 guard let self = self else { return }
                 let remains = model.remains ?? ""
                 if remains == "0" {
-                    let ventured = model.meantime?.ventured ?? 1
-                    
+                    self.toProductVc()
                 }else {
                     ToastConfig.showMessage(model.remains ?? "")
                 }

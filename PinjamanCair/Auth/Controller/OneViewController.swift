@@ -132,7 +132,7 @@ class OneViewController: CommonViewController {
         
         headView.backBlock = { [weak self] in
             guard let self = self else { return }
-            self.navigationController?.popViewController(animated: true)
+            self.toProductVc()
         }
         
         nextBtn

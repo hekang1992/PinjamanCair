@@ -99,9 +99,8 @@ class ThreeViewController: CommonViewController {
         
         headView.backBlock = { [weak self] in
             guard let self = self else { return }
-            self.navigationController?.popViewController(animated: true)
+            self.toProductVc()
         }
-        
         
         nextBtn
             .rx
@@ -109,7 +108,6 @@ class ThreeViewController: CommonViewController {
             .throttle(.microseconds(250), scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] in
                 guard let self = self else { return }
-                let productModel = viewModel.productModel
                 
             })
             .disposed(by: disposeBag)
