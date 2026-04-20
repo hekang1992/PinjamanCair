@@ -57,4 +57,21 @@ class ImageService {
         
         return result
     }
+    
+    static func getPerInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        LoadingIndicator.shared.show()
+        
+        defer {
+            LoadingIndicator.shared.hide()
+        }
+        
+        let result: BaseModel = try await NetworkManager.shared.post(
+            "/aboutwas/denying",
+            parameters: parameters
+        )
+        
+        return result
+    }
+    
 }

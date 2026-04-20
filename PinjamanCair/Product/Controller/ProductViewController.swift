@@ -209,7 +209,10 @@ extension ProductViewController {
             viewModel.imageInfo(parameters: parameters)
             
         case "lightb":
-            break
+            let personalVc = PersonalViewController()
+            personalVc.productID = productID
+            personalVc.nextPageModel = nextStepModel
+            self.navigationController?.pushViewController(personalVc, animated: true)
             
         case "lightc":
             break

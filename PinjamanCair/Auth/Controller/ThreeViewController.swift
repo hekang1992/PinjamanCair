@@ -159,6 +159,12 @@ class ThreeViewController: CommonViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        
+        self.scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
+            guard let self = self else { return }
+            let parameters = ["undoubtedly": productID]
+            viewModel.imageInfo(parameters: parameters)
+        })
     }
     
     private func setupViews() {
@@ -298,7 +304,7 @@ class ThreeViewController: CommonViewController {
             .throttle(.microseconds(250), scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] in
                 guard let self = self else { return }
-                
+                self.toProductVc()
             })
             .disposed(by: disposeBag)
         
@@ -331,6 +337,7 @@ extension ThreeViewController {
                 }else {
                     ToastConfig.showMessage(model.remains ?? "")
                 }
+                self.scrollView.mj_header?.endRefreshing()
             }
             .store(in: &cancellables)
         
@@ -338,8 +345,9 @@ extension ThreeViewController {
             .$errorMsg
             .receive(on: DispatchQueue.main)
             .compactMap { $0 }
-            .sink { errorMsg in
-                
+            .sink { [weak self] errorMsg in
+                guard let self else { return }
+                self.scrollView.mj_header?.endRefreshing()
             }
             .store(in: &cancellables)
         

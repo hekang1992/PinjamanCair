@@ -25,6 +25,7 @@
 		7377A47E2F96158700041B43 /* PopNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7377A47D2F96158700041B43 /* PopNameView.swift */; };
 		7377A4812F9617AB00041B43 /* SiuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7377A4802F9617AB00041B43 /* SiuViewCell.swift */; };
 		7377A4832F9617B800041B43 /* TapViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7377A4822F9617B800041B43 /* TapViewCell.swift */; };
+		7377A4852F962A7200041B43 /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7377A4842F962A7200041B43 /* PersonalViewController.swift */; };
 		737C3D7E2F906E85003A5E32 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D7D2F906E85003A5E32 /* NetworkMonitor.swift */; };
 		737C3D812F90744D003A5E32 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D802F90744C003A5E32 /* SplashViewModel.swift */; };
 		737C3D832F907455003A5E32 /* SplashService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D822F90744F003A5E32 /* SplashService.swift */; };
@@ -87,6 +88,7 @@
 		7377A47D2F96158700041B43 /* PopNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopNameView.swift; sourceTree = "<group>"; };
 		7377A4802F9617AB00041B43 /* SiuViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiuViewCell.swift; sourceTree = "<group>"; };
 		7377A4822F9617B800041B43 /* TapViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapViewCell.swift; sourceTree = "<group>"; };
+		7377A4842F962A7200041B43 /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
 		737C3D7D2F906E85003A5E32 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		737C3D802F90744C003A5E32 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		737C3D822F90744F003A5E32 /* SplashService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashService.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				7377A46F2F95C81600041B43 /* OneViewController.swift */,
 				7377A4752F95F1BC00041B43 /* TwoViewController.swift */,
 				7377A4772F95F1EB00041B43 /* ThreeViewController.swift */,
+				7377A4842F962A7200041B43 /* PersonalViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -613,6 +616,7 @@
 				73C576352F8FD42000ACFCA5 /* KeychainManager.swift in Sources */,
 				7377A4682F95B0D900041B43 /* ProductViewModel.swift in Sources */,
 				73C576372F8FD54800ACFCA5 /* HomeViewModel.swift in Sources */,
+				7377A4852F962A7200041B43 /* PersonalViewController.swift in Sources */,
 				7377A4742F95EE7E00041B43 /* ImageViewModel.swift in Sources */,
 				73B771C12F8F8A6000F947DE /* SplashViewController.swift in Sources */,
 				7377A4722F95EE7600041B43 /* ImageService.swift in Sources */,
