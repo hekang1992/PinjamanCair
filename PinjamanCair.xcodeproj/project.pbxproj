@@ -26,6 +26,7 @@
 		7377A4812F9617AB00041B43 /* SiuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7377A4802F9617AB00041B43 /* SiuViewCell.swift */; };
 		7377A4832F9617B800041B43 /* TapViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7377A4822F9617B800041B43 /* TapViewCell.swift */; };
 		7377A4852F962A7200041B43 /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7377A4842F962A7200041B43 /* PersonalViewController.swift */; };
+		7377A4872F96300700041B43 /* PopEnumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7377A4862F96300700041B43 /* PopEnumView.swift */; };
 		737C3D7E2F906E85003A5E32 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D7D2F906E85003A5E32 /* NetworkMonitor.swift */; };
 		737C3D812F90744D003A5E32 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D802F90744C003A5E32 /* SplashViewModel.swift */; };
 		737C3D832F907455003A5E32 /* SplashService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C3D822F90744F003A5E32 /* SplashService.swift */; };
@@ -89,6 +90,7 @@
 		7377A4802F9617AB00041B43 /* SiuViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiuViewCell.swift; sourceTree = "<group>"; };
 		7377A4822F9617B800041B43 /* TapViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapViewCell.swift; sourceTree = "<group>"; };
 		7377A4842F962A7200041B43 /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
+		7377A4862F96300700041B43 /* PopEnumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopEnumView.swift; sourceTree = "<group>"; };
 		737C3D7D2F906E85003A5E32 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		737C3D802F90744C003A5E32 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		737C3D822F90744F003A5E32 /* SplashService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashService.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				7377A45C2F9480D900041B43 /* PopLogView.swift */,
 				7377A45E2F9480E400041B43 /* PopDeleteView.swift */,
 				7377A47D2F96158700041B43 /* PopNameView.swift */,
+				7377A4862F96300700041B43 /* PopEnumView.swift */,
 			);
 			path = PopView;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				737C3D992F90BBF9003A5E32 /* LoginView.swift in Sources */,
 				7377A4812F9617AB00041B43 /* SiuViewCell.swift in Sources */,
 				7377A47A2F95F65E00041B43 /* CameraController.swift in Sources */,
+				7377A4872F96300700041B43 /* PopEnumView.swift in Sources */,
 				737C3D832F907455003A5E32 /* SplashService.swift in Sources */,
 				737C3D852F9075FC003A5E32 /* SystemParamManager.swift in Sources */,
 				7377A46A2F95B0E100041B43 /* ProductService.swift in Sources */,
