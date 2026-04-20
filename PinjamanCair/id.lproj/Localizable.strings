@@ -51,3 +51,8 @@
 "Confirm" = "Mengonfirmasi";
 "Information Confirmation" = "Konfirmasi Informasi";
 "fa_ca_bg_image" = "fad_ca_bg_image";
+"suc_bg_a_image" = "suc_bg_ad_image";
+
+"Real name" = "Nama sesuai KTP";
+"ID number" = "Nomor KTP";
+"Date of birth" = "Tanggal lahir";
