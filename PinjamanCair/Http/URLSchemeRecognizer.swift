@@ -50,8 +50,9 @@ class URLSchemeRecognizer {
             
         case "/anywhere":
             let undoubtedlyValue = queryItems.first(where: { $0.name == "undoubtedly" })?.value
-            let message = "识别到 anywhere 路径，参数 undoubtedly=\(undoubtedlyValue ?? "nil")"
-            print(message)
+            let productVc = ProductViewController()
+            productVc.productID = undoubtedlyValue ?? ""
+            viewController?.navigationController?.pushViewController(productVc, animated: true)
             
         default:
             let message = "未知路径: \(path)"

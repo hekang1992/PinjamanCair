@@ -44,6 +44,10 @@ class meantimeModel: Codable {
     var heroic: String?
     var safe: String?
     var userInfo: userInfoModel?
+    var mere: String?
+    var proceeding: [proceedingModel]?
+    var ordered: proceedingModel?
+    var seven: sevenModel?
 }
 
 class postponeModel: Codable {
@@ -127,4 +131,20 @@ class userInfoModel: Codable {
     enum CodingKeys: String, CodingKey {
         case phone = "self"
     }
+}
+
+class proceedingModel: Codable {
+    var likely: String?
+    var birch: String?
+    var widowed: Int?
+    var sapling: String?
+    var leafy: String?
+}
+
+class sevenModel: Codable {
+    var accustomed: String?
+    var sit: String?
+    var pine: String?
+    var pitch: String?
+    var months: String?
 }

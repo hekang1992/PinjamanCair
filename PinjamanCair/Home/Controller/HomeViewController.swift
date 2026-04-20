@@ -56,6 +56,8 @@ class HomeViewController: CommonViewController {
         self.homeView.applyBlock = { [weak self] productID in
             guard let self = self else { return }
             guard UserSessionManager.isLoggedIn() else { popLogin(); return }
+            let parameters = ["undoubtedly": productID]
+            homeViewModel.enterInfo(parameters: parameters)
         }
         
         setupBindings()
@@ -105,6 +107,26 @@ extension HomeViewController {
             .sink { [weak self] errorMsg in
                 guard let self = self else { return }
                 self.homeView.scrollView.mj_header?.endRefreshing()
+            }
+            .store(in: &cancellables)
+        
+        
+        // MARK: - 准入
+        homeViewModel
+            .$enterModel
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .sink { [weak self] model in
+                guard let self = self else { return }
+                let remains = model.remains ?? ""
+                if remains == "0" {
+                    let pageUrl = model.meantime?.mere ?? ""
+                    if pageUrl.hasPrefix(URLSchemeRecognizer.scheme_url) {
+                        URLSchemeRecognizer.recognizeScheme(from: pageUrl, with: self)
+                    }else {
+                        self.toH5Page(with: pageUrl)
+                    }
+                }
             }
             .store(in: &cancellables)
         

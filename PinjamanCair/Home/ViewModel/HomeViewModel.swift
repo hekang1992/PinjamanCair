@@ -12,6 +12,8 @@ class HomeViewModel: ObservableObject {
     
     @Published var homeModel: BaseModel?
     
+    @Published var enterModel: BaseModel?
+    
     @Published var errorMsg: String?
     
     func getHomeDataInfo() {
@@ -19,6 +21,18 @@ class HomeViewModel: ObservableObject {
         Task {
             do {
                 homeModel = try await HomeService.getHomeDataInfo()
+            } catch {
+                errorMsg = error.localizedDescription
+            }
+        }
+        
+    }
+    
+    func enterInfo(parameters: [String: Any]) {
+        
+        Task {
+            do {
+                enterModel = try await HomeService.enterInfo(parameters: parameters)
             } catch {
                 errorMsg = error.localizedDescription
             }

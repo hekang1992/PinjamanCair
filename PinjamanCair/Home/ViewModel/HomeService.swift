@@ -22,4 +22,20 @@ class HomeService {
         return result
     }
     
+    static func enterInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        LoadingIndicator.shared.show()
+        
+        defer {
+            LoadingIndicator.shared.hide()
+        }
+        
+        let result: BaseModel = try await NetworkManager.shared.post(
+            "/aboutwas/future",
+            parameters: parameters
+        )
+        
+        return result
+    }
+    
 }
