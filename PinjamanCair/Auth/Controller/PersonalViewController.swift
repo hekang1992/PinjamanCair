@@ -59,6 +59,21 @@ class PersonalViewController: CommonViewController {
         return oneImageView
     }()
     
+    lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .white
+        tableView.estimatedRowHeight = 46
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.showsVerticalScrollIndicator = false
+        tableView.contentInsetAdjustmentBehavior = .never
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.register(SiuViewCell.self, forCellReuseIdentifier: "SiuViewCell")
+        tableView.register(TapViewCell.self, forCellReuseIdentifier: "TapViewCell")
+        return tableView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -70,6 +85,7 @@ class PersonalViewController: CommonViewController {
         view.addSubview(nextBtn)
         view.addSubview(whiteView)
         whiteView.addSubview(oneImageView)
+        whiteView.addSubview(tableView)
         
         headImageView.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
@@ -100,6 +116,16 @@ class PersonalViewController: CommonViewController {
             make.size.equalTo(CGSize(width: 348, height: 42))
         }
         
+        whiteView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(10)
+            make.left.right.bottom.equalToSuperview()
+        }
+        
+        tableView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(10)
+            make.left.right.bottom.equalToSuperview()
+        }
+        
         setupBindings()
         
     }
@@ -123,7 +149,7 @@ extension PersonalViewController {
                 guard let self = self else { return }
                 let remains = model.remains ?? ""
                 if remains == "0" {
-                    
+                    self.tableView.reloadData()
                 }else {
                     ToastConfig.showMessage(model.remains ?? "")
                 }
@@ -143,3 +169,29 @@ extension PersonalViewController {
     
 }
 
+extension PersonalViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.listModel?.meantime?.scattered?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let model = viewModel.listModel?.meantime?.scattered?[indexPath.row]
+        let type = model?.pausing ?? ""
+        if type == "heb" {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SiuViewCell", for: indexPath) as! SiuViewCell
+            cell.enterText = { [weak self] text in
+                guard let self = self else { return }
+                model?.trunk = text
+                model?.cut = text
+            }
+            return cell
+        }else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TapViewCell", for: indexPath) as! TapViewCell
+            cell.tapBlock = { [weak self] text in
+                guard let self = self else { return }
+            }
+            return cell
+        }
+    }
+    
+}

@@ -51,6 +51,7 @@ class meantimeModel: Codable {
     var intervening: inteModel?
     var ventured: Int?
     var warbler: [warblerModel]?
+    var scattered: [scatteredModel]?
 }
 
 class postponeModel: Codable {
@@ -168,4 +169,34 @@ class warblerModel: Codable {
     var whence: String?
     var provokingly: String?
     var remains: String?
+}
+
+class scatteredModel: Codable {
+    var likely: String?
+    var birch: String?
+    var remains: String?
+    var pausing: String?
+    var speed: [speedModel]?
+    var trunk: String?
+    var cut: String?
+    var real: Int?
+}
+
+class speedModel: Codable {
+    var alive: String?
+    var cut: String?
+    enum CodingKeys: String, CodingKey {
+        case alive
+        case cut
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.alive = try? container.decode(String.self, forKey: .alive)
+        if let intValue = try? container.decode(Int.self, forKey: .cut) {
+            self.cut = String(intValue)
+        } else {
+            self.cut = try? container.decode(String.self, forKey: .cut)
+        }
+    }
 }
