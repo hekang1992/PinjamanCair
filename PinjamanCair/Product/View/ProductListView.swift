@@ -7,8 +7,12 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 class ProductListView: UIView {
+    
+    private let disposeBag = DisposeBag()
     
     var model: proceedingModel? {
         didSet {
@@ -24,6 +28,8 @@ class ProductListView: UIView {
             }
         }
     }
+    
+    var tapBlock: ((proceedingModel) -> Void)?
     
     lazy var oneImageView: UIImageView = {
         let oneImageView = UIImageView()
@@ -65,7 +71,12 @@ class ProductListView: UIView {
         typeImageView.isHidden = true
         return typeImageView
     }()
-
+    
+    lazy var tapBtn: UIButton = {
+        let tapBtn = UIButton(type: .custom)
+        return tapBtn
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(oneImageView)
@@ -73,6 +84,7 @@ class ProductListView: UIView {
         oneImageView.addSubview(nameLabel)
         oneImageView.addSubview(typeLabel)
         oneImageView.addSubview(typeImageView)
+        addSubview(tapBtn)
         oneImageView.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.size.equalTo(CGSize(width: 343, height: 77))
@@ -101,6 +113,20 @@ class ProductListView: UIView {
             make.right.equalToSuperview().offset(-16)
             make.width.height.equalTo(28)
         }
+        
+        tapBtn.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        tapBtn
+            .rx
+            .tap
+            .throttle(.milliseconds(250), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] in
+                guard let self = self, let model else { return }
+                self.tapBlock?(model)
+            })
+            .disposed(by: disposeBag)
     }
     
     required init?(coder: NSCoder) {

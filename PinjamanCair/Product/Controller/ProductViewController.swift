@@ -16,6 +16,8 @@ class ProductViewController: CommonViewController {
     
     var productID: String = ""
     
+    var nextStepModel: proceedingModel?
+    
     private let viewModel = ProductViewModel()
     
     lazy var headImageView: UIImageView = {
@@ -92,8 +94,37 @@ class ProductViewController: CommonViewController {
             self.navigationController?.popViewController(animated: true)
         }
         
-        headView.configTitle("Product Details")
+        productView.tapBlock = { [weak self] model in
+            guard let self = self else { return }
+            let widowed = model.widowed ?? 0
+            if widowed == 1 {
+                self.clickToPageVc(nextStepModel: model)
+            }else {
+                let productModel = viewModel.productModel
+                let orderedModel = productModel?.meantime?.ordered ?? proceedingModel()
+                self.clickToPageVc(nextStepModel: orderedModel)
+            }
+        }
+        
+        nextBtn
+            .rx
+            .tap
+            .throttle(.microseconds(250), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] in
+                guard let self = self else { return }
+                let productModel = viewModel.productModel
+                let orderedModel = productModel?.meantime?.ordered ?? proceedingModel()
+                self.clickToPageVc(nextStepModel: orderedModel)
+            })
+            .disposed(by: disposeBag)
+        
         setupBindings()
+        
+        self.productView.scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
+            guard let self = self else { return }
+            let parameters = ["undoubtedly": productID]
+            viewModel.productDetailInfo(parameters: parameters)
+        })
         
     }
     
@@ -119,7 +150,9 @@ extension ProductViewController {
                     self.productView.model = model
                     let ns = model.meantime?.seven?.months ?? ""
                     self.nextBtn.setTitle(ns, for: .normal)
+                    self.headView.configTitle(model.meantime?.seven?.pine ?? "")
                 }
+                self.productView.scrollView.mj_header?.endRefreshing()
             }
             .store(in: &cancellables)
         
@@ -127,12 +160,69 @@ extension ProductViewController {
             .$errorMsg
             .receive(on: DispatchQueue.main)
             .compactMap { $0 }
-            .sink { errorMsg in
-                ToastConfig.showMessage("Network error".localized)
+            .sink { [weak self] errorMsg in
+                self?.productView.scrollView.mj_header?.endRefreshing()
             }
             .store(in: &cancellables)
         
-        
+        viewModel
+            .$imageModel
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .sink { [weak self] model in
+                guard let self = self else { return }
+                let remains = model.remains ?? ""
+                if remains == "0" {
+                    let kingbirds = model.meantime?.intervening?.kingbirds ?? ""
+                    let driving = model.meantime?.intervening?.driving ?? ""
+                    if kingbirds.isEmpty {
+                        let oneVc = OneViewController()
+                        oneVc.productID = productID
+                        oneVc.nextPageModel = self.nextStepModel
+                        self.navigationController?.pushViewController(oneVc, animated: true)
+                    }else if driving.isEmpty {
+                        let twoVc = TwoViewController()
+                        twoVc.productID = productID
+                        twoVc.nextPageModel = self.nextStepModel
+                        self.navigationController?.pushViewController(twoVc, animated: true)
+                    }else {
+                        let threeVc = ThreeViewController()
+                        threeVc.productID = productID
+                        threeVc.nextPageModel = self.nextStepModel
+                        self.navigationController?.pushViewController(threeVc, animated: true)
+                    }
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
+}
+
+extension ProductViewController {
+    
+    func clickToPageVc(nextStepModel: proceedingModel? = nil) {
+        self.nextStepModel = nextStepModel
+        let auth = nextStepModel?.leafy ?? ""
+        switch auth {
+        case "lighta":
+            let parameters = ["undoubtedly": productID]
+            viewModel.imageInfo(parameters: parameters)
+            
+        case "lightb":
+            break
+            
+        case "lightc":
+            break
+            
+        case "lightd":
+            break
+            
+        case "lighte":
+            break
+            
+        default:
+            break
+        }
     }
     
 }

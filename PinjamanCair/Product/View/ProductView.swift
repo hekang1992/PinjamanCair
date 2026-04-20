@@ -13,6 +13,8 @@ import Kingfisher
 
 class ProductView: UIView {
     
+    var tapBlock: ((proceedingModel) -> Void)?
+    
     var model: BaseModel? {
         didSet {
             guard let model = model else { return }
@@ -190,6 +192,10 @@ class ProductView: UIView {
         let containerView = ProductListView()
         containerView.model = model
         containerView.unmLabel.text = String(format: "0%d", num + 1)
+        containerView.tapBlock = { [weak self] model in
+            guard let self = self else { return }
+            self.tapBlock?(model)
+        }
         return containerView
     }
 }

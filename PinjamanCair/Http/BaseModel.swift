@@ -48,6 +48,7 @@ class meantimeModel: Codable {
     var proceeding: [proceedingModel]?
     var ordered: proceedingModel?
     var seven: sevenModel?
+    var intervening: inteModel?
 }
 
 class postponeModel: Codable {
@@ -147,4 +148,16 @@ class sevenModel: Codable {
     var pine: String?
     var pitch: String?
     var months: String?
+}
+
+class inteModel: Codable {
+    var kingbirds: String?
+    var driving: String?
+    var user_info: userModel?
+}
+
+class userModel: Codable {
+    var somewhere: String?
+    var left: String?
+    var quarter: String?
 }
