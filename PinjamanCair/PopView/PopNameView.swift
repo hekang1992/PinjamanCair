@@ -20,6 +20,8 @@ class PopNameView: UIView {
     
     var saveBlock: (() -> Void)?
     
+    var tapBlock: ((String, TapViewCell) -> Void)?
+    
     private let disposeBag = DisposeBag()
     
     lazy var oneImageView: UIImageView = {
@@ -122,6 +124,9 @@ extension PopNameView: UITableViewDelegate, UITableViewDataSource {
             cell.phoneTx.placeholder = model?.whence ?? ""
             cell.phoneTx.text = model?.provokingly ?? ""
             self.endEditing(true)
+            cell.tapBlock = { [weak self] name in
+                self?.tapBlock?(name, cell)
+            }
             return cell
         }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SiuViewCell", for: indexPath) as! SiuViewCell

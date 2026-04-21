@@ -174,9 +174,11 @@ extension OneViewController {
                 if remains == "0" {
                     let ventured = model.meantime?.ventured ?? 1
                     if ventured == 0 {
-                        // no alert
+                        let twoVc = TwoViewController()
+                        twoVc.productID = self.productID
+                        twoVc.nextPageModel = self.nextPageModel
+                        self.navigationController?.pushViewController(twoVc, animated: true)
                     }else {
-                        // alert
                         self.popNameView(with: model)
                     }
                 }else {
@@ -257,6 +259,30 @@ extension OneViewController {
             
             viewModel.saveImageInfo(parameters: parameters)
         }
+        
+        popView.tapBlock = { time, cell in
+            let datePicker = DatePickerView()
+            datePicker.backgroundColor = .white
+            datePicker.layer.cornerRadius = 12
+            datePicker.clipsToBounds = true
+            
+            datePicker.setDate(dateString: time)
+            datePicker.onDateChanged = { day, month, year in
+                cell.phoneTx.text = String(format: "%@-%@-%@", day, month, year)
+                datePicker.removeFromSuperview()
+            }
+            
+            if let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
+                window.addSubview(datePicker)
+                
+                datePicker.snp.makeConstraints { make in
+                    make.center.equalToSuperview()
+                    make.size.equalTo(CGSize(width: 351, height: 527))
+                }
+            }
+        }
+        
     }
     
 }
+

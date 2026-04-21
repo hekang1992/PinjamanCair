@@ -57,3 +57,7 @@
 "ID number" = "Nomor KTP";
 "Date of birth" = "Tanggal lahir";
 "Please choose one" = "Silakan pilih satu";
+"Select Date" = "Pilih Tanggal";
+"Day" = "Hari";
+"Month" = "Bulan";
+"Year" = "Tahun";
