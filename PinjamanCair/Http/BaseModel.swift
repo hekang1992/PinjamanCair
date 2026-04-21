@@ -52,6 +52,7 @@ class meantimeModel: Codable {
     var ventured: Int?
     var warbler: [warblerModel]?
     var scattered: [scatteredModel]?
+    var intruding: [intrudingModel]?
 }
 
 class postponeModel: Codable {
@@ -199,4 +200,16 @@ class speedModel: Codable {
             self.cut = try? container.decode(String.self, forKey: .cut)
         }
     }
+}
+
+class intrudingModel: Codable {
+    var drove: String?
+    var alive: String?
+    var seeming: String?
+    var likely: String?
+    var action: String?
+    var flew: String?
+    var arrival: String?
+    var wait: String?
+    var speed: [speedModel]?
 }

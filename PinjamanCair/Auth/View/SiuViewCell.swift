@@ -18,6 +18,9 @@ class SiuViewCell: UITableViewCell {
             nameLabel.text = model.likely ?? ""
             phoneTx.placeholder = model.birch ?? ""
             phoneTx.text = model.trunk ?? ""
+            
+            let real = model.real ?? 0
+            phoneTx.keyboardType = real == 1 ? .numberPad : .default
         }
     }
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BankViewController: UIViewController {
+class BankViewController: CommonViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

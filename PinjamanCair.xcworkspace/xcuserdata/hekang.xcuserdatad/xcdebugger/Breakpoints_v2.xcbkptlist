@@ -3,4 +3,52 @@
    uuid = "7BC40FE2-7325-4F03-9D74-5ECD53AC9469"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A011E9BB-B8AD-43F3-AB46-3B4C6B4D3BFD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PinjamanCair/Auth/ImageService/ImageViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "uploadPcInfo(parameters:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A011E9BB-B8AD-43F3-AB46-3B4C6B4D3BFD - bbd575fdd0c18c24"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) suspend resume partial function for closure #1 () async -&gt; () in PinjamanCair.ImageViewModel.uploadPcInfo(parameters: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "PinjamanCair.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hekang/Desktop/PinjamanCair/PinjamanCair/Auth/ImageService/ImageViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "137"
+                  endingLineNumber = "137">
+               </Location>
+               <Location
+                  uuid = "A011E9BB-B8AD-43F3-AB46-3B4C6B4D3BFD - 21d6c856984e35"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 () async -&gt; () in PinjamanCair.ImageViewModel.uploadPcInfo(parameters: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "PinjamanCair.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hekang/Desktop/PinjamanCair/PinjamanCair/Auth/ImageService/ImageViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "137"
+                  endingLineNumber = "137">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

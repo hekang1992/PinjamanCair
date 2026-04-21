@@ -122,4 +122,52 @@ class ImageService {
         return result
     }
     
+    static func getPcInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        LoadingIndicator.shared.show()
+        
+        defer {
+            LoadingIndicator.shared.hide()
+        }
+        
+        let result: BaseModel = try await NetworkManager.shared.post(
+            "/aboutwas/somewhere",
+            parameters: parameters
+        )
+        
+        return result
+    }
+    
+    static func savePcInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        LoadingIndicator.shared.show()
+        
+        defer {
+            LoadingIndicator.shared.hide()
+        }
+        
+        let result: BaseModel = try await NetworkManager.shared.post(
+            "/aboutwas/deserted",
+            parameters: parameters
+        )
+        
+        return result
+    }
+    
+    static func uploadPcInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        LoadingIndicator.shared.show()
+        
+        defer {
+            LoadingIndicator.shared.hide()
+        }
+        
+        let result: BaseModel = try await NetworkManager.shared.post(
+            "/aboutwas/normal",
+            parameters: parameters
+        )
+        
+        return result
+    }
+    
 }

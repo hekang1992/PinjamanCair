@@ -105,4 +105,40 @@ class ImageViewModel: ObservableObject {
         
     }
     
+    func getPcInfo(parameters: [String: Any]) {
+        
+        Task {
+            do {
+                listModel = try await ImageService.getPcInfo(parameters: parameters)
+            } catch {
+                errorMsg = error.localizedDescription
+            }
+        }
+        
+    }
+    
+    func savePcInfo(parameters: [String: Any]) {
+        
+        Task {
+            do {
+                saveModel = try await ImageService.savePcInfo(parameters: parameters)
+            } catch {
+                errorMsg = error.localizedDescription
+            }
+        }
+        
+    }
+    
+    func uploadPcInfo(parameters: [String: Any]) {
+        
+        Task {
+            do {
+                uploadModel = try await ImageService.uploadPcInfo(parameters: parameters)
+            } catch {
+                errorMsg = error.localizedDescription
+            }
+        }
+        
+    }
+    
 }

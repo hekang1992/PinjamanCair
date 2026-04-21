@@ -123,6 +123,11 @@ class WorkViewController: CommonViewController {
         
         setupBindings()
         
+        headView.backBlock = { [weak self] in
+            guard let self = self else { return }
+            self.toProductVc()
+        }
+        
         nextBtn
             .rx
             .tap
@@ -218,6 +223,7 @@ extension WorkViewController: UITableViewDelegate, UITableViewDataSource {
             cell.model = model
             cell.tapBlock = { [weak self] text in
                 guard let self = self else { return }
+                self.view.endEditing(true)
                 self.tapClickCell(with: model ?? scatteredModel(), cell: cell)
             }
             return cell

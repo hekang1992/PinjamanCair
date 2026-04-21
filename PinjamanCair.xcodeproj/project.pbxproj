@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		5103BEBE432C4F44835B1ED9 /* Pods_PinjamanCair.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3287B38925CE64ACE3F00D85 /* Pods_PinjamanCair.framework */; };
 		7311F6F62F9754B7002DA671 /* WorkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7311F6F52F9754B7002DA671 /* WorkViewController.swift */; };
+		7311F6F82F975659002DA671 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7311F6F72F975659002DA671 /* ContactViewController.swift */; };
+		7311F6FA2F975663002DA671 /* BankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7311F6F92F975663002DA671 /* BankViewController.swift */; };
+		7311F6FC2F975719002DA671 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7311F6FB2F975719002DA671 /* ContactTableViewCell.swift */; };
 		7377A45D2F9480D900041B43 /* PopLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7377A45C2F9480D900041B43 /* PopLogView.swift */; };
 		7377A45F2F9480E400041B43 /* PopDeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7377A45E2F9480E400041B43 /* PopDeleteView.swift */; };
 		7377A4612F95AA8E00041B43 /* OrderEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7377A4602F95AA8E00041B43 /* OrderEmptyView.swift */; };
@@ -74,6 +77,9 @@
 		3287B38925CE64ACE3F00D85 /* Pods_PinjamanCair.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinjamanCair.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		41A35B40C89F9BB22A2FF883 /* Pods-PinjamanCair.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinjamanCair.release.xcconfig"; path = "Target Support Files/Pods-PinjamanCair/Pods-PinjamanCair.release.xcconfig"; sourceTree = "<group>"; };
 		7311F6F52F9754B7002DA671 /* WorkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkViewController.swift; sourceTree = "<group>"; };
+		7311F6F72F975659002DA671 /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
+		7311F6F92F975663002DA671 /* BankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankViewController.swift; sourceTree = "<group>"; };
+		7311F6FB2F975719002DA671 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		7377A45C2F9480D900041B43 /* PopLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopLogView.swift; sourceTree = "<group>"; };
 		7377A45E2F9480E400041B43 /* PopDeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopDeleteView.swift; sourceTree = "<group>"; };
 		7377A4602F95AA8E00041B43 /* OrderEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderEmptyView.swift; sourceTree = "<group>"; };
@@ -203,6 +209,8 @@
 				7377A4772F95F1EB00041B43 /* ThreeViewController.swift */,
 				7377A4842F962A7200041B43 /* PersonalViewController.swift */,
 				7311F6F52F9754B7002DA671 /* WorkViewController.swift */,
+				7311F6F72F975659002DA671 /* ContactViewController.swift */,
+				7311F6F92F975663002DA671 /* BankViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -222,6 +230,7 @@
 			children = (
 				7377A4802F9617AB00041B43 /* SiuViewCell.swift */,
 				7377A4822F9617B800041B43 /* TapViewCell.swift */,
+				7311F6FB2F975719002DA671 /* ContactTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -584,6 +593,8 @@
 			files = (
 				7377A46E2F95BB1000041B43 /* ProductListView.swift in Sources */,
 				73EE247A2F9129BD008B2ECB /* AccountListView.swift in Sources */,
+				7311F6FA2F975663002DA671 /* BankViewController.swift in Sources */,
+				7311F6F82F975659002DA671 /* ContactViewController.swift in Sources */,
 				73C576332F8FD36400ACFCA5 /* UserSessionManager.swift in Sources */,
 				737C3D992F90BBF9003A5E32 /* LoginView.swift in Sources */,
 				7377A4812F9617AB00041B43 /* SiuViewCell.swift in Sources */,
@@ -636,6 +647,7 @@
 				737C3D7E2F906E85003A5E32 /* NetworkMonitor.swift in Sources */,
 				73B771C32F8F97AC00F947DE /* HomeViewController.swift in Sources */,
 				73B771C72F8F97C300F947DE /* OrderViewController.swift in Sources */,
+				7311F6FC2F975719002DA671 /* ContactTableViewCell.swift in Sources */,
 				7377A4632F95AE1C00041B43 /* ProductViewController.swift in Sources */,
 				7377A4612F95AA8E00041B43 /* OrderEmptyView.swift in Sources */,
 			);
