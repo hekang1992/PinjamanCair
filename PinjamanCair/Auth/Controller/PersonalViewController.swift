@@ -138,7 +138,10 @@ class PersonalViewController: CommonViewController {
                 var parameters = ["undoubtedly": productID]
                 for model in listArray {
                     let key = model.remains ?? ""
-                    let value = model.cut ?? ""
+                    var value = model.cut ?? ""
+                    if value.isEmpty {
+                        value = model.trunk ?? ""
+                    }
                     parameters[key] = value
                 }
                 viewModel.savePerInfo(parameters: parameters)
@@ -224,7 +227,7 @@ extension PersonalViewController: UITableViewDelegate, UITableViewDataSource {
             cell.tapBlock = { [weak self] text in
                 guard let self = self else { return }
                 self.view.endEditing(true)
-                self.tapClickCell(with: model ?? scatteredModel(), cell: cell)
+                self.tapClickCell(with: model, cell: cell)
             }
             return cell
         }
@@ -234,21 +237,23 @@ extension PersonalViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension PersonalViewController {
     
-    private func tapClickCell(with listModel: scatteredModel, cell: TapViewCell) {
+    private func tapClickCell(with listModel: scatteredModel? = nil, cell: TapViewCell) {
         let popView = PopEnumView(frame: self.view.bounds)
-        popView.nameLabel.text = listModel.likely ?? ""
-        let modelArray = listModel.speed ?? []
-        popView.modelArray = modelArray
-        popView.selectedString = listModel.trunk ?? ""
-        let alertVc = TYAlertController(alert: popView, preferredStyle: .alert)
-        self.present(alertVc!, animated: true)
-        
-        popView.saveBlock = { [weak self] model in
-            guard let self = self else { return }
-            self.dismiss(animated: true) {
-                cell.phoneTx.text = model?.alive ?? ""
-                listModel.trunk = model?.alive ?? ""
-                listModel.cut = model?.cut ?? ""
+        if let listModel = listModel {
+            popView.nameLabel.text = listModel.likely ?? ""
+            let modelArray = listModel.speed ?? []
+            popView.modelArray = modelArray
+            popView.selectedString = listModel.trunk ?? ""
+            let alertVc = TYAlertController(alert: popView, preferredStyle: .alert)
+            self.present(alertVc!, animated: true)
+            
+            popView.saveBlock = { [weak self] model in
+                guard let self = self else { return }
+                self.dismiss(animated: true) {
+                    cell.phoneTx.text = model?.alive ?? ""
+                    listModel.trunk = model?.alive ?? ""
+                    listModel.cut = model?.cut ?? ""
+                }
             }
         }
     }

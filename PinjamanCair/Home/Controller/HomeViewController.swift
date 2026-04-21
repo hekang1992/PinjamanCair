@@ -91,7 +91,7 @@ extension HomeViewController {
                 self.homeView.scrollView.mj_header?.endRefreshing()
                 let remains = model.remains ?? ""
                 if remains == "0" {
-                    if let modelArray = findJournalB(meantime: model.meantime ?? meantimeModel()) {
+                    if let modelArray = findJournalB(meantime: model.meantime) {
                         self.setupHomeUI(with: modelArray[0])
                     }else {
                         
@@ -132,8 +132,8 @@ extension HomeViewController {
         
     }
     
-    func findJournalB(meantime: meantimeModel) -> [interveningModel]? {
-        return meantime.visual?
+    func findJournalB(meantime: meantimeModel? = nil) -> [interveningModel]? {
+        return meantime?.visual?
             .first(where: { $0.cut == "journalb" })?
             .intervening
     }

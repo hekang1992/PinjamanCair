@@ -138,13 +138,10 @@ class BankViewController: CommonViewController {
                 var parameters = ["undoubtedly": productID]
                 for model in listArray {
                     let key = model.remains ?? ""
-                    
                     var value = model.cut ?? ""
-                    
                     if value.isEmpty {
                         value = model.trunk ?? ""
                     }
-                    
                     parameters[key] = value
                 }
                 viewModel.savePbInfo(parameters: parameters)
@@ -230,7 +227,7 @@ extension BankViewController: UITableViewDelegate, UITableViewDataSource {
             cell.tapBlock = { [weak self] text in
                 guard let self = self else { return }
                 self.view.endEditing(true)
-                self.tapClickCell(with: model ?? scatteredModel(), cell: cell)
+                self.tapClickCell(with: model, cell: cell)
             }
             return cell
         }
@@ -240,21 +237,23 @@ extension BankViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension BankViewController {
     
-    private func tapClickCell(with listModel: scatteredModel, cell: TapViewCell) {
-        let popView = PopEnumView(frame: self.view.bounds)
-        popView.nameLabel.text = listModel.likely ?? ""
-        let modelArray = listModel.speed ?? []
-        popView.modelArray = modelArray
-        popView.selectedString = listModel.trunk ?? ""
-        let alertVc = TYAlertController(alert: popView, preferredStyle: .alert)
-        self.present(alertVc!, animated: true)
-        
-        popView.saveBlock = { [weak self] model in
-            guard let self = self else { return }
-            self.dismiss(animated: true) {
-                cell.phoneTx.text = model?.alive ?? ""
-                listModel.trunk = model?.alive ?? ""
-                listModel.cut = model?.cut ?? ""
+    private func tapClickCell(with listModel: scatteredModel? = nil, cell: TapViewCell) {
+        if let listModel = listModel {
+            let popView = PopEnumView(frame: self.view.bounds)
+            popView.nameLabel.text = listModel.likely ?? ""
+            let modelArray = listModel.speed ?? []
+            popView.modelArray = modelArray
+            popView.selectedString = listModel.trunk ?? ""
+            let alertVc = TYAlertController(alert: popView, preferredStyle: .alert)
+            self.present(alertVc!, animated: true)
+            
+            popView.saveBlock = { [weak self] model in
+                guard let self = self else { return }
+                self.dismiss(animated: true) {
+                    cell.phoneTx.text = model?.alive ?? ""
+                    listModel.trunk = model?.alive ?? ""
+                    listModel.cut = model?.cut ?? ""
+                }
             }
         }
     }

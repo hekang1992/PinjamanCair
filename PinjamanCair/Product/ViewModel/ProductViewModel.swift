@@ -14,6 +14,8 @@ class ProductViewModel: ObservableObject {
     
     @Published var imageModel: BaseModel?
     
+    @Published var orderModel: BaseModel?
+    
     @Published var errorMsg: String?
     
     func productDetailInfo(parameters: [String: Any]) {
@@ -32,7 +34,19 @@ class ProductViewModel: ObservableObject {
         
         Task {
             do {
-                imageModel = try await ImageService.imageInfo(parameters: parameters)
+                imageModel = try await ProductService.imageInfo(parameters: parameters)
+            } catch {
+                errorMsg = error.localizedDescription
+            }
+        }
+        
+    }
+    
+    func orderInfo(parameters: [String: Any]) {
+        
+        Task {
+            do {
+                orderModel = try await ProductService.orderInfo(parameters: parameters)
             } catch {
                 errorMsg = error.localizedDescription
             }

@@ -53,6 +53,59 @@ class meantimeModel: Codable {
     var warbler: [warblerModel]?
     var scattered: [scatteredModel]?
     var intruding: [intrudingModel]?
+    
+    enum CodingKeys: String, CodingKey {
+        case future, postpone, visual, heroic, safe, userInfo, mere, proceeding
+        case ordered, seven, intervening, ventured, warbler, scattered, intruding
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        future = try? container.decode(String.self, forKey: .future)
+        postpone = try? container.decode(postponeModel.self, forKey: .postpone)
+        visual = try? container.decode([visualModel].self, forKey: .visual)
+        heroic = try? container.decode(String.self, forKey: .heroic)
+        safe = try? container.decode(String.self, forKey: .safe)
+        userInfo = try? container.decode(userInfoModel.self, forKey: .userInfo)
+        mere = try? container.decode(String.self, forKey: .mere)
+        proceeding = try? container.decode([proceedingModel].self, forKey: .proceeding)
+        seven = try? container.decode(sevenModel.self, forKey: .seven)
+        intervening = try? container.decode(inteModel.self, forKey: .intervening)
+        ventured = try? container.decode(Int.self, forKey: .ventured)
+        warbler = try? container.decode([warblerModel].self, forKey: .warbler)
+        scattered = try? container.decode([scatteredModel].self, forKey: .scattered)
+        intruding = try? container.decode([intrudingModel].self, forKey: .intruding)
+        
+        if let singleObject = try? container.decode(proceedingModel.self, forKey: .ordered) {
+            ordered = singleObject
+        } else if let arrayValue = try? container.decode([proceedingModel].self, forKey: .ordered) {
+            ordered = arrayValue.first
+        } else {
+            ordered = nil
+        }
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        try? container.encode(future, forKey: .future)
+        try? container.encode(postpone, forKey: .postpone)
+        try? container.encode(visual, forKey: .visual)
+        try? container.encode(heroic, forKey: .heroic)
+        try? container.encode(safe, forKey: .safe)
+        try? container.encode(userInfo, forKey: .userInfo)
+        try? container.encode(mere, forKey: .mere)
+        try? container.encode(proceeding, forKey: .proceeding)
+        try? container.encode(seven, forKey: .seven)
+        try? container.encode(intervening, forKey: .intervening)
+        try? container.encode(ventured, forKey: .ventured)
+        try? container.encode(warbler, forKey: .warbler)
+        try? container.encode(scattered, forKey: .scattered)
+        try? container.encode(intruding, forKey: .intruding)
+        
+        try? container.encode(ordered, forKey: .ordered)
+    }
 }
 
 class postponeModel: Codable {
@@ -152,6 +205,7 @@ class sevenModel: Codable {
     var pine: String?
     var pitch: String?
     var months: String?
+    var motionless: String?
 }
 
 class inteModel: Codable {
@@ -181,6 +235,43 @@ class scatteredModel: Codable {
     var trunk: String?
     var cut: String?
     var real: Int?
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        likely = try container.decodeIfPresent(String.self, forKey: .likely)
+        birch = try container.decodeIfPresent(String.self, forKey: .birch)
+        remains = try container.decodeIfPresent(String.self, forKey: .remains)
+        pausing = try container.decodeIfPresent(String.self, forKey: .pausing)
+        speed = try container.decodeIfPresent([speedModel].self, forKey: .speed)
+        trunk = try container.decodeIfPresent(String.self, forKey: .trunk)
+        real = try container.decodeIfPresent(Int.self, forKey: .real)
+        
+        if let stringValue = try? container.decodeIfPresent(String.self, forKey: .cut) {
+            cut = stringValue
+        } else if let intValue = try? container.decodeIfPresent(Int.self, forKey: .cut) {
+            cut = String(intValue)
+        } else {
+            cut = nil
+        }
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        try container.encodeIfPresent(likely, forKey: .likely)
+        try container.encodeIfPresent(birch, forKey: .birch)
+        try container.encodeIfPresent(remains, forKey: .remains)
+        try container.encodeIfPresent(pausing, forKey: .pausing)
+        try container.encodeIfPresent(speed, forKey: .speed)
+        try container.encodeIfPresent(trunk, forKey: .trunk)
+        try container.encodeIfPresent(cut, forKey: .cut)
+        try container.encodeIfPresent(real, forKey: .real)
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case likely, birch, remains, pausing, speed, trunk, cut, real
+    }
 }
 
 class speedModel: Codable {

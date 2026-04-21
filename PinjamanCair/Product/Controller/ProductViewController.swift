@@ -114,7 +114,8 @@ class ProductViewController: CommonViewController {
                 guard let self = self else { return }
                 let productModel = viewModel.productModel
                 let orderedModel = productModel?.meantime?.ordered ?? proceedingModel()
-                self.clickToPageVc(nextStepModel: orderedModel)
+                let cardModel = productModel?.meantime?.seven
+                self.clickToPageVc(nextStepModel: orderedModel, cardModel: cardModel)
             })
             .disposed(by: disposeBag)
         
@@ -194,13 +195,34 @@ extension ProductViewController {
                 }
             }
             .store(in: &cancellables)
+        
+        viewModel
+            .$orderModel
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .sink { [weak self] model in
+                guard let self = self else { return }
+                let remains = model.remains ?? ""
+                if remains == "0" {
+                    let pageUrl = model.meantime?.mere ?? ""
+                    if pageUrl.hasPrefix(URLSchemeRecognizer.scheme_url) {
+                        URLSchemeRecognizer.recognizeScheme(from: pageUrl, with: self)
+                    }else {
+                        self.toH5Page(with: pageUrl)
+                    }
+                }else {
+                    ToastConfig.showMessage(model.judgment ?? "")
+                }
+            }
+            .store(in: &cancellables)
+        
     }
     
 }
 
 extension ProductViewController {
     
-    func clickToPageVc(nextStepModel: proceedingModel? = nil) {
+    func clickToPageVc(nextStepModel: proceedingModel? = nil, cardModel: sevenModel? = nil) {
         self.nextStepModel = nextStepModel
         let auth = nextStepModel?.leafy ?? ""
         switch auth {
@@ -231,6 +253,11 @@ extension ProductViewController {
             pcVc.productID = productID
             pcVc.nextPageModel = nextStepModel
             self.navigationController?.pushViewController(pcVc, animated: true)
+            
+        case "":
+            let motionless = cardModel?.motionless ?? ""
+            let parameters = ["motionless": motionless]
+            viewModel.orderInfo(parameters: parameters)
             
         default:
             break

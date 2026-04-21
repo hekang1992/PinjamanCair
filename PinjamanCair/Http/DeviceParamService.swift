@@ -15,8 +15,20 @@ class DeviceParamService {
     
     static func buildRequestURL(url: String, base: String) -> String {
         let params = getAllParameters()
-        var components = URLComponents(string: base + url)!
-        components.queryItems = params.map { URLQueryItem(name: $0.key, value: $0.value) }
+        guard var components = URLComponents(string: base + url) else {
+            return base_url
+        }
+        let existingItems = components.queryItems ?? []
+        let newItems = params.map { URLQueryItem(name: $0.key, value: $0.value) }
+        var allItems = existingItems
+        for newItem in newItems {
+            if let index = allItems.firstIndex(where: { $0.name == newItem.name }) {
+                allItems[index] = newItem
+            } else {
+                allItems.append(newItem)
+            }
+        }
+        components.queryItems = allItems.isEmpty ? nil : allItems
         return components.url?.absoluteString ?? base_url
     }
     
