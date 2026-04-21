@@ -174,7 +174,7 @@ extension TwoViewController {
                 if remains == "0" {
                     self.toProductVc()
                 }else {
-                    ToastConfig.showMessage(model.remains ?? "")
+                    ToastConfig.showMessage(model.judgment ?? "")
                 }
             }
             .store(in: &cancellables)

@@ -69,4 +69,40 @@ class ImageViewModel: ObservableObject {
         
     }
     
+    func savePerInfo(parameters: [String: Any]) {
+        
+        Task {
+            do {
+                saveModel = try await ImageService.savePerInfo(parameters: parameters)
+            } catch {
+                errorMsg = error.localizedDescription
+            }
+        }
+        
+    }
+    
+    func getPwInfo(parameters: [String: Any]) {
+        
+        Task {
+            do {
+                listModel = try await ImageService.getPwInfo(parameters: parameters)
+            } catch {
+                errorMsg = error.localizedDescription
+            }
+        }
+        
+    }
+    
+    func savePwInfo(parameters: [String: Any]) {
+        
+        Task {
+            do {
+                saveModel = try await ImageService.savePwInfo(parameters: parameters)
+            } catch {
+                errorMsg = error.localizedDescription
+            }
+        }
+        
+    }
+    
 }

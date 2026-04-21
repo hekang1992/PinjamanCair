@@ -335,7 +335,7 @@ extension ThreeViewController {
                     self.twoLabel.text = model.meantime?.intervening?.user_info?.left ?? ""
                     self.threeLabel.text = model.meantime?.intervening?.user_info?.quarter ?? ""
                 }else {
-                    ToastConfig.showMessage(model.remains ?? "")
+                    ToastConfig.showMessage(model.judgment ?? "")
                 }
                 self.scrollView.mj_header?.endRefreshing()
             }

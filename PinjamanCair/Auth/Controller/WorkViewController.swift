@@ -1,5 +1,5 @@
 //
-//  OneViewController.swift
+//  WorkViewController.swift
 //  PinjamanCair
 //
 //  Created by hekang on 2026/4/15.
@@ -13,7 +13,7 @@ import Combine
 import MJRefresh
 import TYAlertController
 
-class OneViewController: CommonViewController {
+class WorkViewController: CommonViewController {
     
     var productID: String = ""
     
@@ -55,24 +55,23 @@ class OneViewController: CommonViewController {
     
     lazy var oneImageView: UIImageView = {
         let oneImageView = UIImageView()
-        oneImageView.image = UIImage(named: "au_01_image".localized)
+        oneImageView.image = UIImage(named: "au_03_image".localized)
         return oneImageView
     }()
     
-    lazy var scrollView: UIScrollView = {
-        let scrollView = UIScrollView(frame: .zero)
-        scrollView.contentInsetAdjustmentBehavior = .never
-        scrollView.showsHorizontalScrollIndicator = false
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.backgroundColor = .clear
-        return scrollView
-    }()
-    
-    lazy var tapBtn: UIButton = {
-        let tapBtn = UIButton(type: .custom)
-        tapBtn.setBackgroundImage(UIImage(named: "qn_en_image".localized), for: .normal)
-        tapBtn.adjustsImageWhenHighlighted = false
-        return tapBtn
+    lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .white
+        tableView.estimatedRowHeight = 46
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.showsVerticalScrollIndicator = false
+        tableView.contentInsetAdjustmentBehavior = .never
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.register(SiuViewCell.self, forCellReuseIdentifier: "SiuViewCell")
+        tableView.register(TapViewCell.self, forCellReuseIdentifier: "TapViewCell")
+        return tableView
     }()
     
     override func viewDidLoad() {
@@ -86,6 +85,7 @@ class OneViewController: CommonViewController {
         view.addSubview(nextBtn)
         view.addSubview(whiteView)
         whiteView.addSubview(oneImageView)
+        whiteView.addSubview(tableView)
         
         headImageView.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
@@ -116,69 +116,52 @@ class OneViewController: CommonViewController {
             make.size.equalTo(CGSize(width: 348, height: 42))
         }
         
-        whiteView.addSubview(scrollView)
-        scrollView.snp.makeConstraints { make in
-            make.top.equalTo(oneImageView.snp.bottom).offset(5)
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(oneImageView.snp.bottom).offset(20)
             make.left.right.bottom.equalToSuperview()
         }
         
-        scrollView.addSubview(tapBtn)
-        tapBtn.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(25)
-            make.centerX.equalToSuperview()
-            make.size.equalTo(CGSize(width: 343, height: 365))
-            make.bottom.equalToSuperview().offset(-20)
-        }
-        
-        headView.backBlock = { [weak self] in
-            guard let self = self else { return }
-            self.toProductVc()
-        }
+        setupBindings()
         
         nextBtn
             .rx
             .tap
-            .throttle(.microseconds(250), scheduler: MainScheduler.instance)
+            .throttle(.milliseconds(250), scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] in
                 guard let self = self else { return }
-                self.tapCamera()
+                let listArray = viewModel.listModel?.meantime?.scattered ?? []
+                var parameters = ["undoubtedly": productID]
+                for model in listArray {
+                    let key = model.remains ?? ""
+                    let value = model.cut ?? ""
+                    parameters[key] = value
+                }
+                viewModel.savePwInfo(parameters: parameters)
             })
             .disposed(by: disposeBag)
         
-        tapBtn
-            .rx
-            .tap
-            .throttle(.microseconds(250), scheduler: MainScheduler.instance)
-            .bind(onNext: { [weak self] in
-                guard let self = self else { return }
-                self.tapCamera()
-            })
-            .disposed(by: disposeBag)
-        
-        setupBindings()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let parameters = ["undoubtedly": productID]
+        viewModel.getPwInfo(parameters: parameters)
     }
     
 }
 
-extension OneViewController {
+extension WorkViewController {
     
     private func setupBindings() {
         viewModel
-            .$uploadModel
+            .$listModel
             .receive(on: DispatchQueue.main)
             .compactMap { $0 }
             .sink { [weak self] model in
                 guard let self = self else { return }
                 let remains = model.remains ?? ""
                 if remains == "0" {
-                    let ventured = model.meantime?.ventured ?? 1
-                    if ventured == 0 {
-                        // no alert
-                    }else {
-                        // alert
-                        self.popNameView(with: model)
-                    }
+                    self.tableView.reloadData()
                 }else {
                     ToastConfig.showMessage(model.judgment ?? "")
                 }
@@ -193,12 +176,7 @@ extension OneViewController {
                 guard let self = self else { return }
                 let remains = model.remains ?? ""
                 if remains == "0" {
-                    self.dismiss(animated: true) {
-                        let twoVc = TwoViewController()
-                        twoVc.productID = self.productID
-                        twoVc.nextPageModel = self.nextPageModel
-                        self.navigationController?.pushViewController(twoVc, animated: true)
-                    }
+                    self.toProductVc()
                 }else {
                     ToastConfig.showMessage(model.judgment ?? "")
                 }
@@ -214,48 +192,58 @@ extension OneViewController {
             }
             .store(in: &cancellables)
         
-        
     }
     
 }
 
-extension OneViewController {
+extension WorkViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.listModel?.meantime?.scattered?.count ?? 0
+    }
     
-    private func tapCamera() {
-        
-        cameraController = CameraController(
-            presenter: self,
-            initialCameraPosition: .rear,
-            completion: { [weak self] imageData, error in
-                guard let self = self, let imageData else { return }
-                let parameters = ["cut": "11", "sitting": "1"]
-                self.viewModel.uploadImageInfo(parameters: parameters, imageData: imageData)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let model = viewModel.listModel?.meantime?.scattered?[indexPath.row]
+        let type = model?.pausing ?? ""
+        if type == "heb" {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SiuViewCell", for: indexPath) as! SiuViewCell
+            cell.model = model
+            cell.enterText = { [weak self] text in
+                guard let self = self else { return }
+                model?.trunk = text
+                model?.cut = text
             }
-        )
-        cameraController?.startCamera()
-        
+            return cell
+        }else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TapViewCell", for: indexPath) as! TapViewCell
+            cell.model = model
+            cell.tapBlock = { [weak self] text in
+                guard let self = self else { return }
+                self.tapClickCell(with: model ?? scatteredModel(), cell: cell)
+            }
+            return cell
+        }
     }
+    
 }
 
-extension OneViewController {
+extension WorkViewController {
     
-    private func popNameView(with model: BaseModel) {
-        let popView = PopNameView(frame: self.view.bounds)
-        popView.modelArray = model.meantime?.warbler ?? []
-        let alertVc = TYAlertController(alert: popView, preferredStyle: .actionSheet)
+    private func tapClickCell(with listModel: scatteredModel, cell: TapViewCell) {
+        let popView = PopEnumView(frame: self.view.bounds)
+        popView.nameLabel.text = listModel.likely ?? ""
+        let modelArray = listModel.speed ?? []
+        popView.modelArray = modelArray
+        popView.selectedString = listModel.trunk ?? ""
+        let alertVc = TYAlertController(alert: popView, preferredStyle: .alert)
         self.present(alertVc!, animated: true)
         
-        popView.saveBlock = { [weak self] in
+        popView.saveBlock = { [weak self] model in
             guard let self = self else { return }
-            let modelArray = model.meantime?.warbler ?? []
-            var parameters: [String: Any] = ["undoubtedly": productID]
-            for model in modelArray {
-                let key = model.remains ?? ""
-                let value = model.provokingly ?? ""
-                parameters[key] = value
+            self.dismiss(animated: true) {
+                cell.phoneTx.text = model?.alive ?? ""
+                listModel.trunk = model?.alive ?? ""
+                listModel.cut = model?.cut ?? ""
             }
-            
-            viewModel.saveImageInfo(parameters: parameters)
         }
     }
     

@@ -74,4 +74,52 @@ class ImageService {
         return result
     }
     
+    static func savePerInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        LoadingIndicator.shared.show()
+        
+        defer {
+            LoadingIndicator.shared.hide()
+        }
+        
+        let result: BaseModel = try await NetworkManager.shared.post(
+            "/aboutwas/self",
+            parameters: parameters
+        )
+        
+        return result
+    }
+    
+    static func getPwInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        LoadingIndicator.shared.show()
+        
+        defer {
+            LoadingIndicator.shared.hide()
+        }
+        
+        let result: BaseModel = try await NetworkManager.shared.post(
+            "/aboutwas/heroic",
+            parameters: parameters
+        )
+        
+        return result
+    }
+    
+    static func savePwInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        LoadingIndicator.shared.show()
+        
+        defer {
+            LoadingIndicator.shared.hide()
+        }
+        
+        let result: BaseModel = try await NetworkManager.shared.post(
+            "/aboutwas/unseen",
+            parameters: parameters
+        )
+        
+        return result
+    }
+    
 }

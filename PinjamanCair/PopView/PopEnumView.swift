@@ -35,6 +35,7 @@ class PopEnumView: UIView {
     var saveBlock: ((speedModel?) -> Void)?
     
     private let disposeBag = DisposeBag()
+    
     private var selectedIndexPath: IndexPath?
     
     lazy var oneImageView: UIImageView = {
@@ -122,6 +123,10 @@ class PopEnumView: UIView {
             .throttle(.microseconds(250), scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] in
                 let selectedModel = self?.getSelectedModel()
+                if selectedModel == nil {
+                    ToastConfig.showMessage("Please choose one".localized)
+                    return
+                }
                 self?.saveBlock?(selectedModel)
             })
             .disposed(by: disposeBag)
@@ -156,13 +161,15 @@ extension PopEnumView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let previousIndexPath = selectedIndexPath {
-            selectedIndexPath = nil
-            tableView.reloadRows(at: [previousIndexPath], with: .none)
+        if let previousIndexPath = selectedIndexPath,
+           let previousCell = tableView.cellForRow(at: previousIndexPath) as? CustomEnumCell {
+            previousCell.setSelected(false)
         }
         
         selectedIndexPath = indexPath
-        tableView.reloadRows(at: [indexPath], with: .none)
+        if let currentCell = tableView.cellForRow(at: indexPath) as? CustomEnumCell {
+            currentCell.setSelected(true)
+        }
     }
 }
 
@@ -179,7 +186,7 @@ class CustomEnumCell: UITableViewCell {
     private let containerView: UIView = {
         let view = UIView()
         view.backgroundColor = .clear
-        view.layer.cornerRadius = 14
+        view.layer.cornerRadius = 24
         view.layer.masksToBounds = true
         return view
     }()
@@ -196,7 +203,6 @@ class CustomEnumCell: UITableViewCell {
     private func setupUI() {
         selectionStyle = .none
         backgroundColor = .clear
-        contentView.backgroundColor = .clear
         
         contentView.addSubview(containerView)
         containerView.addSubview(titleLabel)
@@ -206,7 +212,7 @@ class CustomEnumCell: UITableViewCell {
             make.right.equalToSuperview().offset(-15)
             make.top.equalToSuperview().offset(4)
             make.bottom.equalToSuperview().offset(-4)
-            make.height.greaterThanOrEqualTo(46)
+            make.height.greaterThanOrEqualTo(48)
         }
         
         titleLabel.snp.makeConstraints { make in
@@ -222,12 +228,25 @@ class CustomEnumCell: UITableViewCell {
         if isSelected {
             containerView.backgroundColor = UIColor(hex: "#8BC3AB")
             titleLabel.textColor = .white
-            titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+            titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         } else {
-            containerView.backgroundColor = .clear
+            containerView.backgroundColor = UIColor.init(hex: "#F7F8F8")
             titleLabel.textColor = UIColor(hex: "#333333")
-            titleLabel.font = UIFont.systemFont(ofSize: 16)
+            titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         }
     }
+    
+    func setSelected(_ selected: Bool) {
+        if selected {
+            containerView.backgroundColor = UIColor(hex: "#8BC3AB")
+            titleLabel.textColor = .white
+            titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        } else {
+            containerView.backgroundColor = UIColor.init(hex: "#F7F8F8")
+            titleLabel.textColor = UIColor(hex: "#333333")
+            titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        }
+    }
+    
 }
 

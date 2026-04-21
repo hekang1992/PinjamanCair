@@ -123,6 +123,23 @@ class PersonalViewController: CommonViewController {
         
         setupBindings()
         
+        nextBtn
+            .rx
+            .tap
+            .throttle(.milliseconds(250), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] in
+                guard let self = self else { return }
+                let listArray = viewModel.listModel?.meantime?.scattered ?? []
+                var parameters = ["undoubtedly": productID]
+                for model in listArray {
+                    let key = model.remains ?? ""
+                    let value = model.cut ?? ""
+                    parameters[key] = value
+                }
+                viewModel.savePerInfo(parameters: parameters)
+            })
+            .disposed(by: disposeBag)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -146,7 +163,22 @@ extension PersonalViewController {
                 if remains == "0" {
                     self.tableView.reloadData()
                 }else {
-                    ToastConfig.showMessage(model.remains ?? "")
+                    ToastConfig.showMessage(model.judgment ?? "")
+                }
+            }
+            .store(in: &cancellables)
+        
+        viewModel
+            .$saveModel
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .sink { [weak self] model in
+                guard let self = self else { return }
+                let remains = model.remains ?? ""
+                if remains == "0" {
+                    self.toProductVc()
+                }else {
+                    ToastConfig.showMessage(model.judgment ?? "")
                 }
             }
             .store(in: &cancellables)

@@ -215,7 +215,10 @@ extension ProductViewController {
             self.navigationController?.pushViewController(personalVc, animated: true)
             
         case "lightc":
-            break
+            let pwVc = WorkViewController()
+            pwVc.productID = productID
+            pwVc.nextPageModel = nextStepModel
+            self.navigationController?.pushViewController(pwVc, animated: true)
             
         case "lightd":
             break
