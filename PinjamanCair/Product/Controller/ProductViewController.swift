@@ -227,7 +227,10 @@ extension ProductViewController {
             self.navigationController?.pushViewController(pcVc, animated: true)
             
         case "lighte":
-            break
+            let pcVc = BankViewController()
+            pcVc.productID = productID
+            pcVc.nextPageModel = nextStepModel
+            self.navigationController?.pushViewController(pcVc, animated: true)
             
         default:
             break

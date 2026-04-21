@@ -55,7 +55,7 @@ class ContactViewController: CommonViewController {
     
     lazy var oneImageView: UIImageView = {
         let oneImageView = UIImageView()
-        oneImageView.image = UIImage(named: "au_04_image".localized)
+        oneImageView.image = UIImage(named: "aud_04_image".localized)
         return oneImageView
     }()
     
