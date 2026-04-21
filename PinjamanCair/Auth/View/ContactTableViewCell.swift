@@ -21,6 +21,20 @@ class ContactTableViewCell: UITableViewCell {
             
             nameLabel1.text = model.arrival ?? ""
             phoneTx1.placeholder = model.wait ?? ""
+            
+            let name = model.alive ?? ""
+            let phone = model.seeming ?? ""
+            
+            if !name.isEmpty || !phone.isEmpty {
+                phoneTx1.text = String(format: "%@-%@", name, phone)
+            }else {
+                phoneTx1.text = ""
+            }
+            
+            let drove = model.drove ?? ""
+            phoneTx.text = model.speed?
+                .compactMap { $0.cut == drove ? $0.alive : nil }
+                .first ?? ""
         }
     }
     
@@ -127,7 +141,7 @@ class ContactTableViewCell: UITableViewCell {
         contentView.addSubview(bgView)
         bgView.addSubview(ocImageView)
         bgView.addSubview(phoneTx)
-        contentView.addSubview(tapBtn)
+        bgView.addSubview(tapBtn)
         
         nameLabel.snp.makeConstraints { make in
             make.top.equalTo(oneLabel.snp.bottom).offset(16)
@@ -161,7 +175,7 @@ class ContactTableViewCell: UITableViewCell {
         contentView.addSubview(bgView1)
         bgView1.addSubview(ocImageView1)
         bgView1.addSubview(phoneTx1)
-        contentView.addSubview(tapBtn1)
+        bgView1.addSubview(tapBtn1)
         
         nameLabel1.snp.makeConstraints { make in
             make.top.equalTo(bgView.snp.bottom).offset(16)
@@ -189,6 +203,10 @@ class ContactTableViewCell: UITableViewCell {
         }
         
         tapBtn.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        tapBtn1.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
         

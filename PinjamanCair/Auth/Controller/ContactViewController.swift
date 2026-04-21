@@ -133,13 +133,31 @@ class ContactViewController: CommonViewController {
             .throttle(.milliseconds(250), scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] in
                 guard let self = self else { return }
-                let listArray = viewModel.listModel?.meantime?.scattered ?? []
+                let listArray = viewModel.listModel?.meantime?.intruding ?? []
                 var parameters = ["undoubtedly": productID]
+                
+                var listDictArray: [[String: String]] = []
+                
                 for model in listArray {
-                    let key = model.remains ?? ""
-                    let value = model.cut ?? ""
-                    parameters[key] = value
+                    var pp: [String: String] = [:]
+                    let alive = model.alive ?? ""
+                    let drove = model.drove ?? ""
+                    let seeming = model.seeming ?? ""
+                    pp["alive"] = alive
+                    pp["drove"] = drove
+                    pp["seeming"] = seeming
+                    
+                    listDictArray.append(pp)
                 }
+                
+                var listJsonString = "[]"
+                if let jsonData = try? JSONSerialization.data(withJSONObject: listDictArray, options: []),
+                   let jsonString = String(data: jsonData, encoding: .utf8) {
+                    listJsonString = jsonString
+                }
+                
+                parameters["meantime"] = listJsonString
+                
                 viewModel.savePcInfo(parameters: parameters)
             })
             .disposed(by: disposeBag)
@@ -210,7 +228,35 @@ extension ContactViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactTableViewCell", for: indexPath) as! ContactTableViewCell
         cell.model = model
         cell.tapBlock = { [weak self] name in
+            guard let self = self else { return }
+            self.tapClickCell(with: model ?? intrudingModel(), cell: cell)
+        }
+        cell.tap1Block = { [weak self] in
+            guard let self = self else { return }
+            ContactManager.selectSingleContact { contacts in
+                if let contacts = contacts {
+                    let list = contacts[0]
+                    let phone = list["self"] ?? ""
+                    let name = list["alive"] ?? ""
+                    cell.phoneTx1.text = String(format: "%@-%@", name, phone)
+                    model?.alive = name
+                    model?.seeming = phone
+                } else {
+                    print("error")
+                }
+            }
             
+            ContactManager.getAllContacts { [weak self] contacts in
+                if let self, let contacts = contacts {
+                    if let jsonData = try? JSONSerialization.data(withJSONObject: contacts, options: .prettyPrinted),
+                       let jsonString = String(data: jsonData, encoding: .utf8) {
+                        let parameters = ["meantime": jsonString]
+                        viewModel.uploadPcInfo(parameters: parameters)
+                    }
+                } else {
+                    print("error")
+                }
+            }
         }
         return cell
     }

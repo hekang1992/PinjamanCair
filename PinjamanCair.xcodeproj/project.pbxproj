@@ -12,6 +12,7 @@
 		7311F6F82F975659002DA671 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7311F6F72F975659002DA671 /* ContactViewController.swift */; };
 		7311F6FA2F975663002DA671 /* BankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7311F6F92F975663002DA671 /* BankViewController.swift */; };
 		7311F6FC2F975719002DA671 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7311F6FB2F975719002DA671 /* ContactTableViewCell.swift */; };
+		7311F6FE2F976389002DA671 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7311F6FD2F976389002DA671 /* ContactManager.swift */; };
 		7377A45D2F9480D900041B43 /* PopLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7377A45C2F9480D900041B43 /* PopLogView.swift */; };
 		7377A45F2F9480E400041B43 /* PopDeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7377A45E2F9480E400041B43 /* PopDeleteView.swift */; };
 		7377A4612F95AA8E00041B43 /* OrderEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7377A4602F95AA8E00041B43 /* OrderEmptyView.swift */; };
@@ -80,6 +81,7 @@
 		7311F6F72F975659002DA671 /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		7311F6F92F975663002DA671 /* BankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankViewController.swift; sourceTree = "<group>"; };
 		7311F6FB2F975719002DA671 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
+		7311F6FD2F976389002DA671 /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
 		7377A45C2F9480D900041B43 /* PopLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopLogView.swift; sourceTree = "<group>"; };
 		7377A45E2F9480E400041B43 /* PopDeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopDeleteView.swift; sourceTree = "<group>"; };
 		7377A4602F95AA8E00041B43 /* OrderEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderEmptyView.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 		7377A47C2F95F7C600041B43 /* ImageService */ = {
 			isa = PBXGroup;
 			children = (
+				7311F6FD2F976389002DA671 /* ContactManager.swift */,
 				7377A4792F95F65E00041B43 /* CameraController.swift */,
 				7377A4712F95EE7600041B43 /* ImageService.swift */,
 				7377A4732F95EE7800041B43 /* ImageViewModel.swift */,
@@ -601,6 +604,7 @@
 				7311F6F62F9754B7002DA671 /* WorkViewController.swift in Sources */,
 				7377A47A2F95F65E00041B43 /* CameraController.swift in Sources */,
 				7377A4872F96300700041B43 /* PopEnumView.swift in Sources */,
+				7311F6FE2F976389002DA671 /* ContactManager.swift in Sources */,
 				737C3D832F907455003A5E32 /* SplashService.swift in Sources */,
 				737C3D852F9075FC003A5E32 /* SystemParamManager.swift in Sources */,
 				7377A46A2F95B0E100041B43 /* ProductService.swift in Sources */,

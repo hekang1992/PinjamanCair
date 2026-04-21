@@ -141,4 +141,28 @@ class ImageViewModel: ObservableObject {
         
     }
     
+    func getPbInfo(parameters: [String: Any]) {
+        
+        Task {
+            do {
+                listModel = try await ImageService.getPbInfo(parameters: parameters)
+            } catch {
+                errorMsg = error.localizedDescription
+            }
+        }
+        
+    }
+    
+    func savePbInfo(parameters: [String: Any]) {
+        
+        Task {
+            do {
+                saveModel = try await ImageService.savePbInfo(parameters: parameters)
+            } catch {
+                errorMsg = error.localizedDescription
+            }
+        }
+        
+    }
+    
 }

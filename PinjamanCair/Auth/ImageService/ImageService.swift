@@ -156,6 +156,16 @@ class ImageService {
     
     static func uploadPcInfo(parameters: [String: Any]) async throws -> BaseModel? {
         
+        let result: BaseModel = try await NetworkManager.shared.post(
+            "/aboutwas/normal",
+            parameters: parameters
+        )
+        
+        return result
+    }
+    
+    static func getPbInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
         LoadingIndicator.shared.show()
         
         defer {
@@ -163,7 +173,23 @@ class ImageService {
         }
         
         let result: BaseModel = try await NetworkManager.shared.post(
-            "/aboutwas/normal",
+            "/aboutwas/widowed",
+            parameters: parameters
+        )
+        
+        return result
+    }
+    
+    static func savePbInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        LoadingIndicator.shared.show()
+        
+        defer {
+            LoadingIndicator.shared.hide()
+        }
+        
+        let result: BaseModel = try await NetworkManager.shared.post(
+            "/aboutwas/alive",
             parameters: parameters
         )
         

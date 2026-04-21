@@ -138,10 +138,16 @@ class BankViewController: CommonViewController {
                 var parameters = ["undoubtedly": productID]
                 for model in listArray {
                     let key = model.remains ?? ""
-                    let value = model.cut ?? ""
+                    
+                    var value = model.cut ?? ""
+                    
+                    if value.isEmpty {
+                        value = model.trunk ?? ""
+                    }
+                    
                     parameters[key] = value
                 }
-                viewModel.savePwInfo(parameters: parameters)
+                viewModel.savePbInfo(parameters: parameters)
             })
             .disposed(by: disposeBag)
         
@@ -150,7 +156,7 @@ class BankViewController: CommonViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let parameters = ["undoubtedly": productID]
-        viewModel.getPwInfo(parameters: parameters)
+        viewModel.getPbInfo(parameters: parameters)
     }
     
 }
