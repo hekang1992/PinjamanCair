@@ -121,6 +121,14 @@ class visualModel: Codable {
     var mere: String?
     var mind: String?
     var intervening: [interveningModel]?
+    var pine: String?
+    var pitch: String?
+    var stayed: String?
+    var months: String?
+    var wood: String?
+    var keep: String?
+    var edge: String?
+    var sentinel: String?
 }
 
 class interveningModel: Codable {

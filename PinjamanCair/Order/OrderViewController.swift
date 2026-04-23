@@ -14,6 +14,10 @@ import MJRefresh
 
 class OrderViewController: CommonViewController {
     
+    var type: String = "4"
+    
+    private let viewModel = OrderViewModel()
+    
     lazy var headImageView: UIImageView = {
         let headImageView = UIImageView()
         headImageView.image = UIImage(named: "cen_bg_image")
@@ -46,7 +50,6 @@ class OrderViewController: CommonViewController {
         return typeImageView
     }()
     
-    // MARK: - 按钮属性
     private var buttons: [UIButton] = []
     private var indicatorView: UIView!
     private var currentSelectedButton: UIButton?
@@ -57,6 +60,23 @@ class OrderViewController: CommonViewController {
     lazy var emptyView: OrderEmptyView = {
         let emptyView = OrderEmptyView()
         return emptyView
+    }()
+    
+    lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .clear
+        tableView.estimatedRowHeight = 46
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.showsVerticalScrollIndicator = false
+        tableView.contentInsetAdjustmentBehavior = .never
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.register(OrderViewCell.self, forCellReuseIdentifier: "OrderViewCell")
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
+        return tableView
     }()
     
     override func viewDidLoad() {
@@ -78,6 +98,7 @@ class OrderViewController: CommonViewController {
         view.addSubview(whiteView)
         whiteView.addSubview(typeImageView)
         whiteView.addSubview(emptyView)
+        whiteView.addSubview(tableView)
     }
     
     private func setupButtons() {
@@ -87,7 +108,7 @@ class OrderViewController: CommonViewController {
             button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
             button.setTitleColor(.gray, for: .normal)
             button.backgroundColor = .clear
-            button.tag = index
+            button.tag = index + 10
             button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
             typeImageView.addSubview(button)
             buttons.append(button)
@@ -126,6 +147,11 @@ class OrderViewController: CommonViewController {
         }
         
         emptyView.snp.makeConstraints { make in
+            make.top.equalTo(typeImageView.snp.bottom).offset(2)
+            make.left.right.bottom.equalToSuperview()
+        }
+        
+        tableView.snp.makeConstraints { make in
             make.top.equalTo(typeImageView.snp.bottom).offset(2)
             make.left.right.bottom.equalToSuperview()
         }
@@ -172,6 +198,23 @@ class OrderViewController: CommonViewController {
     }
     
     @objc private func buttonTapped(_ sender: UIButton) {
+        switch sender.tag {
+        case 10:
+            self.type = "4"
+            
+        case 11:
+            self.type = "7"
+            
+        case 12:
+            self.type = "6"
+            
+        case 13:
+            self.type = "5"
+            
+        default:
+            break
+        }
+        self.orderListInfo(with: self.type)
         updateButtonState(selected: sender)
     }
     
@@ -207,5 +250,100 @@ class OrderViewController: CommonViewController {
         UIView.animate(withDuration: 0.2) {
             self.typeImageView.layoutIfNeeded()
         }
+        
+        self.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
+            guard let self = self else { return }
+            self.orderListInfo(with: self.type)
+        })
+        
+        setBindViewModel()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        orderListInfo(with: type)
+    }
+}
+
+extension OrderViewController {
+    
+    private func setBindViewModel() {
+        
+        viewModel
+            .$orderModel
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .sink { [weak self] model in
+                guard let self = self else { return }
+                let remains = model.remains ?? ""
+                if remains == "0" {
+                    let listArray = model.meantime?.visual ?? []
+                    if listArray.isEmpty {
+                        emptyView.isHidden = false
+                        tableView.isHidden = true
+                    }else {
+                        emptyView.isHidden = true
+                        tableView.isHidden = false
+                    }
+                    self.tableView.reloadData()
+                }else {
+                    ToastConfig.showMessage(model.judgment ?? "")
+                }
+                self.tableView.mj_header?.endRefreshing()
+            }
+            .store(in: &cancellables)
+        
+        viewModel
+            .$errorMsg
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .sink { [weak self] errorMsg in
+                guard let self = self else { return }
+                emptyView.isHidden = false
+                self.tableView.mj_header?.endRefreshing()
+            }
+            .store(in: &cancellables)
+        
+    }
+    
+    private func orderListInfo(with type: String) {
+        let parameters = ["conduct": type]
+        viewModel.orderLisrlInfo(parameters: parameters)
+    }
+    
+}
+
+extension OrderViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 15
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.orderModel?.meantime?.visual?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let listModel = viewModel.orderModel?.meantime?.visual?[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OrderViewCell", for: indexPath) as! OrderViewCell
+        cell.model = listModel
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let listModel = viewModel.orderModel?.meantime?.visual?[indexPath.row]
+        let pageUrl = listModel?.sentinel ?? ""
+        if pageUrl.hasPrefix(URLSchemeRecognizer.scheme_url) {
+            URLSchemeRecognizer.recognizeScheme(from: pageUrl, with: self)
+        }else if pageUrl.hasPrefix("http") {
+            self.toH5Page(with: pageUrl)
+        }else {
+            
+        }
+    }
+    
 }

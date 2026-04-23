@@ -70,6 +70,9 @@
 		73C576392F8FD55300ACFCA5 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C576382F8FD55000ACFCA5 /* AccountViewModel.swift */; };
 		73C5763B2F8FD5F300ACFCA5 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5763A2F8FD5F300ACFCA5 /* LoadingIndicator.swift */; };
 		73C5763D2F8FD7F400ACFCA5 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5763C2F8FD7EE00ACFCA5 /* HomeService.swift */; };
+		73D55B352F9A0EBE000C65F9 /* OrderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D55B342F9A0EB8000C65F9 /* OrderService.swift */; };
+		73D55B372F9A0EC7000C65F9 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D55B362F9A0EC2000C65F9 /* OrderViewModel.swift */; };
+		73D55B392F9A0ED8000C65F9 /* OrderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D55B382F9A0ED8000C65F9 /* OrderViewCell.swift */; };
 		73EE24772F9126B3008B2ECB /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EE24762F9126AB008B2ECB /* AccountService.swift */; };
 		73EE247A2F9129BD008B2ECB /* AccountListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EE24792F9129BD008B2ECB /* AccountListView.swift */; };
 /* End PBXBuildFile section */
@@ -144,6 +147,9 @@
 		73C576382F8FD55000ACFCA5 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		73C5763A2F8FD5F300ACFCA5 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		73C5763C2F8FD7EE00ACFCA5 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
+		73D55B342F9A0EB8000C65F9 /* OrderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderService.swift; sourceTree = "<group>"; };
+		73D55B362F9A0EC2000C65F9 /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
+		73D55B382F9A0ED8000C65F9 /* OrderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewCell.swift; sourceTree = "<group>"; };
 		73EE24762F9126AB008B2ECB /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		73EE24792F9129BD008B2ECB /* AccountListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -396,8 +402,11 @@
 		73B771B62F8F89B600F947DE /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				73D55B342F9A0EB8000C65F9 /* OrderService.swift */,
+				73D55B362F9A0EC2000C65F9 /* OrderViewModel.swift */,
 				73B771C62F8F97C300F947DE /* OrderViewController.swift */,
 				7377A4602F95AA8E00041B43 /* OrderEmptyView.swift */,
+				73D55B382F9A0ED8000C65F9 /* OrderViewCell.swift */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -602,6 +611,7 @@
 				7311F6FA2F975663002DA671 /* BankViewController.swift in Sources */,
 				7311F6F82F975659002DA671 /* ContactViewController.swift in Sources */,
 				73C576332F8FD36400ACFCA5 /* UserSessionManager.swift in Sources */,
+				73D55B392F9A0ED8000C65F9 /* OrderViewCell.swift in Sources */,
 				7311F7002F97B153002DA671 /* DatePickerView.swift in Sources */,
 				737C3D992F90BBF9003A5E32 /* LoginView.swift in Sources */,
 				7377A4812F9617AB00041B43 /* SiuViewCell.swift in Sources */,
@@ -609,6 +619,7 @@
 				7377A47A2F95F65E00041B43 /* CameraController.swift in Sources */,
 				7377A4872F96300700041B43 /* PopEnumView.swift in Sources */,
 				7311F6FE2F976389002DA671 /* ContactManager.swift in Sources */,
+				73D55B372F9A0EC7000C65F9 /* OrderViewModel.swift in Sources */,
 				737C3D832F907455003A5E32 /* SplashService.swift in Sources */,
 				737C3D852F9075FC003A5E32 /* SystemParamManager.swift in Sources */,
 				7377A46A2F95B0E100041B43 /* ProductService.swift in Sources */,
@@ -651,6 +662,7 @@
 				73B771CE2F8F990D00F947DE /* LanguageManager.swift in Sources */,
 				737C3D902F90949D003A5E32 /* LoanView.swift in Sources */,
 				737C3D922F909549003A5E32 /* HomeCardView.swift in Sources */,
+				73D55B352F9A0EBE000C65F9 /* OrderService.swift in Sources */,
 				7377A47E2F96158700041B43 /* PopNameView.swift in Sources */,
 				737C3D7E2F906E85003A5E32 /* NetworkMonitor.swift in Sources */,
 				73B771C32F8F97AC00F947DE /* HomeViewController.swift in Sources */,
