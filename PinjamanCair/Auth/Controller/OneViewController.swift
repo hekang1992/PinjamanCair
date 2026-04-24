@@ -269,6 +269,7 @@ extension OneViewController {
             datePicker.setDate(dateString: time)
             datePicker.onDateChanged = { day, month, year in
                 cell.phoneTx.text = String(format: "%@-%@-%@", day, month, year)
+                
                 datePicker.removeFromSuperview()
             }
             

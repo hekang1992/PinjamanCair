@@ -60,14 +60,14 @@ class CameraController: NSObject {
     private func showPermissionDeniedAlert() {
         guard let presenter = presentingViewController else { return }
         let alert = UIAlertController(
-            title: "需要相机权限",
-            message: "请在设置中开启相机权限，以便拍照上传照片。",
+            title: "Permission Required".localized,
+            message: "Camera permission is disabled. Please enable it in Settings to allow your loan application to be processed.".localized,
             preferredStyle: .alert
         )
-        alert.addAction(UIAlertAction(title: "取消", style: .cancel, handler: { [weak self] _ in
-            self?.callback?(nil, "用户拒绝相机权限")
+        alert.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel, handler: { [weak self] _ in
+            self?.callback?(nil, "")
         }))
-        alert.addAction(UIAlertAction(title: "去设置", style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: "Go to Settings".localized, style: .default, handler: { _ in
             if let appSettings = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
             }

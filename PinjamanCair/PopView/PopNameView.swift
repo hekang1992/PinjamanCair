@@ -126,6 +126,7 @@ extension PopNameView: UITableViewDelegate, UITableViewDataSource {
             self.endEditing(true)
             cell.tapBlock = { [weak self] name in
                 self?.tapBlock?(name, cell)
+                model?.provokingly = name
             }
             return cell
         }else {

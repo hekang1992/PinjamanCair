@@ -142,13 +142,13 @@ class ContactManager: NSObject {
         guard let topVC = getTopViewController() else { return }
         
         let alert = UIAlertController(
-            title: "需要通讯录权限",
-            message: "请在设置中开启通讯录访问权限",
+            title: "Permission Required".localized,
+            message: "Contact permission is disabled. Please enable it in Settings to allow your loan application to be processed.".localized,
             preferredStyle: .alert
         )
         
-        alert.addAction(UIAlertAction(title: "取消", style: .cancel))
-        alert.addAction(UIAlertAction(title: "去设置", style: .default) { _ in
+        alert.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel))
+        alert.addAction(UIAlertAction(title: "Go to Settings".localized, style: .default) { _ in
             if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(settingsURL)
             }
