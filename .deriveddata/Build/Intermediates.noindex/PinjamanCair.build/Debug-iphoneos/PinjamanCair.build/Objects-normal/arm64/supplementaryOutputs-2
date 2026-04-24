@@ -1,0 +1,65 @@
+{
+  "/Users/hekang/Desktop/PinjamanCair/PinjamanCair/Auth/Controller/WorkViewController.swift" : {
+    "const-values" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/WorkViewController.swiftconstvalues",
+    "dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/WorkViewController.d",
+    "diagnostics" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/WorkViewController.dia",
+    "object" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/WorkViewController.o",
+    "swift-dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/WorkViewController.swiftdeps"
+  },
+  "/Users/hekang/Desktop/PinjamanCair/PinjamanCair/Auth/ImageService/CameraController.swift" : {
+    "const-values" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/CameraController.swiftconstvalues",
+    "dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/CameraController.d",
+    "diagnostics" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/CameraController.dia",
+    "object" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/CameraController.o",
+    "swift-dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/CameraController.swiftdeps"
+  },
+  "/Users/hekang/Desktop/PinjamanCair/PinjamanCair/Auth/ImageService/ContactManager.swift" : {
+    "const-values" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/ContactManager.swiftconstvalues",
+    "dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/ContactManager.d",
+    "diagnostics" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/ContactManager.dia",
+    "object" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/ContactManager.o",
+    "swift-dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/ContactManager.swiftdeps"
+  },
+  "/Users/hekang/Desktop/PinjamanCair/PinjamanCair/Auth/View/SiuViewCell.swift" : {
+    "const-values" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/SiuViewCell.swiftconstvalues",
+    "dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/SiuViewCell.d",
+    "diagnostics" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/SiuViewCell.dia",
+    "object" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/SiuViewCell.o",
+    "swift-dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/SiuViewCell.swiftdeps"
+  },
+  "/Users/hekang/Desktop/PinjamanCair/PinjamanCair/Order/OrderViewModel.swift" : {
+    "const-values" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/OrderViewModel.swiftconstvalues",
+    "dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/OrderViewModel.d",
+    "diagnostics" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/OrderViewModel.dia",
+    "object" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/OrderViewModel.o",
+    "swift-dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/OrderViewModel.swiftdeps"
+  },
+  "/Users/hekang/Desktop/PinjamanCair/PinjamanCair/PopView/PopEnumView.swift" : {
+    "const-values" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/PopEnumView.swiftconstvalues",
+    "dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/PopEnumView.d",
+    "diagnostics" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/PopEnumView.dia",
+    "object" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/PopEnumView.o",
+    "swift-dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/PopEnumView.swiftdeps"
+  },
+  "/Users/hekang/Desktop/PinjamanCair/PinjamanCair/Product/ViewModel/ProductService.swift" : {
+    "const-values" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/ProductService.swiftconstvalues",
+    "dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/ProductService.d",
+    "diagnostics" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/ProductService.dia",
+    "object" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/ProductService.o",
+    "swift-dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/ProductService.swiftdeps"
+  },
+  "/Users/hekang/Desktop/PinjamanCair/PinjamanCair/Splash/SplashService.swift" : {
+    "const-values" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/SplashService.swiftconstvalues",
+    "dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/SplashService.d",
+    "diagnostics" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/SplashService.dia",
+    "object" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/SplashService.o",
+    "swift-dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/SplashService.swiftdeps"
+  },
+  "/Users/hekang/Desktop/PinjamanCair/PinjamanCair/Splash/SystemParamManager.swift" : {
+    "const-values" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/SystemParamManager.swiftconstvalues",
+    "dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/SystemParamManager.d",
+    "diagnostics" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/SystemParamManager.dia",
+    "object" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/SystemParamManager.o",
+    "swift-dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/SystemParamManager.swiftdeps"
+  }
+}

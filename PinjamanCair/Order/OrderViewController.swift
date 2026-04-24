@@ -12,9 +12,29 @@ import RxCocoa
 import Combine
 import MJRefresh
 
+enum OrderStatus: Int {
+    case all = 10
+    case inProgress = 11
+    case repayment = 12
+    case finished = 13
+    
+    var type: String {
+        switch self {
+        case .all:
+            return "4"
+        case .inProgress:
+            return "7"
+        case .repayment:
+            return "6"
+        case .finished:
+            return "5"
+        }
+    }
+}
+
 class OrderViewController: CommonViewController {
     
-    var type: String = "4"
+    private(set) var selectedStatus: OrderStatus = .all
     
     private let viewModel = OrderViewModel()
     
@@ -86,10 +106,17 @@ class OrderViewController: CommonViewController {
         setupButtons()
         setupIndicator()
         setupConstraints()
+        setupRefresh()
+        setBindViewModel()
         
-        if let allButton = buttons.first {
-            updateButtonState(selected: allButton)
-        }
+        applySelectedStatus(shouldLoad: false)
+    }
+    
+    private func setupRefresh() {
+        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
+            guard let self = self else { return }
+            self.orderListInfo(with: self.selectedStatus.type)
+        })
     }
     
     private func setupViews() {
@@ -176,7 +203,7 @@ class OrderViewController: CommonViewController {
             previousButton = button
         }
         
-        if let lastButton = buttons.last {
+        if buttons.last != nil {
             var totalWidth: CGFloat = 0
             for button in buttons {
                 if let title = button.titleLabel?.text {
@@ -198,24 +225,23 @@ class OrderViewController: CommonViewController {
     }
     
     @objc private func buttonTapped(_ sender: UIButton) {
-        switch sender.tag {
-        case 10:
-            self.type = "4"
-            
-        case 11:
-            self.type = "7"
-            
-        case 12:
-            self.type = "6"
-            
-        case 13:
-            self.type = "5"
-            
-        default:
-            break
+        guard let status = OrderStatus(rawValue: sender.tag) else { return }
+        selectedStatus = status
+        applySelectedStatus(shouldLoad: true)
+    }
+    
+    func selectOrderStatus(_ status: OrderStatus, shouldLoad: Bool = true) {
+        selectedStatus = status
+        guard isViewLoaded else { return }
+        applySelectedStatus(shouldLoad: shouldLoad)
+    }
+    
+    private func applySelectedStatus(shouldLoad: Bool) {
+        guard let button = buttons.first(where: { $0.tag == selectedStatus.rawValue }) else { return }
+        updateButtonState(selected: button)
+        if shouldLoad {
+            orderListInfo(with: selectedStatus.type)
         }
-        self.orderListInfo(with: self.type)
-        updateButtonState(selected: sender)
     }
     
     private func updateButtonState(selected button: UIButton) {
@@ -250,18 +276,11 @@ class OrderViewController: CommonViewController {
         UIView.animate(withDuration: 0.2) {
             self.typeImageView.layoutIfNeeded()
         }
-        
-        self.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
-            guard let self = self else { return }
-            self.orderListInfo(with: self.type)
-        })
-        
-        setBindViewModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        orderListInfo(with: type)
+        orderListInfo(with: selectedStatus.type)
     }
 }
 

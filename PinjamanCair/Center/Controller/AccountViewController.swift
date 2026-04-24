@@ -164,33 +164,40 @@ class AccountViewController: CommonViewController {
         oneBtn
             .rx
             .tap
+            .throttle(.milliseconds(200), scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] in
                 guard let self = self else { return }
-                
+                self.openOrderPage(with: .all)
             })
             .disposed(by: disposeBag)
         
         twoBtn
             .rx
             .tap
+            .throttle(.milliseconds(200), scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] in
                 guard let self = self else { return }
+                self.openOrderPage(with: .inProgress)
             })
             .disposed(by: disposeBag)
         
         threeBtn
             .rx
             .tap
+            .throttle(.milliseconds(200), scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] in
                 guard let self = self else { return }
+                self.openOrderPage(with: .repayment)
             })
             .disposed(by: disposeBag)
         
         fourBtn
             .rx
             .tap
+            .throttle(.milliseconds(200), scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] in
                 guard let self = self else { return }
+                self.openOrderPage(with: .finished)
             })
             .disposed(by: disposeBag)
         
@@ -216,6 +223,22 @@ class AccountViewController: CommonViewController {
         }
         
         setupListViewsConstraints()
+    }
+    
+    private func openOrderPage(with status: OrderStatus) {
+        tabBarController?.selectedIndex = 1
+        
+        guard
+            let tabBarController = tabBarController,
+            let viewControllers = tabBarController.viewControllers,
+            viewControllers.indices.contains(1),
+            let nav = viewControllers[1] as? UINavigationController,
+            let orderVc = nav.viewControllers.first(where: { $0 is OrderViewController }) as? OrderViewController
+        else {
+            return
+        }
+        
+        orderVc.selectOrderStatus(status)
     }
     
     private func createSingleItemView(with model: visualModel, index: Int) -> UIView {

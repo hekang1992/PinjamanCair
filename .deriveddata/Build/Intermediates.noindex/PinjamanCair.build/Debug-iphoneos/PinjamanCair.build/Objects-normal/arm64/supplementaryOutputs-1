@@ -1,0 +1,65 @@
+{
+  "/Users/hekang/Desktop/PinjamanCair/PinjamanCair/Auth/Controller/BankViewController.swift" : {
+    "const-values" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/BankViewController.swiftconstvalues",
+    "dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/BankViewController.d",
+    "diagnostics" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/BankViewController.dia",
+    "object" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/BankViewController.o",
+    "swift-dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/BankViewController.swiftdeps"
+  },
+  "/Users/hekang/Desktop/PinjamanCair/PinjamanCair/Auth/Controller/ContactViewController.swift" : {
+    "const-values" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/ContactViewController.swiftconstvalues",
+    "dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/ContactViewController.d",
+    "diagnostics" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/ContactViewController.dia",
+    "object" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/ContactViewController.o",
+    "swift-dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/ContactViewController.swiftdeps"
+  },
+  "/Users/hekang/Desktop/PinjamanCair/PinjamanCair/Auth/View/DatePickerView.swift" : {
+    "const-values" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/DatePickerView.swiftconstvalues",
+    "dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/DatePickerView.d",
+    "diagnostics" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/DatePickerView.dia",
+    "object" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/DatePickerView.o",
+    "swift-dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/DatePickerView.swiftdeps"
+  },
+  "/Users/hekang/Desktop/PinjamanCair/PinjamanCair/Center/View/AccountListView.swift" : {
+    "const-values" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/AccountListView.swiftconstvalues",
+    "dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/AccountListView.d",
+    "diagnostics" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/AccountListView.dia",
+    "object" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/AccountListView.o",
+    "swift-dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/AccountListView.swiftdeps"
+  },
+  "/Users/hekang/Desktop/PinjamanCair/PinjamanCair/Home/View/LoanHeadView.swift" : {
+    "const-values" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/LoanHeadView.swiftconstvalues",
+    "dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/LoanHeadView.d",
+    "diagnostics" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/LoanHeadView.dia",
+    "object" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/LoanHeadView.o",
+    "swift-dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/LoanHeadView.swiftdeps"
+  },
+  "/Users/hekang/Desktop/PinjamanCair/PinjamanCair/Login/View/LoginView.swift" : {
+    "const-values" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/LoginView.swiftconstvalues",
+    "dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/LoginView.d",
+    "diagnostics" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/LoginView.dia",
+    "object" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/LoginView.o",
+    "swift-dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/LoginView.swiftdeps"
+  },
+  "/Users/hekang/Desktop/PinjamanCair/PinjamanCair/Login/View/UserSessionManager.swift" : {
+    "const-values" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/UserSessionManager.swiftconstvalues",
+    "dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/UserSessionManager.d",
+    "diagnostics" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/UserSessionManager.dia",
+    "object" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/UserSessionManager.o",
+    "swift-dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/UserSessionManager.swiftdeps"
+  },
+  "/Users/hekang/Desktop/PinjamanCair/PinjamanCair/Order/OrderViewCell.swift" : {
+    "const-values" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/OrderViewCell.swiftconstvalues",
+    "dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/OrderViewCell.d",
+    "diagnostics" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/OrderViewCell.dia",
+    "object" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/OrderViewCell.o",
+    "swift-dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/OrderViewCell.swiftdeps"
+  },
+  "/Users/hekang/Desktop/PinjamanCair/PinjamanCair/Product/View/ProductListView.swift" : {
+    "const-values" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/ProductListView.swiftconstvalues",
+    "dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/ProductListView.d",
+    "diagnostics" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/ProductListView.dia",
+    "object" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/ProductListView.o",
+    "swift-dependencies" : "/Users/hekang/Desktop/PinjamanCair/.deriveddata/Build/Intermediates.noindex/PinjamanCair.build/Debug-iphoneos/PinjamanCair.build/Objects-normal/arm64/ProductListView.swiftdeps"
+  }
+}

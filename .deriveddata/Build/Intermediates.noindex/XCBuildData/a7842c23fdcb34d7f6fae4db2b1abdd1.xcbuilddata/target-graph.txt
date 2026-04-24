@@ -1,0 +1,2 @@
+Target dependency graph (1 target)
+Target 'PinjamanCair' in project 'PinjamanCair' (no dependencies)
