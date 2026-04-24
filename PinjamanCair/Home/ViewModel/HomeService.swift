@@ -38,4 +38,14 @@ class HomeService {
         return result
     }
     
+    static func uploadLocationInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        let result: BaseModel = try await NetworkManager.shared.post(
+            "/aboutwas/neighborhood",
+            parameters: parameters
+        )
+        
+        return result
+    }
+    
 }

@@ -12,6 +12,7 @@ import Combine
 class LoginViewController: CommonViewController {
     
     private var countdownTimer: Timer?
+    
     private var remainingSeconds: Int = 0
     
     private let viewModel = LoginViewModel()
@@ -67,6 +68,8 @@ class LoginViewController: CommonViewController {
                 self.loginInfo()
             }
         }
+        
+        locationManager.getCurrentLocation { locationDict in }
         
         setupBindings()
     }

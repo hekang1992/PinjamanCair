@@ -14,6 +14,8 @@ class CommonViewController: UIViewController {
     
     let disposeBag = DisposeBag()
     
+    let locationManager = LocationManager()
+    
     var cancellables = Set<AnyCancellable>()
     
     lazy var headView: AppHeadView = {

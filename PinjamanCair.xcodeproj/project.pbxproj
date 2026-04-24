@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5103BEBE432C4F44835B1ED9 /* Pods_PinjamanCair.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3287B38925CE64ACE3F00D85 /* Pods_PinjamanCair.framework */; };
 		730B7FCB2F9B3F170092DE25 /* LoanListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730B7FCA2F9B3F170092DE25 /* LoanListItemView.swift */; };
+		730B7FCD2F9B4AF80092DE25 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730B7FCC2F9B4AF80092DE25 /* LocationManager.swift */; };
 		7311F6F62F9754B7002DA671 /* WorkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7311F6F52F9754B7002DA671 /* WorkViewController.swift */; };
 		7311F6F82F975659002DA671 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7311F6F72F975659002DA671 /* ContactViewController.swift */; };
 		7311F6FA2F975663002DA671 /* BankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7311F6F92F975663002DA671 /* BankViewController.swift */; };
@@ -84,6 +85,7 @@
 		3287B38925CE64ACE3F00D85 /* Pods_PinjamanCair.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinjamanCair.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		41A35B40C89F9BB22A2FF883 /* Pods-PinjamanCair.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinjamanCair.release.xcconfig"; path = "Target Support Files/Pods-PinjamanCair/Pods-PinjamanCair.release.xcconfig"; sourceTree = "<group>"; };
 		730B7FCA2F9B3F170092DE25 /* LoanListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanListItemView.swift; sourceTree = "<group>"; };
+		730B7FCC2F9B4AF80092DE25 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		7311F6F52F9754B7002DA671 /* WorkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkViewController.swift; sourceTree = "<group>"; };
 		7311F6F72F975659002DA671 /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		7311F6F92F975663002DA671 /* BankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankViewController.swift; sourceTree = "<group>"; };
@@ -440,6 +442,7 @@
 		73B771B92F8F89B800F947DE /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				730B7FCC2F9B4AF80092DE25 /* LocationManager.swift */,
 				73C576342F8FD42000ACFCA5 /* KeychainManager.swift */,
 				73B771CD2F8F990D00F947DE /* LanguageManager.swift */,
 			);
@@ -657,6 +660,7 @@
 				73C576392F8FD55300ACFCA5 /* AccountViewModel.swift in Sources */,
 				73C576302F8FD29E00ACFCA5 /* DeviceParamService.swift in Sources */,
 				7380418A2F93553E00AC71B3 /* SettingsViewController.swift in Sources */,
+				730B7FCD2F9B4AF80092DE25 /* LocationManager.swift in Sources */,
 				73B771D02F8F995A00F947DE /* BaseModel.swift in Sources */,
 				73B771AA2F8F873900F947DE /* AppDelegate.swift in Sources */,
 				73C576352F8FD42000ACFCA5 /* KeychainManager.swift in Sources */,

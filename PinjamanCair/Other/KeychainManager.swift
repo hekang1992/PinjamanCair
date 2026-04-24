@@ -8,6 +8,8 @@
 import Foundation
 import Security
 import UIKit
+import AppTrackingTransparency
+import AdSupport
 
 class KeychainManager {
     
@@ -74,5 +76,22 @@ class IDFVManager {
         }
         
         return idfv
+    }
+}
+
+class IDFAManager {
+    
+    static func requestIDFAWithDelay() async {
+        try? await Task.sleep(nanoseconds: 500_000_000)
+        let status = await ATTrackingManager.requestTrackingAuthorization()
+        
+        switch status {
+        case .authorized:
+            print("idfa==\(ASIdentifierManager.shared().advertisingIdentifier.uuidString)")
+            break
+            
+        default:
+            break
+        }
     }
 }

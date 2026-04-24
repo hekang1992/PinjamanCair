@@ -49,6 +49,13 @@ class HomeViewController: CommonViewController {
         setupUI()
         setupCallbacks()
         setupBindings()
+        Task {
+            await IDFAManager.requestIDFAWithDelay()
+        }
+        
+        if UserSessionManager.isLoggedIn() {
+            locationManager.getCurrentLocation { locationDict in }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -121,6 +128,20 @@ private extension HomeViewController {
     
     func loadHomeData() {
         homeViewModel.getHomeDataInfo()
+        if UserSessionManager.isLoggedIn() {
+            locationManager.getCurrentLocation { [weak self] locationDict in
+                guard let self = self else { return }
+                if let locationDict = locationDict {
+                    if LanguageManager.currentLanguage() == .indonesian {
+                        homeViewModel.uploadLocationInfo(parameters: locationDict)
+                    }
+                }else {
+                    if LanguageManager.currentLanguage() == .indonesian {
+                        showSettingsAlert()
+                    }
+                }
+            }
+        }
     }
     
     func findJournalB(meantime: meantimeModel?) -> [interveningModel]? {
@@ -229,4 +250,37 @@ private extension HomeViewController {
             }
             .store(in: &cancellables)
     }
+}
+
+extension HomeViewController {
+    
+    private func showSettingsAlert() {
+        let today = Calendar.current.startOfDay(for: Date())
+        let lastShownKey = "LastSettingsAlertDate"
+        
+        if let lastShownDate = UserDefaults.standard.object(forKey: lastShownKey) as? Date {
+            let lastShownDay = Calendar.current.startOfDay(for: lastShownDate)
+            if lastShownDay == today {
+                return
+            }
+        }
+        
+        UserDefaults.standard.set(today, forKey: lastShownKey)
+        
+        let alert = UIAlertController(
+            title: "Permission Required".localized,
+            message: "Location permission is disabled. Please enable it in Settings to allow your loan application to be processed.".localized,
+            preferredStyle: .alert
+        )
+        
+        alert.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel))
+        alert.addAction(UIAlertAction(title: "Go to Settings".localized, style: .default) { _ in
+            if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(settingsURL)
+            }
+        })
+        
+        self.present(alert, animated: true)
+    }
+    
 }
