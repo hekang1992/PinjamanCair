@@ -260,7 +260,7 @@ extension OneViewController {
             viewModel.saveImageInfo(parameters: parameters)
         }
         
-        popView.tapBlock = { time, cell in
+        popView.tapBlock = { time, cell, model in
             let datePicker = DatePickerView()
             datePicker.backgroundColor = .white
             datePicker.layer.cornerRadius = 12
@@ -269,7 +269,7 @@ extension OneViewController {
             datePicker.setDate(dateString: time)
             datePicker.onDateChanged = { day, month, year in
                 cell.phoneTx.text = String(format: "%@-%@-%@", day, month, year)
-                
+                model.provokingly = String(format: "%@-%@-%@", day, month, year)
                 datePicker.removeFromSuperview()
             }
             

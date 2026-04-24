@@ -20,7 +20,7 @@ class PopNameView: UIView {
     
     var saveBlock: (() -> Void)?
     
-    var tapBlock: ((String, TapViewCell) -> Void)?
+    var tapBlock: ((String, TapViewCell, warblerModel) -> Void)?
     
     private let disposeBag = DisposeBag()
     
@@ -125,8 +125,8 @@ extension PopNameView: UITableViewDelegate, UITableViewDataSource {
             cell.phoneTx.text = model?.provokingly ?? ""
             self.endEditing(true)
             cell.tapBlock = { [weak self] name in
-                self?.tapBlock?(name, cell)
                 model?.provokingly = name
+                self?.tapBlock?(name, cell, model ?? warblerModel())
             }
             return cell
         }else {
