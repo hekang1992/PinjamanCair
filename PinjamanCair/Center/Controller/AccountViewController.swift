@@ -75,25 +75,21 @@ class AccountViewController: CommonViewController {
     
     lazy var oneBtn: UIButton = {
         let oneBtn = UIButton(type: .custom)
-        oneBtn.backgroundColor = .red
         return oneBtn
     }()
     
     lazy var twoBtn: UIButton = {
         let twoBtn = UIButton(type: .custom)
-        twoBtn.backgroundColor = .red
         return twoBtn
     }()
     
     lazy var threeBtn: UIButton = {
         let threeBtn = UIButton(type: .custom)
-        threeBtn.backgroundColor = .red
         return threeBtn
     }()
     
     lazy var fourBtn: UIButton = {
         let fourBtn = UIButton(type: .custom)
-        fourBtn.backgroundColor = .red
         return fourBtn
     }()
     
@@ -165,6 +161,39 @@ class AccountViewController: CommonViewController {
         
         setBindViewModel()
         
+        oneBtn
+            .rx
+            .tap
+            .bind(onNext: { [weak self] in
+                guard let self = self else { return }
+                
+            })
+            .disposed(by: disposeBag)
+        
+        twoBtn
+            .rx
+            .tap
+            .bind(onNext: { [weak self] in
+                guard let self = self else { return }
+            })
+            .disposed(by: disposeBag)
+        
+        threeBtn
+            .rx
+            .tap
+            .bind(onNext: { [weak self] in
+                guard let self = self else { return }
+            })
+            .disposed(by: disposeBag)
+        
+        fourBtn
+            .rx
+            .tap
+            .bind(onNext: { [weak self] in
+                guard let self = self else { return }
+            })
+            .disposed(by: disposeBag)
+        
         self.scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
             guard let self = self else { return }
             viewModel.getAccountInfo()
@@ -204,7 +233,7 @@ class AccountViewController: CommonViewController {
         return containerView
     }
     
-    private func setupListViewsConstraints() { 
+    private func setupListViewsConstraints() {
         guard !listItemViews.isEmpty else { return }
         
         var previousView: UIView? = oneImageView

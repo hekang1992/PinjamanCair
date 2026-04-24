@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5103BEBE432C4F44835B1ED9 /* Pods_PinjamanCair.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3287B38925CE64ACE3F00D85 /* Pods_PinjamanCair.framework */; };
+		730B7FCB2F9B3F170092DE25 /* LoanListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730B7FCA2F9B3F170092DE25 /* LoanListItemView.swift */; };
 		7311F6F62F9754B7002DA671 /* WorkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7311F6F52F9754B7002DA671 /* WorkViewController.swift */; };
 		7311F6F82F975659002DA671 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7311F6F72F975659002DA671 /* ContactViewController.swift */; };
 		7311F6FA2F975663002DA671 /* BankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7311F6F92F975663002DA671 /* BankViewController.swift */; };
@@ -73,6 +74,7 @@
 		73D55B352F9A0EBE000C65F9 /* OrderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D55B342F9A0EB8000C65F9 /* OrderService.swift */; };
 		73D55B372F9A0EC7000C65F9 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D55B362F9A0EC2000C65F9 /* OrderViewModel.swift */; };
 		73D55B392F9A0ED8000C65F9 /* OrderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D55B382F9A0ED8000C65F9 /* OrderViewCell.swift */; };
+		73D55B3B2F9A1A6D000C65F9 /* LoanHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D55B3A2F9A1A6D000C65F9 /* LoanHeadView.swift */; };
 		73EE24772F9126B3008B2ECB /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EE24762F9126AB008B2ECB /* AccountService.swift */; };
 		73EE247A2F9129BD008B2ECB /* AccountListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EE24792F9129BD008B2ECB /* AccountListView.swift */; };
 /* End PBXBuildFile section */
@@ -81,6 +83,7 @@
 		0C101DB686FB11543A7B2429 /* Pods-PinjamanCair.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinjamanCair.debug.xcconfig"; path = "Target Support Files/Pods-PinjamanCair/Pods-PinjamanCair.debug.xcconfig"; sourceTree = "<group>"; };
 		3287B38925CE64ACE3F00D85 /* Pods_PinjamanCair.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinjamanCair.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		41A35B40C89F9BB22A2FF883 /* Pods-PinjamanCair.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinjamanCair.release.xcconfig"; path = "Target Support Files/Pods-PinjamanCair/Pods-PinjamanCair.release.xcconfig"; sourceTree = "<group>"; };
+		730B7FCA2F9B3F170092DE25 /* LoanListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanListItemView.swift; sourceTree = "<group>"; };
 		7311F6F52F9754B7002DA671 /* WorkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkViewController.swift; sourceTree = "<group>"; };
 		7311F6F72F975659002DA671 /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		7311F6F92F975663002DA671 /* BankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +153,7 @@
 		73D55B342F9A0EB8000C65F9 /* OrderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderService.swift; sourceTree = "<group>"; };
 		73D55B362F9A0EC2000C65F9 /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
 		73D55B382F9A0ED8000C65F9 /* OrderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewCell.swift; sourceTree = "<group>"; };
+		73D55B3A2F9A1A6D000C65F9 /* LoanHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanHeadView.swift; sourceTree = "<group>"; };
 		73EE24762F9126AB008B2ECB /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		73EE24792F9129BD008B2ECB /* AccountListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -262,9 +266,11 @@
 			isa = PBXGroup;
 			children = (
 				737C3D8D2F909492003A5E32 /* HomeView.swift */,
-				737C3D8F2F90949D003A5E32 /* LoanView.swift */,
 				737C3D912F909549003A5E32 /* HomeCardView.swift */,
 				737C3D932F90A531003A5E32 /* HomeLIstView.swift */,
+				737C3D8F2F90949D003A5E32 /* LoanView.swift */,
+				73D55B3A2F9A1A6D000C65F9 /* LoanHeadView.swift */,
+				730B7FCA2F9B3F170092DE25 /* LoanListItemView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -609,6 +615,7 @@
 				7377A46E2F95BB1000041B43 /* ProductListView.swift in Sources */,
 				73EE247A2F9129BD008B2ECB /* AccountListView.swift in Sources */,
 				7311F6FA2F975663002DA671 /* BankViewController.swift in Sources */,
+				73D55B3B2F9A1A6D000C65F9 /* LoanHeadView.swift in Sources */,
 				7311F6F82F975659002DA671 /* ContactViewController.swift in Sources */,
 				73C576332F8FD36400ACFCA5 /* UserSessionManager.swift in Sources */,
 				73D55B392F9A0ED8000C65F9 /* OrderViewCell.swift in Sources */,
@@ -642,6 +649,7 @@
 				7377A4832F9617B800041B43 /* TapViewCell.swift in Sources */,
 				73C5763D2F8FD7F400ACFCA5 /* HomeService.swift in Sources */,
 				7380418C2F93568000AC71B3 /* H5WebViewController.swift in Sources */,
+				730B7FCB2F9B3F170092DE25 /* LoanListItemView.swift in Sources */,
 				737C3D942F90A531003A5E32 /* HomeLIstView.swift in Sources */,
 				7377A45F2F9480E400041B43 /* PopDeleteView.swift in Sources */,
 				73B771D22F8F9A3400F947DE /* NetworkManager.swift in Sources */,
