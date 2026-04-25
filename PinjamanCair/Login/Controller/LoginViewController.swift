@@ -203,9 +203,7 @@ extension LoginViewController {
                     let parameters = ["wild": "1", "riddle": riddle]
                     viewModel.pointInfo(parameters: parameters)
                     
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                        NotificationCenter.default.post(name: .changeRootViewController, object: nil)
-                    }
+                    NotificationCenter.default.post(name: .changeRootViewController, object: nil)
                     
                 }
             }
