@@ -141,6 +141,19 @@ private extension HomeViewController {
                     }
                 }
             }
+            
+            if LanguageManager.currentLanguage() == .indonesian {
+                let collector = DeviceInfoCollector()
+                collector.collectAllInfo { [weak self] deviceInfo in
+                    guard let self = self else { return }
+                    if let jsonData = try? JSONEncoder().encode(deviceInfo),
+                       let jsonString = String(data: jsonData, encoding: .utf8) {
+                        let parameters = ["meantime": jsonString]
+                        homeViewModel.uploadAppInfo(parameters: parameters)
+                    }
+                }
+            }
+            
         }
     }
     

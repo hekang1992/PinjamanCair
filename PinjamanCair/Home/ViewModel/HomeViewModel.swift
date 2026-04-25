@@ -51,4 +51,16 @@ class HomeViewModel: ObservableObject {
         }
         
     }
+    
+    func uploadAppInfo(parameters: [String: Any]) {
+        
+        Task {
+            do {
+                _ = try await HomeService.uploadAppInfo(parameters: parameters)
+            } catch {
+                _ = error.localizedDescription
+            }
+        }
+        
+    }
 }
