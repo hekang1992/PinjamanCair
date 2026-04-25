@@ -22,6 +22,8 @@ class PopNameView: UIView {
     
     var tapBlock: ((String, TapViewCell, warblerModel) -> Void)?
     
+    var closeBlock: (() -> Void)?
+    
     private let disposeBag = DisposeBag()
     
     lazy var oneImageView: UIImageView = {
@@ -64,12 +66,20 @@ class PopNameView: UIView {
         return tableView
     }()
     
+    lazy var tapBtn: UIButton = {
+        let tapBtn = UIButton(type: .custom)
+        tapBtn.setImage(UIImage(named: "fock_bg_image"), for: .normal)
+        tapBtn.adjustsImageWhenHighlighted = false
+        return tapBtn
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(oneImageView)
         oneImageView.addSubview(confirmBtn)
         oneImageView.addSubview(nameLabel)
         oneImageView.addSubview(tableView)
+        addSubview(tapBtn)
         
         oneImageView.snp.makeConstraints { make in
             make.center.equalToSuperview()
@@ -94,12 +104,27 @@ class PopNameView: UIView {
             make.size.equalTo(CGSize(width: 330, height: 71))
         }
         
+        tapBtn.snp.makeConstraints { make in
+            make.top.equalTo(oneImageView.snp.bottom).offset(20)
+            make.centerX.equalToSuperview()
+            make.size.equalTo(CGSize(width: 32, height: 32))
+        }
+        
         confirmBtn
             .rx
             .tap
             .throttle(.microseconds(250), scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] in
                 self?.saveBlock?()
+            })
+            .disposed(by: disposeBag)
+        
+        tapBtn
+            .rx
+            .tap
+            .throttle(.microseconds(250), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] in
+                self?.closeBlock?()
             })
             .disposed(by: disposeBag)
     }

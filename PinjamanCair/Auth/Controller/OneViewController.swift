@@ -270,6 +270,11 @@ extension OneViewController {
             viewModel.saveImageInfo(parameters: parameters)
         }
         
+        popView.closeBlock = { [weak self] in
+            guard let self = self else { return }
+            self.dismiss(animated: true)
+        }
+        
         popView.tapBlock = { time, cell, model in
             let datePicker = DatePickerView()
             datePicker.backgroundColor = .white

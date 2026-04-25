@@ -261,6 +261,11 @@ extension WorkViewController {
                     listModel.cut = model?.cut ?? ""
                 }
             }
+            
+            popView.closeBlock = { [weak self] in
+                guard let self = self else { return }
+                self.dismiss(animated: true)
+            }
         }
     }
     
