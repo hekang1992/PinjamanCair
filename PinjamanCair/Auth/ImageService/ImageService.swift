@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AdSupport
 
 class ImageService {
     

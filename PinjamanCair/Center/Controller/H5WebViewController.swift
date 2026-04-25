@@ -16,6 +16,8 @@ class H5WebViewController: CommonViewController {
     
     var pageUrl: String = ""
     
+    private let viewModel = ImageViewModel()
+    
     lazy var headImageView: UIImageView = {
         let headImageView = UIImageView()
         headImageView.image = UIImage(named: "cen_bg_image")
@@ -200,8 +202,11 @@ extension H5WebViewController: WKScriptMessageHandler {
     }
     
     func HoarDay() {
-        DispatchQueue.main.async {
-            print("[埋点] 确认申请事件已触发")
+        locationManager.getCurrentLocation { locationDict in }
+        Task {
+            try? await Task.sleep(nanoseconds: 2_000_000_000)
+            let parameters = ["wild": "9", "riddle": String(Int(Date().timeIntervalSince1970))]
+            viewModel.pointInfo(parameters: parameters)
         }
     }
 }

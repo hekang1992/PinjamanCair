@@ -5,6 +5,8 @@
 //  Created by hekang on 2026/4/20.
 //
 
+import AdSupport
+
 class ProductService {
     
     static func productDetailInfo(parameters: [String: Any]) async throws -> BaseModel? {

@@ -21,6 +21,8 @@ class WorkViewController: CommonViewController {
     
     private let viewModel = ImageViewModel()
     
+    private var riddle: String = ""
+    
     var nextPageModel: proceedingModel? {
         didSet {
             guard let nextPageModel = nextPageModel else { return }
@@ -77,6 +79,8 @@ class WorkViewController: CommonViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        locationManager.getCurrentLocation { locationDict in }
+        riddle = String(Int(Date().timeIntervalSince1970))
     }
     
     private func setupViews() {
@@ -184,6 +188,8 @@ extension WorkViewController {
                 guard let self = self else { return }
                 let remains = model.remains ?? ""
                 if remains == "0" {
+                    let parameters = ["wild": "5", "riddle": riddle]
+                    viewModel.pointInfo(parameters: parameters)
                     self.toProductVc()
                 }else {
                     ToastConfig.showMessage(model.judgment ?? "")

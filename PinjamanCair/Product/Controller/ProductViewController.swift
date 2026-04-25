@@ -16,6 +16,8 @@ class ProductViewController: CommonViewController {
     
     var productID: String = ""
     
+    var motionless: String = ""
+    
     var nextStepModel: proceedingModel?
     
     private let viewModel = ProductViewModel()
@@ -133,6 +135,7 @@ class ProductViewController: CommonViewController {
         super.viewWillAppear(animated)
         let parameters = ["undoubtedly": productID]
         viewModel.productDetailInfo(parameters: parameters)
+        locationManager.getCurrentLocation { locationDict in }
     }
     
 }
@@ -210,6 +213,10 @@ extension ProductViewController {
                     }else {
                         self.toH5Page(with: pageUrl)
                     }
+                    let parameters = ["wild": "8",
+                                      "riddle": String(Int(Date().timeIntervalSince1970)),
+                                      "alone": self.motionless]
+                    viewModel.pointInfo(parameters: parameters)
                 }else {
                     ToastConfig.showMessage(model.judgment ?? "")
                 }
@@ -256,6 +263,7 @@ extension ProductViewController {
             
         case "":
             let motionless = cardModel?.motionless ?? ""
+            self.motionless = motionless
             let parameters = ["motionless": motionless]
             viewModel.orderInfo(parameters: parameters)
             

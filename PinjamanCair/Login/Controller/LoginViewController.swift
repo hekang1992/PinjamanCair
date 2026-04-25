@@ -17,6 +17,8 @@ class LoginViewController: CommonViewController {
     
     private let viewModel = LoginViewModel()
     
+    private var riddle: String = ""
+    
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
         bgImageView.image = UIImage(named: "login_bg_image")
@@ -72,6 +74,8 @@ class LoginViewController: CommonViewController {
         locationManager.getCurrentLocation { locationDict in }
         
         setupBindings()
+        
+        riddle = String(Int(Date().timeIntervalSince1970))
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -98,6 +102,7 @@ extension LoginViewController {
             ToastConfig.showMessage("Please enter your phone number".localized)
             return
         }
+        riddle = String(Int(Date().timeIntervalSince1970))
         let parameters = ["self": phone]
         viewModel.codeInfo(parameters: parameters)
     }
@@ -186,14 +191,22 @@ extension LoginViewController {
             .$loginModel
             .receive(on: DispatchQueue.main)
             .compactMap { $0 }
-            .sink { model in
+            .sink { [weak self] model in
+                guard let self else { return }
                 ToastConfig.showMessage(model.judgment ?? "")
                 let remains = model.remains ?? ""
                 if remains == "0" {
                     let phone = model.meantime?.heroic ?? ""
                     let token = model.meantime?.safe ?? ""
                     UserSessionManager.save(phone: phone, token: token)
-                    NotificationCenter.default.post(name: .changeRootViewController, object: nil)
+                    
+                    let parameters = ["wild": "1", "riddle": riddle]
+                    viewModel.pointInfo(parameters: parameters)
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                        NotificationCenter.default.post(name: .changeRootViewController, object: nil)
+                    }
+                    
                 }
             }
             .store(in: &cancellables)

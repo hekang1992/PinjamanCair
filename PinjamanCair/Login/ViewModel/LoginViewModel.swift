@@ -39,4 +39,16 @@ class LoginViewModel: ObservableObject {
         }
         
     }
+    
+    func pointInfo(parameters: [String: String]) {
+        
+        Task {
+            do {
+                _ = try await LoginService.pointInfo(parameters: parameters)
+            } catch {
+                _ = error.localizedDescription
+            }
+        }
+        
+    }
 }

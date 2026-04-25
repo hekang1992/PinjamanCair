@@ -47,16 +47,18 @@ class LocationManager: NSObject {
     }
     
     private func buildLocationDictionary(from location: CLLocation) -> [String: String] {
-        let latitude = location.coordinate.latitude
-        let longitude = location.coordinate.longitude
+        let latitude = String(format: "%.6f", location.coordinate.latitude)
+        let longitude = String(format: "%.6f", location.coordinate.longitude)
+        
+        LocationStorage.save(lat: latitude, lng: longitude)
         
         var dict: [String: String] = [
             "clump": "",
             "customary": "",
             "soon": "",
             "proximity": "",
-            "jealous": String(format: "%.11f", latitude),
-            "top": String(format: "%.11f", longitude),
+            "jealous": latitude,
+            "top": longitude,
             "perched": "",
             "followed": ""
         ]
@@ -109,3 +111,36 @@ extension LocationManager: CLLocationManagerDelegate {
         completion?(nil)
     }
 }
+
+class LocationStorage {
+
+    private static let key = "location_string"
+
+    static func save(lat: String, lng: String) {
+        let value = "\(lat),\(lng)"
+        UserDefaults.standard.set(value, forKey: key)
+    }
+    
+    static func getLatitude() -> String? {
+        guard let value = UserDefaults.standard.string(forKey: key) else {
+            return nil
+        }
+
+        let arr = value.split(separator: ",")
+        guard arr.count == 2 else { return nil }
+
+        return String(arr[0])
+    }
+    
+    static func getLongitude() -> String? {
+        guard let value = UserDefaults.standard.string(forKey: key) else {
+            return nil
+        }
+
+        let arr = value.split(separator: ",")
+        guard arr.count == 2 else { return nil }
+
+        return String(arr[1])
+    }
+}
+
