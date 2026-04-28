@@ -66,6 +66,7 @@
 		73B771CE2F8F990D00F947DE /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B771CD2F8F990D00F947DE /* LanguageManager.swift */; };
 		73B771D02F8F995A00F947DE /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B771CF2F8F995500F947DE /* BaseModel.swift */; };
 		73B771D22F8F9A3400F947DE /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B771D12F8F9A3400F947DE /* NetworkManager.swift */; };
+		73BC13F92FA044A200095E4F /* NotNetWorkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC13F82FA044A200095E4F /* NotNetWorkView.swift */; };
 		73C576302F8FD29E00ACFCA5 /* DeviceParamService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5762F2F8FD29E00ACFCA5 /* DeviceParamService.swift */; };
 		73C576332F8FD36400ACFCA5 /* UserSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C576322F8FD36400ACFCA5 /* UserSessionManager.swift */; };
 		73C576352F8FD42000ACFCA5 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C576342F8FD42000ACFCA5 /* KeychainManager.swift */; };
@@ -147,6 +148,7 @@
 		73B771CD2F8F990D00F947DE /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
 		73B771CF2F8F995500F947DE /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		73B771D12F8F9A3400F947DE /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		73BC13F82FA044A200095E4F /* NotNetWorkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotNetWorkView.swift; sourceTree = "<group>"; };
 		73C5762F2F8FD29E00ACFCA5 /* DeviceParamService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceParamService.swift; sourceTree = "<group>"; };
 		73C576322F8FD36400ACFCA5 /* UserSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSessionManager.swift; sourceTree = "<group>"; };
 		73C576342F8FD42000ACFCA5 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
@@ -448,6 +450,7 @@
 				730B7FCC2F9B4AF80092DE25 /* LocationManager.swift */,
 				73C576342F8FD42000ACFCA5 /* KeychainManager.swift */,
 				73B771CD2F8F990D00F947DE /* LanguageManager.swift */,
+				73BC13F82FA044A200095E4F /* NotNetWorkView.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -680,6 +683,7 @@
 				737C3D942F90A531003A5E32 /* HomeLIstView.swift in Sources */,
 				730693CA2F9C9683000425BF /* DeviceInfo.swift in Sources */,
 				7377A45F2F9480E400041B43 /* PopDeleteView.swift in Sources */,
+				73BC13F92FA044A200095E4F /* NotNetWorkView.swift in Sources */,
 				73B771D22F8F9A3400F947DE /* NetworkManager.swift in Sources */,
 				737C3D9D2F90C874003A5E32 /* LoginViewModel.swift in Sources */,
 				73C576392F8FD55300ACFCA5 /* AccountViewModel.swift in Sources */,

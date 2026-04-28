@@ -43,6 +43,14 @@ class HomeViewController: CommonViewController {
         return view
     }()
     
+    private lazy var notNetView: NotNetWorkView = {
+        let view = NotNetWorkView(frame: .zero)
+        view.isHidden = true
+        return view
+    }()
+    
+    private let networkMonitor = NetworkMonitor.shared
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +63,10 @@ class HomeViewController: CommonViewController {
         
         if UserSessionManager.isLoggedIn() {
             locationManager.getCurrentLocation { locationDict in }
+        }
+        
+        if UIDevice.current.model == "iPad" {
+            monitorNetwork()
         }
     }
     
@@ -82,6 +94,17 @@ private extension HomeViewController {
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.left.right.bottom.equalToSuperview()
         }
+        
+        view.addSubview(notNetView)
+        notNetView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        notNetView.tapBlock = { [weak self] in
+            guard let self = self else { return }
+            self.loadHomeData()
+        }
+        
     }
     
     func setupCallbacks() {
@@ -128,6 +151,7 @@ private extension HomeViewController {
     
     func loadHomeData() {
         homeViewModel.getHomeDataInfo()
+        
         if UserSessionManager.isLoggedIn() {
             locationManager.getCurrentLocation { [weak self] locationDict in
                 guard let self = self else { return }
@@ -200,12 +224,14 @@ private extension HomeViewController {
     func showHomeView(with model: interveningModel) {
         homeView.isHidden = false
         loanView.isHidden = true
+        notNetView.isHidden = true
         homeView.interveningModel = model
     }
     
     func showLoanView(with visualModels: [visualModel]) {
         homeView.isHidden = true
         loanView.isHidden = false
+        notNetView.isHidden = true
         
         let filteredModels = visualModels.filter { $0.cut != "journala" }
         self.loanView.modelArray = filteredModels
@@ -294,6 +320,28 @@ extension HomeViewController {
         })
         
         self.present(alert, animated: true)
+    }
+    
+}
+
+extension HomeViewController {
+    
+    private func monitorNetwork() {
+        networkMonitor.startListening { [weak self] status in
+            guard let self = self else { return }
+            print("status======\(status.description)")
+            switch status {
+            case .unknown:
+                self.notNetView.isHidden = false
+                
+            case .notReachable:
+                self.notNetView.isHidden = false
+                
+            case .reachable(let type):
+                self.notNetView.isHidden = true
+            }
+        }
+        
     }
     
 }

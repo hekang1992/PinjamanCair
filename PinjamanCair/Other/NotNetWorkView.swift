@@ -1,8 +1,8 @@
 //
-//  OrderEmptyView.swift
+//  NotNetWorkView.swift
 //  PinjamanCair
 //
-//  Created by hekang on 2026/4/20.
+//  Created by hekang on 2026/4/28.
 //
 
 import UIKit
@@ -10,7 +10,7 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-class OrderEmptyView: UIView {
+class NotNetWorkView: UIView {
     
     private let disposeBag = DisposeBag()
     
@@ -18,13 +18,13 @@ class OrderEmptyView: UIView {
     
     lazy var oneImageView: UIImageView = {
         let oneImageView = UIImageView()
-        oneImageView.image = UIImage(named: "em_ic_image")
+        oneImageView.image = UIImage(named: "not_net_image")
         return oneImageView
     }()
     
     lazy var nameLabel: UILabel = {
         let nameLabel = UILabel()
-        nameLabel.text = "No orders yet"
+        nameLabel.text = "No network"
         nameLabel.textColor = UIColor.init(hex: "#000000")
         nameLabel.textAlignment = .center
         nameLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
@@ -35,7 +35,7 @@ class OrderEmptyView: UIView {
         let tapBtn = UIButton(type: .custom)
         tapBtn.setBackgroundImage(UIImage(named: "em_icm_image"), for: .normal)
         tapBtn.setTitleColor(.white, for: .normal)
-        tapBtn.setTitle("Apply".localized, for: .normal)
+        tapBtn.setTitle("Retry", for: .normal)
         tapBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         return tapBtn
     }()

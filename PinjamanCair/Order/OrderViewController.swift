@@ -79,6 +79,9 @@ class OrderViewController: CommonViewController {
     
     lazy var emptyView: OrderEmptyView = {
         let emptyView = OrderEmptyView()
+        emptyView.tapBlock = {
+            NotificationCenter.default.post(name: .changeRootViewController, object: nil)
+        }
         return emptyView
     }()
     

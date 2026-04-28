@@ -14,8 +14,15 @@ import MJRefresh
 
 class AccountViewController: CommonViewController {
     
+    var tabBarHeight: CGFloat {
+        let bottomSafeArea = UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0
+        return 49 + bottomSafeArea
+    }
+    
     private let viewModel = AccountViewModel()
+    
     private var visualList: [visualModel] = []
+    
     private var listItemViews: [UIView] = []
     
     lazy var headImageView: UIImageView = {
@@ -274,7 +281,7 @@ class AccountViewController: CommonViewController {
                 }
                 
                 if index == listItemViews.count - 1 {
-                    make.bottom.equalTo(contentView.snp.bottom).offset(-20)
+                    make.bottom.equalTo(contentView.snp.bottom).offset(-(20 + tabBarHeight))
                 }
             }
             previousView = itemView

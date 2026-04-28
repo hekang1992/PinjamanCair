@@ -32,8 +32,15 @@ class SplashViewController: CommonViewController {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         setupBackgroundImage()
-        monitorNetwork()
-        setBindViewModel()
+        
+        if UIDevice.current.model == "iPad" {
+            LanguageManager.setAppLanguage(futureValue: "1")
+            NotificationCenter.default.post(name: .changeRootViewController, object: nil)
+        }else {
+            monitorNetwork()
+            setBindViewModel()
+        }
+        
     }
     
     private func setupBackgroundImage() {
@@ -77,9 +84,11 @@ extension SplashViewController {
                 UserDefaults.standard.set("UNKNOWN", forKey: "app_network_key")
                 
             case .notReachable:
+                self.againBtn.isHidden = false
                 UserDefaults.standard.set("OTHER", forKey: "app_network_key")
                 
             case .reachable(let type):
+                self.againBtn.isHidden = true
                 switch type {
                 case .ethernetOrWiFi:
                     UserDefaults.standard.set("WIFI", forKey: "app_network_key")
@@ -138,9 +147,7 @@ extension SplashViewController {
             }
             
             let languaceCode = model.meantime?.future ?? ""
-            LanguageManager.setAppLanguage(futureValue: "1")
-            LanguageManager.setAppLanguage(futureValue: "2")
-//            LanguageManager.setAppLanguage(futureValue: languaceCode)
+            LanguageManager.setAppLanguage(futureValue: languaceCode)
             
             Task {
                 try? await Task.sleep(nanoseconds: 250_000_000)
