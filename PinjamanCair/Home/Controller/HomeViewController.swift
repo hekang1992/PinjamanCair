@@ -337,7 +337,7 @@ extension HomeViewController {
             case .notReachable:
                 self.notNetView.isHidden = false
                 
-            case .reachable(let type):
+            case .reachable(_):
                 self.notNetView.isHidden = true
             }
         }
