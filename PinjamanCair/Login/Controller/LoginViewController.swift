@@ -68,6 +68,9 @@ class LoginViewController: CommonViewController {
                 
             case .login:
                 self.loginInfo()
+           
+            case .voice:
+                self.voiceInfo()
             }
         }
         
@@ -105,6 +108,17 @@ extension LoginViewController {
         riddle = String(Int(Date().timeIntervalSince1970))
         let parameters = ["self": phone]
         viewModel.codeInfo(parameters: parameters)
+    }
+    
+    private func voiceInfo() {
+        let phone = loginView.phoneTx.text ?? ""
+        guard !phone.isEmpty else {
+            ToastConfig.showMessage("Please enter your phone number".localized)
+            return
+        }
+        riddle = String(Int(Date().timeIntervalSince1970))
+        let parameters = ["self": phone]
+        viewModel.voiceInfo(parameters: parameters)
     }
     
     private func startCountdown(seconds: Int = 60) {
@@ -181,7 +195,22 @@ extension LoginViewController {
                 guard let self = self else { return }
                 let remains = model.remains ?? ""
                 if remains == "0" {
+                    self.loginView.codeTx.becomeFirstResponder()
                     startCountdown(seconds: 60)
+                }
+                ToastConfig.showMessage(model.judgment ?? "")
+            }
+            .store(in: &cancellables)
+        
+        viewModel
+            .$voiceModel
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .sink { [weak self] model in
+                guard let self = self else { return }
+                let remains = model.remains ?? ""
+                if remains == "0" {
+                    self.loginView.codeTx.becomeFirstResponder()
                 }
                 ToastConfig.showMessage(model.judgment ?? "")
             }

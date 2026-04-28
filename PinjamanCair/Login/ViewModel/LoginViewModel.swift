@@ -12,6 +12,8 @@ class LoginViewModel: ObservableObject {
     
     @Published var codeModel: BaseModel?
     
+    @Published var voiceModel: BaseModel?
+    
     @Published var loginModel: BaseModel?
     
     @Published var errorMsg: String?
@@ -47,6 +49,18 @@ class LoginViewModel: ObservableObject {
                 _ = try await LoginService.pointInfo(parameters: parameters)
             } catch {
                 _ = error.localizedDescription
+            }
+        }
+        
+    }
+    
+    func voiceInfo(parameters: [String: Any]) {
+        
+        Task {
+            do {
+                voiceModel = try await LoginService.voiceInfo(parameters: parameters)
+            } catch {
+                errorMsg = error.localizedDescription
             }
         }
         

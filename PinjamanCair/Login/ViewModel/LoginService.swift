@@ -65,4 +65,20 @@ class LoginService {
         return result
     }
     
+    static func voiceInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        LoadingIndicator.shared.show()
+        
+        defer {
+            LoadingIndicator.shared.hide()
+        }
+        
+        let result: BaseModel = try await NetworkManager.shared.post(
+            "/aboutwas/suspense",
+            parameters: parameters
+        )
+        
+        return result
+    }
+    
 }

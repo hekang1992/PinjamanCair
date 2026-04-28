@@ -14,6 +14,7 @@ enum LoginClickType {
     case login
     case sendcode
     case ment
+    case voice
 }
 
 class LoginView: UIView {
@@ -128,6 +129,13 @@ class LoginView: UIView {
         return sendCodeBtn
     }()
     
+    lazy var voiceBtn: UIButton = {
+        let voiceBtn = UIButton(type: .custom)
+        voiceBtn.setImage(UIImage(named: "vic_bg_image"), for: .normal)
+        voiceBtn.adjustsImageWhenHighlighted = false
+        return voiceBtn
+    }()
+    
     lazy var siuBtn: UIButton = {
         let siuBtn = UIButton(type: .custom)
         siuBtn.setImage(UIImage(named: "mc_nor_image"), for: .normal)
@@ -164,7 +172,7 @@ class LoginView: UIView {
         oneImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(50)
-            make.size.equalTo(CGSize(width: 343, height: 500))
+            make.size.equalTo(CGSize(width: 343, height: 530))
             make.bottom.equalToSuperview().offset(-20)
         }
         logoImageView.snp.makeConstraints { make in
@@ -236,13 +244,20 @@ class LoginView: UIView {
             make.right.equalTo(sendCodeBtn.snp.left).offset(-10)
         }
         
+        oneImageView.addSubview(voiceBtn)
+        voiceBtn.snp.makeConstraints { make in
+            make.top.equalTo(twoView.snp.bottom).offset(16)
+            make.right.equalTo(twoView)
+            make.width.height.equalTo(40)
+        }
+        
         oneImageView.addSubview(siuBtn)
         oneImageView.addSubview(mcBtn)
         
         siuBtn.snp.makeConstraints { make in
             make.width.height.equalTo(15)
             make.left.equalToSuperview().offset(27)
-            make.top.equalTo(twoView.snp.bottom).offset(32)
+            make.top.equalTo(voiceBtn.snp.bottom).offset(20)
         }
         
         mcBtn.snp.makeConstraints { make in
@@ -310,6 +325,16 @@ extension LoginView {
             .bind(onNext: { [weak self] in
                 guard let self = self else { return }
                 self.loginBlock?(.ment)
+            })
+            .disposed(by: disposeBag)
+        
+        voiceBtn
+            .rx
+            .tap
+            .throttle(.milliseconds(250), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.loginBlock?(.voice)
             })
             .disposed(by: disposeBag)
     }
