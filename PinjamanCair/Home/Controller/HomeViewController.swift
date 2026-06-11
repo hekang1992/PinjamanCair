@@ -122,7 +122,6 @@ private extension HomeViewController {
                 self.presentLogin()
                 return
             }
-            ToastConfig.showMessage("贷款协议")
         }
         
         homeView.applyBlock = { [weak self] productID in
@@ -344,4 +343,149 @@ extension HomeViewController {
         
     }
     
+}
+
+
+import UIKit
+import AVFoundation
+
+class CameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CustomCameraOverlayViewDelegate {
+    func didTapShutterButton() {
+        
+    }
+    
+    func didTapCancelButton() {
+        
+    }
+    
+
+    var imagePicker: UIImagePickerController!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupCamera()
+    }
+
+    func setupCamera() {
+        // 1. 检查相机是否可用
+        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
+            print("相机不可用")
+            return
+        }
+
+        // 2. 初始化图片选择器
+        imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .camera
+        imagePicker.delegate = self
+        // 隐藏默认的控制面板，以便完全显示我们的自定义视图
+        imagePicker.showsCameraControls = false
+        // 允许用户通过手势对焦
+        imagePicker.allowsEditing = false
+
+        // 3. 创建并设置自定义覆盖视图
+        let overlay = CustomCameraOverlayView(frame: self.view.bounds)
+        overlay.delegate = self // 用于处理按钮点击等事件
+        imagePicker.cameraOverlayView = overlay
+
+        // 4. 以模态形式弹出相机界面
+        present(imagePicker, animated: true, completion: nil)
+    }
+
+    // 拍照成功后保存或处理图片
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let capturedImage = info[.originalImage] as? UIImage {
+            // 在这里处理拍摄到的图片，例如保存到相册
+            UIImageWriteToSavedPhotosAlbum(capturedImage, nil, nil, nil)
+        }
+        picker.dismiss(animated: true, completion: nil)
+    }
+}
+
+// 自定义覆盖视图的代理，用于将按钮点击事件传回给视图控制器
+protocol CustomCameraOverlayViewDelegate: AnyObject {
+    func didTapShutterButton()
+    func didTapCancelButton()
+}
+
+// MARK: - 自定义覆盖视图
+class CustomCameraOverlayView: UIView {
+
+    weak var delegate: CustomCameraOverlayViewDelegate?
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupUI() {
+        // 1. 添加灰色蒙版
+        let overlayLayer = CAShapeLayer()
+        overlayLayer.fillColor = UIColor.black.withAlphaComponent(0.6).cgColor
+        overlayLayer.fillRule = .evenOdd
+        self.layer.addSublayer(overlayLayer)
+        
+        // 2. 添加中间的透明矩形区域
+        let maskRect = CGRect(x: 50, y: 200, width: self.bounds.width - 100, height: 300)
+        let path = UIBezierPath(rect: self.bounds)
+        let transparentPath = UIBezierPath(rect: maskRect)
+        path.append(transparentPath.reversing())
+        overlayLayer.path = path.cgPath
+
+        // 3. 美化矩形边框 (可选)
+        let borderLayer = CAShapeLayer()
+        borderLayer.path = UIBezierPath(rect: maskRect).cgPath
+        borderLayer.fillColor = UIColor.clear.cgColor
+        borderLayer.strokeColor = UIColor.white.cgColor
+        borderLayer.lineWidth = 2.0
+        self.layer.addSublayer(borderLayer)
+
+        // 4. 添加顶部的广告/说明区域
+        let adLabel = UILabel(frame: CGRect(x: 20, y: 100, width: self.bounds.width - 40, height: 60))
+        adLabel.text = "📢 这是广告位：扫描二维码参与活动"
+        adLabel.textColor = .white
+        adLabel.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        adLabel.textAlignment = .center
+        adLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        self.addSubview(adLabel)
+
+        // 5. 添加自定义按钮 (因为默认控件被隐藏了)
+        let shutterButton = UIButton(frame: CGRect(x: self.bounds.midX - 35, y: self.bounds.height - 100, width: 70, height: 70))
+        shutterButton.backgroundColor = .white
+        shutterButton.layer.cornerRadius = 35
+        shutterButton.layer.borderWidth = 3
+        shutterButton.layer.borderColor = UIColor.lightGray.cgColor
+        shutterButton.addTarget(self, action: #selector(shutterTapped), for: .touchUpInside)
+        self.addSubview(shutterButton)
+        
+        let cancelButton = UIButton(frame: CGRect(x: 30, y: self.bounds.height - 90, width: 60, height: 40))
+        cancelButton.setTitle("取消", for: .normal)
+        cancelButton.setTitleColor(.white, for: .normal)
+        cancelButton.addTarget(self, action: #selector(cancelTapped), for: .touchUpInside)
+        self.addSubview(cancelButton)
+    }
+    
+    // 在视图布局变化时更新蒙版图层的大小 (例如设备旋转)
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        // 更新图层的frame和path，确保蒙版与视图新的大小匹配。
+        if let overlayLayer = self.layer.sublayers?.first(where: { $0 is CAShapeLayer }) as? CAShapeLayer {
+            let maskRect = CGRect(x: 50, y: 200, width: self.bounds.width - 100, height: 300)
+            let path = UIBezierPath(rect: self.bounds)
+            path.append(UIBezierPath(rect: maskRect).reversing())
+            overlayLayer.frame = self.bounds
+            overlayLayer.path = path.cgPath
+        }
+    }
+    
+    @objc func shutterTapped() {
+        delegate?.didTapShutterButton()
+    }
+    
+    @objc func cancelTapped() {
+        delegate?.didTapCancelButton()
+    }
 }
